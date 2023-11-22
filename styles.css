@@ -39,10 +39,13 @@ section{
 }
 #span_container{
     margin-left: 30px;
-    line-height: 0;
-
     font-size: 0.92rem;
+    margin-top: 10px;
 }
+.intro_span{
+    margin-right: 10px;
+}
+
 #name{
     font-weight: 700;
     font-size: 3rem;
@@ -66,15 +69,6 @@ a{
 
 
 
-.svg{
-    width: 1.2em;
-    padding: 5px;
-
-    position: relative;
-    top: 10px;
-}
-
-
 
 
 
@@ -84,9 +78,7 @@ a{
     border-bottom: 1px solid;
     margin-bottom: -10px;
 }
-#summary{
-    
-}
+
 /*Projects*/
 #projects{
     
@@ -111,7 +103,9 @@ a{
         width: 100%;
     }
 }
-
+#skills{
+    font-size: 0.92rem;
+}
 #skills ul{
     margin-bottom: 0;
 }
