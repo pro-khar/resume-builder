@@ -1,1 +1,0 @@
-document.querySelector("#name").innerHTML = "your name here";
