@@ -9,7 +9,7 @@ body{
 section{
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 20px;
+    padding-top: 12px;
 
     
     >h2{
@@ -129,11 +129,11 @@ i{
 }
 
 
-#por ul{
+#cer ul{
     margin-bottom: 0;
 }
 
-#por table{
+#cer table{
     margin-top: 10px;
     margin-bottom: -20px;
     font-size: 0.92rem;
