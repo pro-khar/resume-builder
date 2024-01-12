@@ -1,5 +1,14 @@
+import { useState } from "react"
 
 function Header(){
+
+    // let [name, setName] = useState("Your name here")
+
+    // const updateName = () =>{
+    //     setName("Prakhar Verma")
+    // }
+
+
     return(
         <>
         <section id="intro">
