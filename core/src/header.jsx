@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import './header.css'
 function Header(){
 
     // let [name, setName] = useState("Your name here")
@@ -9,9 +9,12 @@ function Header(){
     // }
 
 
+    const [color, setColor] = useState("beige")
+
+
     return(
         <>
-        <section id="intro">
+        <section id="intro" style={{backgroundColor : color}}>
         <table>
             <tr>
                 <td><img id="photu" src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
@@ -30,7 +33,18 @@ function Header(){
                 </td>
             </tr>
         </table>
+
+        <div id="colorBar">
+            <div id="colorbar_container">
+                <button onClick = { ()=> setColor("beige")} style={{backgroundColor: "beige"}}></button>
+                <button onClick = { ()=> setColor("#E1F0DA")} style={{backgroundColor: "#E1F0DA"}}></button>
+                <button onClick = { ()=> setColor("#F8F4EC")} style={{backgroundColor: "#F8F4EC"}}></button>
+                <button onClick = { ()=> setColor("#DCF2F1")} style={{backgroundColor: "#DCF2F1"}}></button>
+            </div>
+        </div>
+
     </section>
+    
     </>
     )
 }

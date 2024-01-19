@@ -10,7 +10,7 @@ function Experience(){
             
             <table>
                 <tr className = "bold-text">
-                    <td><a href="https://drive.google.com/file/d/1cNEwJvFIlDCPivIuTDNaxLgVoGS3DJgz/view?usp=sharing" target = "_blank">Pantech Solutions : Embedded Systems Design and IoT internship</a></td><td align="right">June 2023 - July 2023</td>
+                    <td><a href="https://drive.google.com/file/d/1cNEwJvFIlDCPivIuTDNaxLgVoGS3DJgz/view?usp=sharing" target = "_blank">Pantech Solutions : Embedded Systems Design and IoT internship  <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td><td align="right">June 2023 - July 2023</td>
                 </tr>
                 <tr>
                     <td colSpan = {2}>

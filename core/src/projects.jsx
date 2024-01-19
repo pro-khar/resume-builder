@@ -10,7 +10,7 @@ function Projects(){
             
             <table>
                 <tr className = "bold-text">
-                    <td><a href="https://pro-khar.github.io/verilog-docs/" target = "_blank">Verilog Documentation - Website</a></td><td align="right">Aug 2023 - Sept 2023</td>
+                    <td><a href="https://pro-khar.github.io/verilog-docs/" target = "_blank">Verilog Documentation - Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td><td align="right">Aug 2023 - Sept 2023</td>
                 </tr>
 
                 <tr>
@@ -30,7 +30,7 @@ function Projects(){
 
             <table>
                 <tr className = "bold-text">
-                    <td><a href="https://drive.google.com/file/d/1R6OjP2Yh8zjBppxUkkjpvdsXs8l5k06c/view?usp=sharing" target = "_blank">Network based relay switch</a> <i>(internship project)</i></td><td align="right">May 2023 - June 2023</td>
+                    <td><a href="https://drive.google.com/file/d/1R6OjP2Yh8zjBppxUkkjpvdsXs8l5k06c/view?usp=sharing" target = "_blank">Network based relay switch  <i class="fa-solid fa-arrow-up-right-from-square"></i></a> <i>(internship project)</i></td><td align="right">May 2023 - June 2023</td>
                 </tr>
 
                 <tr>
@@ -51,7 +51,7 @@ function Projects(){
 
             <table>
                 <tr className ="bold-text">
-                    <td><a href="https://pro-khar.github.io/me/" target = "_blank">Portfolio Website</a></td><td align="right">Ongoing</td>
+                    <td><a href="https://pro-khar.github.io/me/" target = "_blank">Portfolio Website  <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td><td align="right">Ongoing</td>
                 </tr>
 
                 <tr>
