@@ -5,6 +5,7 @@ import Skills from './modules/skills.jsx'
 import Projects from './modules/projects.jsx'
 import Experience from './modules/experience.jsx'
 import Por from './modules/por.jsx'
+import Certi from './modules/certification.jsx'
 
 function App(){
     return(
@@ -15,6 +16,7 @@ function App(){
         <Skills />
         <Projects />
         <Experience />
+        <Certi />
         <Por />
     </>
     )
