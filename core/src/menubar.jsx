@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './menubar.css'
 
 function MenuBar(){
@@ -20,7 +21,6 @@ function MenuBar(){
             printWindow.print();
         }
     
-    
 
 
 
@@ -29,7 +29,7 @@ function MenuBar(){
         <>
             <div id="menubar-container">
             <button id='print-button' className='button' onClick = {exportPDF}><i class="fa-regular fa-floppy-disk"></i></button>
-            <button className='button'></button>
+            <button id='image-toggle' className='button'><i class="fa-solid fa-id-badge"></i></button>
             <button className='button'></button>
             <button className='button'></button>
             <button className='button'></button>

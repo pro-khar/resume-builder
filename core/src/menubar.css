@@ -19,9 +19,17 @@
     border: 0px solid;
     transition: all 0.2s ease;
 }
+
+#print-button{
+    margin-bottom: 100px;
+}
 #print-button:hover{
     background-color: rgb(53, 144, 242);
 }
 #print-button:active{
     background-color: rgb(37, 105, 178);
+}
+#image-toggle:hover{
+    background-color: rgb(255, 255, 113);
+    color: gray;
 }

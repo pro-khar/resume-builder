@@ -1,5 +1,7 @@
 import { useState } from "react"
 import './header.css'
+
+
 function Header(){
 
     // let [name, setName] = useState("Your name here")
@@ -17,7 +19,7 @@ function Header(){
         <section id="intro" style={{backgroundColor : color}}>
         <table>
             <tr>
-                <td><img id="photu" src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
+                <td id = "img_toggle"><img id="photu"  src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
                 <td id = "namecard">
                     <p id = "name">Prakhar Verma</p>
                     <hr />
