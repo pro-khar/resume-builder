@@ -1,18 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './styles.css'
+import './index.css'
 
-import Header from './modules/header.jsx'
-import Summary from './modules/summary.jsx'
-import Education from './modules/education.jsx'
-import Skills from './modules/skills.jsx'
-import Projects from './modules/projects.jsx'
-import Experience from './modules/experience.jsx'
-import Por from './modules/por.jsx'
 import App from './app.jsx'
+import MenuBar from './menubar.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='root'>
+  <div className='root' style={{
+  background: "#333", backgroundImage: "linear-gradient(rgba(75, 75, 75, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(67, 67, 67, 0.7) .1em, transparent .1em)",
+backgroundSize: "2.5em 2.5em"}}>
+    
+    <MenuBar />
     <App />
   </div>
 )
+ 

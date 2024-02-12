@@ -7,19 +7,15 @@ import Experience from './modules/experience.jsx'
 import Por from './modules/por.jsx'
 import Certi from './modules/certification.jsx'
 
-import html2pdf from 'html2pdf.js'
+
 
 function App(){
 
-    const handlePrint = () => {
-        const content = document.getElementById('print-content')
-        html2pdf(content);
-    }
 
 
     return(
     <>
-        <div id="print-content">
+        <div id="print-content" style={{width:"fit-content", background:"white"}}>
             <Header />
             <Summary />
             <Education />
@@ -29,7 +25,6 @@ function App(){
             <Certi />
             <Por />
         </div>
-        <button onClick={handlePrint}>Print as PDF</button>
     </>
     )
 }

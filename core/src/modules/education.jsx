@@ -12,7 +12,7 @@ function Education(){
                 </tr>
 
                 <tr>
-                    <td>Jaypee Institute of Information Technology, Noida</td><td className = "bold-text" align="right">CGPA HERE</td>
+                    <td>Jaypee Institute of Information Technology, Noida</td><td className = "bold-text" align="right"></td>
                 </tr>
                 <tr>
                     <td>

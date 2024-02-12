@@ -1,0 +1,27 @@
+#menubar-container{
+    background-color: rgba(255, 255, 255, 0.267);
+    padding: 10px;
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.button{
+    background-color: gray;
+    border-radius: 20px;
+    font-size: 3vh;
+    color: white;
+    width: 80px;
+    height: 80px;
+
+
+    border: 0px solid;
+    transition: all 0.2s ease;
+}
+#print-button:hover{
+    background-color: rgb(53, 144, 242);
+}
+#print-button:active{
+    background-color: rgb(37, 105, 178);
+}
