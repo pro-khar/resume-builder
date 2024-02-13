@@ -15,11 +15,11 @@
 }
 .button{
     background-color: gray;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 3vh;
     color: white;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 
 
     border: 0px solid;
