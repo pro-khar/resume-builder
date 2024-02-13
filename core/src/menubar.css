@@ -10,6 +10,8 @@
     position: fixed;
     margin-left: 20px;
     margin-top: 20px;
+
+    z-index: 5;
 }
 .button{
     background-color: gray;

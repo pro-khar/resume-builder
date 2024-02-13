@@ -1,26 +1,24 @@
 html{
     font-family: 'IBM Plex sans', monospace;
     font-weight: 300;
-    padding-bottom: -30px;
+
+    background-color: brown;
     
 }
 body{
     margin: 0;
-    
     /* min-height: 1320px;
     max-height: 1320px;     */
 }
 
 .root{
-    /* height: 100vh; */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+    overflow-y: auto;
 
-    min-height: 1320px;
-    max-height: 1320px;    
+    height: 100vh;  
+    /* border: 5px solid yellow; */
+
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -159,4 +157,16 @@ i{
     margin-bottom: -20px;
     font-size: 0.92rem;
     width: 100%;
+}
+
+#print-content{
+     margin-top: 5vh;
+     display: flex;
+     flex-direction: column;
+     /* gap: 30px;  */
+     background-color: white;
+
+     /* border: 5px solid red ; */
+     height: 1400px;
+
 }
