@@ -1,0 +1,237 @@
+
+
+html{
+    font-family: 'IBM Plex sans', monospace;
+    font-weight: 300;
+    padding-bottom: -30px;
+    
+}
+body{
+    margin: 0;
+    min-height: 1320px;
+    max-height: 1320px;    
+}
+
+.root{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+
+
+section{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+
+    
+    >h2{
+        margin: 0;
+        font-size: 1em;
+        font-weight:900;
+    }
+    >p{
+        font-size: 0.92rem;
+        margin-bottom: 0;
+    }
+    
+    min-width: 900px; /*height = 1320px*/
+    max-width: 900px;
+
+
+}
+.bold-text{
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+#photu{
+    width: 110px;
+    border: 1px solid;
+}
+
+hr{
+    margin-top: 0;
+    margin-bottom: -8px;
+    margin-left: 30px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
+
+
+/*Para*/
+.line{
+    border-bottom: 1px solid;
+    margin-bottom: -10px;
+}
+
+/*Projects*/
+#projects{
+    
+    >table{
+        margin-top: 10px;
+        margin-bottom: -20px;
+        font-size: 0.92rem;
+        width: 100%;
+    }
+    
+}
+
+.ul_gap{
+    margin-top: 0px;
+}
+
+#education{
+    >table{
+        margin-top: 10px;
+        margin-bottom: -20px;
+        font-size: 0.92rem;
+        width: 100%;
+    }
+}
+#skills{
+    font-size: 0.92rem;
+}
+#skills ul{
+    margin-bottom: 0;
+    margin-top: 16px;
+}
+i{
+    font-weight: 300;
+}
+.lang{
+    vertical-align: bottom;
+}
+
+#experience{
+    >table{
+        margin-top: 10px;
+        margin-bottom: -20px;
+        font-size: 0.92rem;
+        width: 100%;
+    }
+}
+#experience ul{
+    margin-bottom: 0;
+}
+
+#por{
+    margin-top: 16px;
+}
+#por ul{
+    margin-bottom: 0;
+}
+
+#por table{
+    margin-top: 10px;
+    margin-bottom: -20px;
+    font-size: 0.92rem;
+    width: 100%;
+}
+
+/*Custom FontAwesome elements*/
+.fa-arrow-up-right-from-square{
+    opacity: 50%;
+}
+#cer{
+    margin-top: 16px;
+}
+#cer ul{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#cer table{
+    margin-top: 10px;
+    margin-bottom: -20px;
+    font-size: 0.92rem;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+#colorBar{
+    width: fit-content;
+    height: 30px;
+
+    
+    border-radius: 5px;
+
+    display: none;
+
+    
+
+    position: absolute;
+    top: 160px;
+    right: 20px;
+
+    padding: 5px;    
+}
+
+#colorBar button{
+    border-radius: 5px;
+    padding: 10px;
+    border: 3px solid rgb(59, 59, 59);
+    filter: opacity(50%);
+}
+#colorBar button:hover{
+    filter: opacity(100%);
+}
+
+#colorbar_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+#intro{
+    width: fit-content;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    transition: all 1s ease;
+    position: relative;
+}
+#intro:hover #colorBar{
+        display: block;
+        
+    }
+
+#span_container{
+    margin-left: 30px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+.intro_span{
+    margin-right: 10px;
+}
+
+#name{
+    font-weight: 700;
+    font-size: 3rem;
+
+    margin-left: 30px;
+    margin-bottom: 0;
+    margin-top: auto;
+}
+#namecard{
+    width: 100%;
+}

@@ -7,13 +7,13 @@ function MenuBar(){
             var contentDiv = document.getElementById("print-content");
             var printWindow = window.open('', '_blank');
             printWindow.document.write('<html><head><title>Resume</title>');
-            printWindow.document.write('<link rel="stylesheet" type="text/css" href="/home/pro-khar/comde/resume-3/core/src/index.css">');
-            printWindow.document.write('<link rel="stylesheet" type="text/css" href="/home/pro-khar/comde/resume-3/core/src/modules/header.css">');
+            printWindow.document.write('<script src="https://kit.fontawesome.com/f270a71fbc.js" crossorigin="anonymous"></script>');
+            printWindow.document.write('<link rel="stylesheet" type="text/css" href="./public/print.css">');
             printWindow.document.write('<link rel="preconnect" href="https://fonts.googleapis.com">');
             printWindow.document.write('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
             printWindow.document.write('<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;400;500;700&display=swap" rel="stylesheet">');
             printWindow.document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0" />');
-            printWindow.document.write('<script src="https://kit.fontawesome.com/f270a71fbc.js" crossorigin="anonymous"></script>');
+            
             printWindow.document.write('</head><body>');
             printWindow.document.write(contentDiv.innerHTML);
             printWindow.document.write('</body></html>');
