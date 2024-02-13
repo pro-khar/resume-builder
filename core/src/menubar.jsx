@@ -8,7 +8,7 @@ function MenuBar(){
             var printWindow = window.open('', '_blank');
             printWindow.document.write('<html><head><title>Resume</title>');
             printWindow.document.write('<script src="https://kit.fontawesome.com/f270a71fbc.js" crossorigin="anonymous"></script>');
-            printWindow.document.write('<link rel="stylesheet" type="text/css" href="./public/print.css">');
+            printWindow.document.write('<link rel="stylesheet" type="text/css" href="/print.css">');
             printWindow.document.write('<link rel="preconnect" href="https://fonts.googleapis.com">');
             printWindow.document.write('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
             printWindow.document.write('<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;400;500;700&display=swap" rel="stylesheet">');
