@@ -18,7 +18,10 @@ function MenuBar(){
             printWindow.document.write(contentDiv.innerHTML);
             printWindow.document.write('</body></html>');
             printWindow.document.close();
-            printWindow.print();
+            
+            setTimeout(() => {
+                printWindow.print();
+            }, 200);
         }
     
 

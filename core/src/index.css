@@ -42,6 +42,7 @@ section{
     min-width: 900px; /*height = 1320px*/
     max-width: 900px;
 
+    height: fit-content;
 
 }
 .bold-text{
