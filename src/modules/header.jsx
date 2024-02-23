@@ -11,7 +11,14 @@ function Header(){
     }
     // console.log(getImageState())
 
-    
+    const nameCenter = () => {
+        if(!image){
+            return{
+                width : "100%",
+                textAlign : "center",
+            };
+        }
+    }
 
     const [color, setColor] = useState("beige")
 
@@ -19,7 +26,7 @@ function Header(){
     return(
         <>
         <section id="intro" style={{backgroundColor : color}}>
-        <table>
+        <table style={nameCenter()}>
             <tr>
                 <td style={{display:getImageState()}}><img id="photu"  src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
                 <td id = "namecard">
@@ -38,7 +45,7 @@ function Header(){
             </tr>
         </table>
 
-        <div id="colorBar">
+        <div id="colorBar" class="printHide">
             <div id="colorbar_container">
                 <button onClick = { ()=> setColor("beige")} style={{backgroundColor: "beige"}}></button>
                 <button onClick = { ()=> setColor("#E1F0DA")} style={{backgroundColor: "#E1F0DA"}}></button>
@@ -47,11 +54,11 @@ function Header(){
             </div>
         </div>
 
-        <div id="image-toggle">
+        <div id="image-toggle" class="printHide">
             <button
             onClick={(e)=>{
             setImage((prev) => !prev);
-            console.log(image)
+            // console.log(image)
           }}
           >
             <i class="fa-solid fa-eye"></i>

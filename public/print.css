@@ -209,10 +209,7 @@ i{
     transition: all 1s ease;
     position: relative;
 }
-#intro:hover #colorBar{
-         display: none;  /*changed to none for print css */
-        
-    }
+
 
 #span_container{
     margin-left: 30px;
@@ -235,6 +232,6 @@ i{
     width: 100%;
 }
 
-/* #intro:hover #image-toggle{
-    display: none;  /*changed to none for print css */
-} */
+.printHide{
+    display: none;
+}
