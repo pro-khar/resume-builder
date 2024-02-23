@@ -39,21 +39,19 @@
 
 /*IMAGE TOGGLE*/
 #image-toggle{
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 15px;
-    left: 25px;
+    right: 20px;    
 }
-#image-toggle button{
-    border-radius: 999px;
-    padding: 10px;
-    border: 2px dashed rgb(59, 59, 59);
-    
+#image-toggle-child{
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+} 
+#image-toggle i{
+    font-size: 4vh;
 }
-#image-toggle button:hover{
-    background-color: rgb(197, 197, 197);
-}
-
 #intro:hover #image-toggle{
     display: block;
 }

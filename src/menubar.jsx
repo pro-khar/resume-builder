@@ -21,7 +21,7 @@ function MenuBar(){
             
             setTimeout(() => {
                 printWindow.print();
-            }, 200);
+            }, 300);
         }
     
 

@@ -206,7 +206,7 @@ i{
     padding-top: 25px;
     padding-bottom: 25px;
 
-    transition: all 1s ease;
+    /* transition: all 1s ease; */
     position: relative;
 }
 

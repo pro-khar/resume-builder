@@ -54,18 +54,23 @@ function Header(){
             </div>
         </div>
 
-        <div id="image-toggle" class="printHide">
-            <button
-            onClick={(e)=>{
-            setImage((prev) => !prev);
-            // console.log(image)
-          }}
-          >
-            <i class="fa-solid fa-eye"></i>
-            </button>
-        </div>
 
+
+
+
+        <div id="image-toggle" className="printHide">
+            <div id="image-toggle-child"
+                onClick={(e)=>{
+                setImage((prev) => !prev);
+                // console.log(image)
+             }}><b>Image</b> 
+                {image? <i class="fa-solid fa-toggle-on" /> : <i class="fa-solid fa-toggle-off" />}
+            </div>
+        </div>
     </section>
+    
+
+
     
     </>
     )
