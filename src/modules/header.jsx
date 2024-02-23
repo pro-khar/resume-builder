@@ -51,6 +51,7 @@ function Header(){
                 <button onClick = { ()=> setColor("#E1F0DA")} style={{backgroundColor: "#E1F0DA"}}></button>
                 <button onClick = { ()=> setColor("#F8F4EC")} style={{backgroundColor: "#F8F4EC"}}></button>
                 <button onClick = { ()=> setColor("#DCF2F1")} style={{backgroundColor: "#DCF2F1"}}></button>
+                <button onClick = { ()=> setColor("#FFFFFF")} style={{backgroundColor: "#FFFFFF"}}></button>
             </div>
         </div>
 
@@ -71,7 +72,7 @@ function Header(){
     
 
 
-    
+
     </>
     )
 }
