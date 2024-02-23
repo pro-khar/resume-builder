@@ -32,20 +32,49 @@
     justify-content: center;
     gap: 5px;
 }
+#intro:hover #colorBar{
+    display: block;
+    
+}
+
+/*IMAGE TOGGLE*/
+#image-toggle{
+    /* display: none; */
+    position: absolute;
+    top: 15px;
+    left: 25px;
+}
+#image-toggle button{
+    border-radius: 999px;
+    padding: 10px;
+    border: 2px dashed rgb(59, 59, 59);
+    
+}
+#image-toggle button:hover{
+    background-color: rgb(197, 197, 197);
+}
+
+#intro:hover #image-toggle{
+    display: block;
+}
+
+
+
+
+
+
 
 
 #intro{
     width: fit-content;
+    min-height: 153.575px;
     padding-top: 25px;
     padding-bottom: 25px;
 
     transition: all 1s ease;
     position: relative;
 }
-#intro:hover #colorBar{
-        display: block;
-        
-    }
+
 
 #span_container{
     margin-left: 30px;
@@ -66,4 +95,12 @@
 }
 #namecard{
     width: 100%;
+}
+
+#photu{
+    width: 110px;
+    border: 1px solid;
+}
+#intro table{
+    min-height: 153.875px;
 }

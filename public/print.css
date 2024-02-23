@@ -210,7 +210,7 @@ i{
     position: relative;
 }
 #intro:hover #colorBar{
-         display: none;  */changed to none for print css */
+         display: none;  /*changed to none for print css */
         
     }
 
@@ -234,3 +234,7 @@ i{
 #namecard{
     width: 100%;
 }
+
+/* #intro:hover #image-toggle{
+    display: none;  /*changed to none for print css */
+} */

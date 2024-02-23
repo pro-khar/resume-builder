@@ -4,12 +4,14 @@ import './header.css'
 
 function Header(){
 
-    // let [name, setName] = useState("Your name here")
 
-    // const updateName = () =>{
-    //     setName("Prakhar Verma")
-    // }
+    const [image, setImage] = useState(false)
+    const getImageState = () => {
+        return image? 'block' : 'none';
+    }
+    // console.log(getImageState())
 
+    
 
     const [color, setColor] = useState("beige")
 
@@ -19,7 +21,7 @@ function Header(){
         <section id="intro" style={{backgroundColor : color}}>
         <table>
             <tr>
-                <td id = "img_toggle"><img id="photu"  src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
+                <td style={{display:getImageState()}}><img id="photu"  src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
                 <td id = "namecard">
                     <p id = "name">Prakhar Verma</p>
                     <hr />
@@ -43,6 +45,17 @@ function Header(){
                 <button onClick = { ()=> setColor("#F8F4EC")} style={{backgroundColor: "#F8F4EC"}}></button>
                 <button onClick = { ()=> setColor("#DCF2F1")} style={{backgroundColor: "#DCF2F1"}}></button>
             </div>
+        </div>
+
+        <div id="image-toggle">
+            <button
+            onClick={(e)=>{
+            setImage((prev) => !prev);
+            console.log(image)
+          }}
+          >
+            <i class="fa-solid fa-eye"></i>
+            </button>
         </div>
 
     </section>

@@ -35,7 +35,3 @@
 #print-button:active{
     background-color: rgb(37, 105, 178);
 }
-#image-toggle:hover{
-    background-color: rgb(255, 255, 113);
-    color: gray;
-}
