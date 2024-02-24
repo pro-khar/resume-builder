@@ -28,7 +28,7 @@ function Header(){
         <section id="intro" style={{backgroundColor : color}}>
         <table style={nameCenter()}>
             <tr>
-                <td style={{display:getImageState()}}><img id="photu"  src = {"./src/assets/60KB.jpeg"} alt="ME" /></td>
+                <td style={{display:getImageState()}}><img id="photu"  src = {"./public/60KB.jpeg"} alt="ME" /></td>
                 <td id = "namecard">
                     <p id = "name">Prakhar Verma</p>
                     <hr />
