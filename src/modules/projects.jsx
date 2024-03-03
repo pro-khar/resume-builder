@@ -51,19 +51,19 @@ function Projects(){
 
             <table>
                 <tr className ="bold-text">
-                    <td><a href="https://pro-khar.github.io/me/" target = "_blank">Portfolio Website  <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td><td align="right">Ongoing</td>
+                    <td><a href="https://pro-khar.github.io/me/" target = "_blank">Resume Builder  <i class="fa-solid fa-arrow-up-right-from-square"></i></a></td><td align="right">Ongoing</td>
                 </tr>
 
                 <tr>
-                    <td colSpan={2}>Development of personal portfolio website using web technologies. </td>
+                    <td colSpan={2}>Resume builder with an intuitive and minimal UI built on <b>React.js</b></td>
                 </tr>
                 
                 <tr>
                     <td colSpan = {2}>
                         <ul className ="ul_gap">
-                            <li>Learned layouts like Grid, Flexbox, Animations and applied them into the website.<b>(CSS3)</b></li>
-                            <li>leveraged prototyping tools for UI/UX design. <b>(Figma)</b></li>
-                            <li>Version control and Hosting using Git. <b>(Github)</b></li>
+                            <li>Multiple toggles like image inclusion and color themes, state management using <b>React Hooks.</b></li>
+                            <li>Print and Export capability using window object <b>(Node.js)</b></li>
+                            <li>Minimal and Responsive UI with <b>Tailwind CSS</b></li>
                         </ul>
                     </td>
                 </tr>
