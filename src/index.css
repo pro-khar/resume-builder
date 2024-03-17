@@ -112,7 +112,9 @@ i{
 .lang{
     vertical-align: bottom;
 }
-
+#experience{
+    margin-top: 16px;
+}
 #experience{
     >table{
         margin-top: 10px;
