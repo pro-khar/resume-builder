@@ -154,3 +154,7 @@ i{
     font-size: 0.92rem;
     width: 100%;
 }
+
+#education .spacer{
+    padding-bottom: 10px;
+}
