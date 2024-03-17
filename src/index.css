@@ -43,9 +43,8 @@ section{
     
     min-width: 900px; /*height = 1320px*/
     max-width: 900px;
-
-    height: fit-content;
-
+    
+    overflow-y: visible;
 }
 .bold-text{
     font-weight: 700;
@@ -78,18 +77,17 @@ a{
 
 /*Projects*/
 #projects{
-    
     >table{
         margin-top: 10px;
         margin-bottom: -20px;
         font-size: 0.92rem;
         width: 100%;
     }
-    
 }
 
 .ul_gap{
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #education{
@@ -99,6 +97,9 @@ a{
         font-size: 0.92rem;
         width: 100%;
     }
+}
+#skills{
+    margin-top: 20px;
 }
 #skills ul{
     margin-bottom: 0;
@@ -167,4 +168,8 @@ i{
      /* border: 5px solid red ; */
      height: 1400px;
 
+}
+
+#education .spacer{
+    padding-top: 15px;
 }
