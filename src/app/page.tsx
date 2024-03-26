@@ -3,11 +3,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Introduction from "@/components/core/Introduction"
 import Education from "@/components/core/Education"
-import { Progress } from "@radix-ui/react-progress"
+import { Progress } from "@/components/ui/progress"
 import { useState } from "react"
-
-
-
+import { ModeToggle } from "@/components/modeToggle"
 
 function Home() {
   const [value, setValue] = useState(1/7*100)
@@ -16,7 +14,11 @@ function Home() {
   }
   return (
     
-      <div className="flex flex-col items-center gap-6">
+      <div id="root" className="flex flex-col items-center gap-6">
+        <div className="absolute right-3 top-3">
+          <ModeToggle/>
+        </div>
+        
         <Progress value={value} className="w-[400px] mt-10"/>
         <div className="flex justify-center h-screen w-full">
           <Tabs defaultValue="Introduction">
@@ -38,11 +40,7 @@ function Home() {
             <TabsContent value="PoRs">PoRs</TabsContent>
           </Tabs>
         </div>
-          
-
     </div>
-    
-    
   )
 }
 
