@@ -1,13 +1,15 @@
+"use client"
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Introduction from "./components/core/Introduction"
-import Education from "./components/core/Education"
-import { Progress } from "./components/ui/progress"
+import Introduction from "@/components/core/Introduction"
+import Education from "@/components/core/Education"
+import { Progress } from "@radix-ui/react-progress"
 import { useState } from "react"
 
 
 
 
-function App() {
+function Home() {
   const [value, setValue] = useState(1/7*100)
   const setSlider = (tabvalue: number) =>{
     setValue(tabvalue)
@@ -44,4 +46,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
