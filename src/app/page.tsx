@@ -4,23 +4,29 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Introduction from "@/components/core/Introduction"
 import Education from "@/components/core/Education"
 import { Progress } from "@/components/ui/progress"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { ModeToggle } from "@/components/modeToggle"
+
+import FormContextProvider from "@/components/context/formContextProvider"
+import Output from "./Output/page"
 
 function Home() {
   const [value, setValue] = useState(1/7*100)
   const setSlider = (tabvalue: number) =>{
     setValue(tabvalue)
   }
+
+
+  
   return (
-    
+    <FormContextProvider>
       <div id="root" className="flex flex-col items-center gap-6">
         <div className="absolute right-3 top-3">
           <ModeToggle/>
         </div>
         
         <Progress value={value} className="w-[400px] mt-10"/>
-        <div className="flex justify-center h-screen w-full">
+        <div className="flex justify-center w-full">
           <Tabs defaultValue="Introduction">
             <TabsList>
               <TabsTrigger value="Introduction" onClick={() => setSlider(1/7*100)}>Introduction</TabsTrigger>
@@ -40,7 +46,12 @@ function Home() {
             <TabsContent value="PoRs">PoRs</TabsContent>
           </Tabs>
         </div>
+    <div className="bottom-5 fixed">
+      <Output/>
     </div>
+        
+    </div>
+    </FormContextProvider>
   )
 }
 
