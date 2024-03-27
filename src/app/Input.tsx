@@ -44,7 +44,8 @@ function Input() {
         </div>
     {/* <div className="bottom-5 fixed">
       <Output/>
-    </div> */}      
+    </div> */}
+    
     </div>
   )
 }
