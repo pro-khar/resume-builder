@@ -1,4 +1,4 @@
-
+"use client"
 
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
@@ -22,7 +22,7 @@ function Introduction() {
     setinfo({name, number, email, addr})
   }
 
-
+  
 
 
   return (
