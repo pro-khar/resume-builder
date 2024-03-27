@@ -18,7 +18,7 @@ function Output() {
   )
   return (
       <>
-      <div id='output_container' className='border border-black dark:bg-gray-800' style={{height : "900px", width : "636px"}}>
+      <div id='output_container' className='dark:bg-gray-800 h-[900px] w-[636px]'>
         <Header/>
         <PlainSection/>
         <Class1/>

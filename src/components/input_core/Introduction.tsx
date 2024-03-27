@@ -8,6 +8,7 @@ import { Button } from "../ui/button"
 
 import { useState, useContext } from "react"
 import FormContext from "../context/formContext"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
 
 
 function Introduction() {
@@ -15,12 +16,14 @@ function Introduction() {
   const [number, setnumber] = useState('')
   const [email, setemail] = useState('')
   const [addr, setaddr] = useState('')
+  const [github, setgithub] = useState('')
+  const [linkedin, setlinkedin] = useState('')
 
   const {setinfo} = useContext(FormContext)
 
   const handleSave = (e) =>{
     e.preventDefault()
-    setinfo({name, number, email, addr})
+    setinfo({name, number, email, addr, github, linkedin})
   }
 
   
@@ -28,9 +31,9 @@ function Introduction() {
 
   return (
   
-    <div className="p-4 flex flex-col pt-[10%]">
-        <h1 className="text-2xl font-bold">Introduction</h1>
-        <p className="italic text-xs">Tell me a bit about yourself!</p>
+    <div className="p-4 flex flex-col">
+        <h1 className="text-2xl font-bold text-center">Introduction</h1>
+        <p className="italic text-xs text-center">Tell me a bit about yourself!</p>
 
         <form className="my-6 flex flex-col gap-4">
             <div>
@@ -64,13 +67,17 @@ function Introduction() {
             </div>
 
             <div>
-              <Label htmlFor="github"><i className="fa-brands fa-github"></i> Github</Label>
-              <Input id="github" type="url" placeholder="Github profile"/>
+              <Label htmlFor="github"><FaGithub className="inline"/> Github</Label>
+              <Input id="github" type="url" placeholder="Github profile"
+              value={github} 
+              onChange={(e)=>setgithub(e.target.value)}/>
             </div>
 
             <div>
-              <Label htmlFor="linkedin"><i className="fa-brands fa-linkedin"></i> LinkedIn</Label>
-              <Input id="linkedin" type="url" placeholder="LinkedIn profile"/>
+              <Label htmlFor="linkedin"><FaLinkedin className="inline"/> LinkedIn</Label>
+              <Input id="linkedin" type="url" placeholder="LinkedIn profile"
+              value={linkedin} 
+              onChange={(e)=>setlinkedin(e.target.value)}/>
             </div>
 
             <div>
