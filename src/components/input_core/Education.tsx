@@ -10,8 +10,20 @@ import { Button } from "../ui/button"
 
 import FormContext from "../context/formContext"
 import { Separator } from '../ui/separator'
+import { ScrollArea } from '../ui/scroll-area'
+import { FaSave } from 'react-icons/fa'
 
 function Education() {
+
+  //context
+  const {seteducation} = useContext(FormContext)
+
+  const handlesave = (e) =>{
+    e.preventDefault()
+    seteducation({degree, college, clgdurationA, clgdurationB, clgmarks, branch,
+       hschool, hmarks,hsyear,
+      ischool, imarks, iyear})
+  }
 
   //COLLEGE VARIABLES
   const [degree, setdegree] = useState('')
@@ -35,7 +47,7 @@ function Education() {
 
   return (
     <>
-    <main className=''>
+    <ScrollArea className='h-[600px]'>
 
     <div className="p-4 flex flex-col">
         <h1 className='text-xl font-semibold'>College</h1>
@@ -69,13 +81,13 @@ function Education() {
                 <Label htmlFor="clgdurationA">Duration</Label><br/>
                   <div className='flex items-center gap-2'>
                     <Label className='text-xs text-gray-400'>From</Label>
-                    <Input id="clgdurationA" type="month" placeholder="Full branch name, no abbreviations"
+                    <Input id="clgdurationA" type="number" placeholder="YYYY"
                     value={clgdurationA} 
                     onChange={(e)=>setclgdurationA(e.target.value)}
                     className='w-full'
                     /> 
                     <Label className='text-xs text-gray-400'>To</Label>
-                    <Input id="clgdurationB" type="month" placeholder="Full branch name, no abbreviations"
+                    <Input id="clgdurationB" type="number" placeholder="YYYY"
                     value={clgdurationB} 
                     onChange={(e)=>setclgdurationB(e.target.value)}
                     className='w-full'
@@ -116,7 +128,7 @@ function Education() {
             <div className='flex gap-6'>
               <div>
                 <Label htmlFor="iyear">Year</Label><br/>
-                    <Input id="iyear" type="month" placeholder="Full branch name, no abbreviations"
+                    <Input id="iyear" type="number" placeholder="YYYY"
                     value={iyear} 
                     onChange={(e)=>setiyear(e.target.value)}
                     className='w-full'
@@ -155,7 +167,7 @@ function Education() {
                       <div className='flex gap-6'>
                         <div>
                           <Label htmlFor="hsyear">Year</Label><br/>
-                              <Input id="hsyear" type="month" placeholder="Full branch name, no abbreviations"
+                              <Input id="hsyear" type="number" placeholder="YYYY"
                               value={hsyear} 
                               onChange={(e)=>sethsyear(e.target.value)}
                               className='w-full'
@@ -174,9 +186,14 @@ function Education() {
                       </div>
                       </form>
     </div>    
+    
+    </ScrollArea>
 
-    </main>
-         
+    <div className='flex justify-center items-center p-4 mt-10'>
+    <Button className='w-full' onClick={handlesave}><FaSave className='mr-2'/> Save</Button>
+    </div>
+    
+
 
     </>
     
