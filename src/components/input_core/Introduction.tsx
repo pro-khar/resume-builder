@@ -18,12 +18,13 @@ function Introduction() {
   const [addr, setaddr] = useState('')
   const [github, setgithub] = useState('')
   const [linkedin, setlinkedin] = useState('')
+  const [image, setimage] = useState(null)
 
   const {setinfo} = useContext(FormContext)
 
   const handleSave = (e) =>{
     e.preventDefault()
-    setinfo({name, number, email, addr, github, linkedin})
+    setinfo({name, number, email, addr, github, linkedin, image})
   }
 
   
@@ -44,19 +45,19 @@ function Introduction() {
             </div>
             
             <div className="flex gap-4">
-              <div className="w-full">
-                <Label htmlFor="mob">Contact No.</Label>
-                <Input id="mob" type="number" placeholder="Contact number with prefix"
-                value={number} 
-                onChange={(e)=>setnumber(e.target.value)}/>
-              </div>
+                        <div className="w-full">
+                          <Label htmlFor="mob">Contact No.</Label>
+                          <Input id="mob" type="number" placeholder="Contact number with prefix"
+                          value={number} 
+                          onChange={(e)=>setnumber(e.target.value)}/>
+                        </div>
 
-              <div className="w-full">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="Enter your valid Email ID"
-                value={email} 
-                onChange={(e)=>setemail(e.target.value)}/>
-              </div>
+                        <div className="w-full">
+                          <Label htmlFor="email">Email</Label>
+                          <Input id="email" type="email" placeholder="Enter your valid Email ID"
+                          value={email} 
+                          onChange={(e)=>setemail(e.target.value)}/>
+                        </div>
             </div>
 
             <div>
@@ -66,18 +67,28 @@ function Introduction() {
               onChange={(e)=>setaddr(e.target.value)}/>
             </div>
 
-            <div>
+            <div className="flex gap-4">
+            <div className="w-full">
               <Label htmlFor="github"><FaGithub className="inline"/> Github</Label>
               <Input id="github" type="url" placeholder="Github profile"
               value={github} 
               onChange={(e)=>setgithub(e.target.value)}/>
             </div>
 
-            <div>
+            <div className="w-full">
               <Label htmlFor="linkedin"><FaLinkedin className="inline"/> LinkedIn</Label>
               <Input id="linkedin" type="url" placeholder="LinkedIn profile"
               value={linkedin} 
               onChange={(e)=>setlinkedin(e.target.value)}/>
+            </div>
+            </div>
+
+            <div>
+              <Label htmlFor="image">Name</Label>
+              <Input id="image" type="file"
+              value={image}
+              onChange={(e) => setimage(e.target.value)}
+              />
             </div>
 
             <div>
