@@ -8,7 +8,8 @@ import { Button } from "../ui/button"
 
 import { useState, useContext } from "react"
 import FormContext from "../context/formContext"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaSave } from "react-icons/fa"
+import { Separator } from "../ui/separator"
 
 
 function Introduction() {
@@ -31,11 +32,10 @@ function Introduction() {
 
 
   return (
+    <>
   
     <div className="p-4 flex flex-col">
-        <h1 className="text-2xl font-bold text-center">Introduction</h1>
-        <p className="italic text-xs text-center">Tell me a bit about yourself!</p>
-
+   
         <form className="my-6 flex flex-col gap-4">
             <div>
               <Label htmlFor="name">Name</Label>
@@ -97,9 +97,13 @@ function Introduction() {
             </div>
             
         </form>
-        <Button className="" onClick={handleSave}>Save</Button>
+        
     </div>
-    
+
+    <div className='flex justify-center items-center p-4 mt-10'>
+    <Button className='w-full' onClick={handleSave}><FaSave className='mr-2'/> Save</Button>
+    </div>
+    </>
   )
 }
 
