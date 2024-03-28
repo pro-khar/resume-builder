@@ -9,9 +9,11 @@ import { Textarea } from "../ui/textarea"
 import { Button } from "../ui/button"
 
 import FormContext from "../context/formContext"
+import { Separator } from '../ui/separator'
 
 function Education() {
 
+  //COLLEGE VARIABLES
   const [degree, setdegree] = useState('')
   const [college, setcollege] = useState('')
   const [clgdurationA, setclgdurationA] = useState('')
@@ -19,10 +21,24 @@ function Education() {
   const [clgmarks, setclgmarks] = useState('')
   const [branch, setbranch] = useState('')
 
+  //HIGHhSCHOOL VARIABLES
+  const [hschool, sethschool] = useState('')
+  const [hmarks, sethmarks] = useState('')
+  const [hsyear, sethsyear] = useState('')
+
+  //INTERMEDIATE VARIABLES
+  const [ischool, setischool] = useState('')
+  const [imarks, setimarks] = useState('')
+  const [iyear, setiyear] = useState('')
+  
+
 
   return (
-    <div className="p-4 flex flex-col pt-[10%]">
-        <p className="text-xs">Describe your educational background</p>
+    <>
+    <main className=''>
+
+    <div className="p-4 flex flex-col">
+        <h1 className='text-xl font-semibold'>College</h1>
 
         <form className="my-6 flex flex-col gap-4">
             <div>
@@ -82,6 +98,88 @@ function Education() {
         </form>
         {/* <Button className="" onClick={handleSave}>Save</Button> */}
     </div>
+
+    <Separator/>
+
+    <div className="p-4 flex flex-col">
+        <h1 className='text-xl font-semibold'>Intermediate/12th</h1>
+
+        <form className="my-6 flex flex-col gap-4">
+            <div>
+              <Label htmlFor="ischool">School</Label>
+              <Input id="ischool" type="text" placeholder="Name of your school, exclude city name"
+              value={ischool} 
+              onChange={(e)=>setischool(e.target.value)}
+              />
+            </div>
+
+            <div className='flex gap-6'>
+              <div>
+                <Label htmlFor="iyear">Year</Label><br/>
+                    <Input id="iyear" type="month" placeholder="Full branch name, no abbreviations"
+                    value={iyear} 
+                    onChange={(e)=>setiyear(e.target.value)}
+                    className='w-full'
+                    /> 
+              </div>
+              
+              <div>
+                <Label htmlFor="imarks">CGPA/Percentage</Label>
+                <Input id="clgmarks" type="number" placeholder="Passing CGPA/Percentage"
+                value={imarks} 
+                onChange={(e)=>setimarks(e.target.value)}
+                className='w-full'
+                />
+              </div>
+              
+            </div>
+            
+        </form>
+        {/* <Button className="" onClick={handleSave}>Save</Button> */}
+    </div>
+
+    <Separator/>
+
+    <div className="p-4 flex flex-col">
+                  <h1 className='text-xl font-semibold'>HighSchool/10th</h1>
+
+                  <form className="my-6 flex flex-col gap-4">
+                      <div>
+                        <Label htmlFor="hschool">School</Label>
+                        <Input id="hschool" type="text" placeholder="Name of your school, exclude city name"
+                        value={hschool} 
+                        onChange={(e)=>sethschool(e.target.value)}
+                        />
+                      </div>
+
+                      <div className='flex gap-6'>
+                        <div>
+                          <Label htmlFor="hsyear">Year</Label><br/>
+                              <Input id="hsyear" type="month" placeholder="Full branch name, no abbreviations"
+                              value={hsyear} 
+                              onChange={(e)=>sethsyear(e.target.value)}
+                              className='w-full'
+                              /> 
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="hmarks">CGPA/Percentage</Label>
+                          <Input id="hmarks" type="number" placeholder="Passing CGPA/Percentage"
+                          value={hmarks} 
+                          onChange={(e)=>sethmarks(e.target.value)}
+                          className='w-full'
+                          />
+                        </div>
+                        
+                      </div>
+                      </form>
+    </div>    
+
+    </main>
+         
+
+    </>
+    
   )
 }
 
