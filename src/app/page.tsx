@@ -13,7 +13,7 @@ function Home() {
         <div className=" border dark:border-gray-600 rounded-lg p-8 h-[850px] max-w-[680px]" id="input">
           <Input/>
         </div>
-        <ScrollArea className="border  dark:border-gray-600 rounded-lg h-[850px] max-w-[680px]">
+        <ScrollArea className="border  dark:border-gray-600 rounded-lg h-[850px] max-w-[680px]" id="output">
         {/* <div id="output" className=" border  dark:border-gray-600 rounded-lg overflow-y-scroll h-[850px] max-w-[680px]"> */}
           <Output/> 
         {/* </div> */}

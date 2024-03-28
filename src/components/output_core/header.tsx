@@ -10,7 +10,7 @@ function Header(){
     return(
     <>
     <div id = "header" className="bg-gray-200 dark:bg-gray-600 h-[134px] py-5 px-5 flex flex-nowrap gap-4 border-b border-black border-dashed">
-         <img className="border-black border" src="./src/assets/60KB.jpeg" style={{minWidth:"70px", maxWidth: "70px"}}/>
+         <img className="border-black border" src={''} style={{minWidth:"70px", maxWidth: "70px"}}/>
          <div className="w-full flex flex-col gap-1 max-h-auto">
             <h1 className="font-bold text-3xl tracking-tight">{info.name}</h1>
             <hr className="border-black border-t"/>
