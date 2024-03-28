@@ -18,7 +18,7 @@ function Introduction() {
   const [addr, setaddr] = useState('')
   const [github, setgithub] = useState('')
   const [linkedin, setlinkedin] = useState('')
-  const [image, setimage] = useState(null)
+  const [image, setimage] = useState('')
 
   const {setinfo} = useContext(FormContext)
 
@@ -68,26 +68,26 @@ function Introduction() {
             </div>
 
             <div className="flex gap-4">
-            <div className="w-full">
-              <Label htmlFor="github"><FaGithub className="inline"/> Github</Label>
-              <Input id="github" type="url" placeholder="Github profile"
-              value={github} 
-              onChange={(e)=>setgithub(e.target.value)}/>
-            </div>
+                <div className="w-full">
+                  <Label htmlFor="github"><FaGithub className="inline"/> Github</Label>
+                  <Input id="github" type="url" placeholder="Github profile"
+                  value={github} 
+                  onChange={(e)=>setgithub(e.target.value)}/>
+                </div>
 
-            <div className="w-full">
-              <Label htmlFor="linkedin"><FaLinkedin className="inline"/> LinkedIn</Label>
-              <Input id="linkedin" type="url" placeholder="LinkedIn profile"
-              value={linkedin} 
-              onChange={(e)=>setlinkedin(e.target.value)}/>
-            </div>
+                <div className="w-full">
+                  <Label htmlFor="linkedin"><FaLinkedin className="inline"/> LinkedIn</Label>
+                  <Input id="linkedin" type="url" placeholder="LinkedIn profile"
+                  value={linkedin} 
+                  onChange={(e)=>setlinkedin(e.target.value)}/>
+                </div>
             </div>
 
             <div>
               <Label htmlFor="image">Name</Label>
               <Input id="image" type="file"
               value={image}
-              onChange={(e) => setimage(e.target.value)}
+              onChange={(e)=> setimage(e.target.value)}
               />
             </div>
 
