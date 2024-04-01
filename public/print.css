@@ -82,7 +82,7 @@ a{
     
     >table{
         margin-top: 10px;
-        margin-bottom: -20px;
+        margin-bottom: 0px;
         font-size: 0.92rem;
         width: 100%;
     }
@@ -243,7 +243,7 @@ i{
 
 
 #intro{
-    width: fit-content;
+    width: 100%;
     padding-top: 25px;
     padding-bottom: 25px;
 

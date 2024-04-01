@@ -79,7 +79,7 @@ a{
 #projects{
     >table{
         margin-top: 10px;
-        margin-bottom: -20px;
+        margin-bottom: 0px;
         font-size: 0.92rem;
         width: 100%;
     }
