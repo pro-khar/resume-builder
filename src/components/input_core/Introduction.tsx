@@ -34,7 +34,7 @@ function Introduction() {
   return (
     <>
   
-    <div className="p-4 flex flex-col">
+    <div className="p-4 flex flex-col h-[600px]">
    
         <form className="my-6 flex flex-col gap-4">
             <div>
