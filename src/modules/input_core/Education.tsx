@@ -45,7 +45,9 @@ function Education() {
 
   return (
     <>
-    <ScrollArea className='h-[600px]'>
+
+
+    <ScrollArea className='2xl:h-[600px] w-[600px] xl:h-[400px]'>
 
     <div className="p-4 flex flex-col">
         <h1 className='text-xl font-semibold'>College</h1>
@@ -187,7 +189,7 @@ function Education() {
     
     </ScrollArea>
 
-    <div className='flex justify-center items-center p-4 mt-10'>
+    <div className='flex justify-center items-center p-4 2xl:mt-10 xl:mt-[0]'>
     <Button className='w-full' onClick={handlesave}><FaSave className='mr-2'/> Save</Button>
     </div>
     

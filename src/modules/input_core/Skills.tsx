@@ -30,12 +30,12 @@ function Skills() {
 
     return (
         <>
-            <ScrollArea className='h-[600px]'>
+            <ScrollArea className='2xl:h-[600px] xl:h-[400px]'>
         <div className='p-4 flex flex-col gap-3'>
 
             <form className="my-4 flex flex-col gap-4">
 
-                <h2>Skill category 1</h2>
+                <h1 className='text-xl font-semibold'>Skill category 1</h1>
                 <div>
                 <Input id="cat1" type="text" placeholder="Category name"
                     value={cat1} 
@@ -55,7 +55,7 @@ function Skills() {
 
             
             <form className="my-4 flex flex-col gap-4">
-                <h2>Skill category 2</h2>
+                <h1 className='text-xl font-semibold'>Skill category 2</h1>
                 <div>
                 
                 <Input id="cat2" type="text" placeholder="Category name"
@@ -76,7 +76,7 @@ function Skills() {
 
 
             <form className="my-4 flex flex-col gap-4">
-                <h2>Skill category 3</h2>
+                <h1 className='text-xl font-semibold'>Skill category 3</h1>
                 <div>
                 
                 <Input id="cat3" type="text" placeholder="Category name"
@@ -97,7 +97,7 @@ function Skills() {
 
 
             <form className="my-4 flex flex-col gap-4">
-                <h2>Skill category 4</h2>
+                <h1 className='text-xl font-semibold'>Skill category 4</h1>
                 <div>
                 
                 <Input id="cat4" type="text" placeholder="Category name"
@@ -118,7 +118,7 @@ function Skills() {
 
 
             <form className="my-4 flex flex-col gap-4">
-                <h2>Skill category 5</h2>
+                <h1 className='text-xl font-semibold'>Skill category 5</h1>
                 <div>
                 
                 <Input id="cat5" type="text" placeholder="Category name"
@@ -138,12 +138,12 @@ function Skills() {
             </form>
             
         </div>
-        </ScrollArea>
+            </ScrollArea>
 
 
-        <div className='flex justify-center items-center p-4 mt-10'>
-            <Button className='w-full' onClick={handlesave}><FaSave className='mr-2'/> Save</Button>
-        </div>
+            <div className='flex justify-center items-center p-4 2xl:mt-10 xl:mt-[0]'>
+                <Button className='w-full' onClick={handlesave}><FaSave className='mr-2'/> Save</Button>
+            </div>
         </>
     )
 }

@@ -7,7 +7,7 @@ import Banner from './banner.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     
-    <Banner/>
+    {/* <Banner/> */}
 
     <App />
   </React.StrictMode>,
