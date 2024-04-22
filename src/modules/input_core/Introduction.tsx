@@ -24,7 +24,7 @@ function Introduction() {
 
   const {setinfo} = useContext(FormContext)
 
-  const handleSave = (e) =>{
+  const handleSave = (e:any) =>{
     e.preventDefault()
     setinfo({name, number, email, addr, github, linkedin, image})
   }
@@ -39,7 +39,7 @@ function Introduction() {
 
         <ScrollArea className="p-4 flex flex-col 2xl:h-[600px] xl:h-[400px]">
       
-      <form className="my-6 flex flex-col gap-4">
+      <form className="my-6 flex flex-col gap-4" onSubmit={handleSave}>
           <div>
             <Label htmlFor="name">Name</Label>
             <Input id="name" type="text" placeholder="Enter your full name"
@@ -104,7 +104,7 @@ function Introduction() {
         </ScrollArea>
 
         <div className='flex justify-center items-center p-4 2xl:mt-10 xl:mt-[0]'>
-        <Button className='w-full' onClick={handleSave}><FaSave className='mr-2'/> Save</Button>
+        <Button type="submit" className='w-full' onClick={handleSave}><FaSave className='mr-2'/> Save</Button>
         </div>
 
     

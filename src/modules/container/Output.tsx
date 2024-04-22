@@ -1,25 +1,20 @@
 
-import FormContext from '@/context/formContext'
+
 
 import Class1 from '../output_core/out_edu'
 import Header from '../output_core/header'
 import PlainSection from '../output_core/plain'
 import Out_skills from '../output_core/out_skills'
 
-import { useContext } from 'react'
 
 
 
 
 
 function Output() {
-  const {item} = useContext(FormContext)
+  
 
-  if(!{item}) return(
-    <>
-      Enter details and hit save!
-    </>
-  )
+  
   
   return (
       <>

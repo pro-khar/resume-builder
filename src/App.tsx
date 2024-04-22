@@ -7,8 +7,9 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 function App() {
   
   return (
+    
     <FormContextProvider>
-      <div className="flex justify-center gap-6 items-center" id="base">
+      <div className="flex justify-center 2xl:gap-6 items-center xl:gap-3" id="base">
           <div className=" border dark:border-gray-600 rounded-lg p-8 2xl:h-[850px] 2xl:max-w-[680px] first-line xl:h-[600px]" id="input">
             <Input/>
           </div>
@@ -18,9 +19,9 @@ function App() {
       </div>
       
     </FormContextProvider>
+    
   )
 }
 
 export default App
 
-// md:max-h-[600px]

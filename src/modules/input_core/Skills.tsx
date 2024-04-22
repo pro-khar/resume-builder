@@ -23,7 +23,7 @@ function Skills() {
     const [skill4, setskill4] = useState('')
     const [skill5, setskill5] = useState('')
 
-    const handlesave = (e) =>{
+    const handlesave = (e:any) =>{
         e.preventDefault()
         setskills({cat1, cat2, cat3, cat4, cat5, skill1, skill2, skill3, skill4, skill5})
       }

@@ -14,9 +14,9 @@ import FormContext from '@/context/formContext'
 function Education() {
 
   //context
-  const {seteducation} = useContext(FormContext)
+  const {seteducation} = useContext(FormContext) || {}
 
-  const handlesave = (e) =>{
+  const handlesave = (e:any) =>{
     e.preventDefault()
     seteducation({degree, college, clgdurationA, clgdurationB, clgmarks, branch,
        hschool, hmarks,hsyear,
