@@ -7,7 +7,7 @@ body,
 :root,
 #base {
   height: 100vh;
-  font-family: "IBM PLex Sans", sans-serif;
+  font-family: "IBM PLex Sans";
 }
 
 @layer base {

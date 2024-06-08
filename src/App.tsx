@@ -12,8 +12,9 @@ function App() {
         <div className="absolute right-1 top-1">
           <ModeToggle />
         </div>
+        <div className="bg-slate-500 h-screen text-white font-bold flex items-center justify-center xl:hidden 2xl:hidden md:hidden">Needs more screen</div>
         <div
-          className="flex justify-center 2xl:gap-6 items-center xl:gap-3"
+          className="hidden xl:flex 2xl:flex md:flex md:flex-wrap gap-8 items-center justify-center"
           id="base"
         >
           <div
