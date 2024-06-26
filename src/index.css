@@ -4,9 +4,10 @@
 
 html,
 body,
-#base {
+#base, #root{
   height: 100vh;
 }
+
 
 @layer base {
   :root {
