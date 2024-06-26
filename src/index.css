@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
+/* html,
 body,
-#base, #root{
+:root {
   height: 100vh;
-}
+  font-family: "Roboto", sans-serif;
+} */
 
 
 @layer base {
@@ -55,7 +56,6 @@ body,
     --ring: 263.4 70% 50.4%;
   }
 }
-
 
 @layer base {
   * {

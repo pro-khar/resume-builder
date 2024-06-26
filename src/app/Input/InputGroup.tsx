@@ -7,13 +7,15 @@ import { TbCertificate } from "react-icons/tb";
 import { BiBuildingHouse } from "react-icons/bi";
 import { FaTrophy } from "react-icons/fa";
 import React from 'react'
+import Intro from './modules/intro';
+import Education from './modules/education';
 
 function InputGroup() {
   return (
     <div className='h-full'>
-        <Tabs defaultValue='intro' className='p-2 border-b '>
+        <Tabs defaultValue='intro' className='p-3 border-b '>
             <TabsList className='w-full p-2 h-[50px] text-[#6d28d9'>
-                <TabsTrigger value='info' className='w-[85px] text-lg h-full'><PersonIcon/></TabsTrigger>
+                <TabsTrigger value='intro' className='w-[85px] text-lg h-full'><PersonIcon/></TabsTrigger>
                 <TabsTrigger value='education' className='w-[85px] text-lg h-full'><FaGraduationCap/></TabsTrigger>
                 <TabsTrigger value='skills' className='w-[85px] text-lg h-full'><FaCode/></TabsTrigger>
                 <TabsTrigger value='projects' className='w-[85px] text-lg h-full'><FaBoxOpen/></TabsTrigger>
@@ -21,7 +23,12 @@ function InputGroup() {
                 <TabsTrigger value='certifications' className='w-[85px] text-lg h-full'><TbCertificate /></TabsTrigger>
                 <TabsTrigger value='pors' className='w-[85px] text-lg h-full'><FaTrophy /></TabsTrigger>
             </TabsList>
-            <TabsContent value=''></TabsContent>
+          <TabsContent value='intro'><Intro/></TabsContent>
+          <TabsContent value='education'><Education/></TabsContent>
+          <TabsContent value='skills'></TabsContent>
+          <TabsContent value='projects'></TabsContent>
+          <TabsContent value='experience'></TabsContent>
+          <TabsContent value='skills'></TabsContent>
 
         </Tabs>
     </div>

@@ -1,11 +1,19 @@
-import React from 'react'
+
+import { ScrollArea } from "@/components/ui/scroll-area";
+import React from "react";
 
 function OutputGroup() {
   return (
-    <div id='output_container' className='text-black bg-white h-[900px] w-[636px]'>
-        
-      </div>
-  )
+    <>
+    
+      
+    <div id="resume" className="text-black bg-white dark:bg-zinc-300 h-[900px] w-[636px] rounded-md shadow-lg mb-10">
+      
+    </div>
+    
+    
+    </>
+  );
 }
 
-export default OutputGroup
+export default OutputGroup;
