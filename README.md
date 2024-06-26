@@ -1,4 +1,4 @@
-# Resume Builder
+# Resume Builder [Under-progress]
 
 > A fast, modern and minimal web application for building your perfect resume!
 
