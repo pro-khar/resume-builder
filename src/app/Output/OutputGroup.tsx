@@ -7,7 +7,7 @@ function OutputGroup() {
     <>
     
       
-    <div id="resume" className="text-black bg-white dark:bg-zinc-300 h-[900px] w-[636px] rounded-md shadow-lg mb-10">
+    <div id="resume" className="text-black bg-white dark:bg-zinc-700 h-[900px] w-[636px] rounded-md shadow-lg mb-10">
       
     </div>
     
