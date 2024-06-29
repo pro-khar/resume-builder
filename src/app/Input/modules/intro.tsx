@@ -1,43 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+
 import { Label } from "@/components/ui/label";
 
-const Intro = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    address: '',
-    github: '',
-    linkedin: '',
-    phone: '',
-    summary: ''
-  });
+import { useSelector, useDispatch } from 'react-redux';
+import { updateIntro } from '@/features/introSlice';
+
+function Intro(){
+  const dispatch = useDispatch();
+  const intro = useSelector(state => state.intro);
+
+  
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
+   
+    dispatch(updateIntro({[e.target.name] : e.target.value}))
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Here you would typically send the data to a server or perform other actions
-  };
+ 
+
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+    <form className="space-y-5 max-w-md mx-auto h-full pt-10">
       <div>
         <Label htmlFor="name">Name</Label>
         <Input
           id="name"
           name="name"
-          value={formData.name}
+          value={intro.name}
           onChange={handleChange}
+          placeholder='Enter your Full Name'
           required
         />
       </div>
@@ -48,7 +41,8 @@ const Intro = () => {
           id="email"
           name="email"
           type="email"
-          value={formData.email}
+          value={intro.email}
+          placeholder='someone@example.com'
           onChange={handleChange}
           required
         />
@@ -59,7 +53,8 @@ const Intro = () => {
         <Input
           id="address"
           name="address"
-          value={formData.address}
+          value={intro.address}
+          placeholder='451, Hotel, Transylvania'
           onChange={handleChange}
           required
         />
@@ -71,7 +66,7 @@ const Intro = () => {
           id="github"
           name="github"
           type="url"
-          value={formData.github}
+          value={intro.github}
           onChange={handleChange}
           placeholder="https://github.com/username"
         />
@@ -83,7 +78,7 @@ const Intro = () => {
           id="linkedin"
           name="linkedin"
           type="url"
-          value={formData.linkedin}
+          value={intro.linkedin}
           onChange={handleChange}
           placeholder="https://www.linkedin.com/in/username"
         />
@@ -94,8 +89,8 @@ const Intro = () => {
         <Input
           id="phone"
           name="phone"
-          type="tel"
-          value={formData.phone}
+          type="text"
+          value={intro.phone}
           onChange={handleChange}
         />
       </div>
@@ -105,13 +100,11 @@ const Intro = () => {
         <Textarea
           id="summary"
           name="summary"
-          value={formData.summary}
+          value={intro.summary}
           onChange={handleChange}
           rows={4}
         />
       </div>
-
-      <Button type="submit">Submit</Button>
     </form>
   );
 };
