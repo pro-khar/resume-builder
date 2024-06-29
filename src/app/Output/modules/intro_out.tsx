@@ -65,6 +65,11 @@ function Intro_out() {
           </div>
         </div>
       </div>
+      {intro.summary?<div id = "plain-container" className="px-5 py-3 text-xs pb-0">
+                <h1 className="font-semibold tracking-tight">SUMMARY</h1>
+                <hr className="border-black border-t"/>
+                <p className="leading-tight">{intro.summary}</p>
+            </div>:null}
     </>
   );
 }

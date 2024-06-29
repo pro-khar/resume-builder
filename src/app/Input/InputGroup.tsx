@@ -6,9 +6,9 @@ import { FaBoxOpen } from "react-icons/fa6";
 import { TbCertificate } from "react-icons/tb";
 import { BiBuildingHouse } from "react-icons/bi";
 import { FaTrophy } from "react-icons/fa";
-import React from 'react'
 import Intro from './modules/intro';
 import Education from './modules/education';
+import Skills from './modules/skills';
 
 function InputGroup() {
   return (
@@ -26,7 +26,7 @@ function InputGroup() {
             
           <TabsContent value='intro'><Intro/></TabsContent>
           <TabsContent value='education'><Education/></TabsContent>
-          <TabsContent value='skills'></TabsContent>
+          <TabsContent value='skills'><Skills/></TabsContent>
           <TabsContent value='projects'></TabsContent>
           <TabsContent value='experience'></TabsContent>
           <TabsContent value='skills'></TabsContent>
