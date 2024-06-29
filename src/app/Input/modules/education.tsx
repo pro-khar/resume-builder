@@ -1,155 +1,138 @@
-import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useDispatch, useSelector } from "react-redux";
+import { updateEducation } from "@/features/educationSlice";
 
-const Education = () => {
-  const [formData, setFormData] = useState({
-    bachelor: {
-      degree: '',
-      institution: '',
-      startDate: '',
-      endDate: '',
-      details: '',
-      cgpa: ''
-    },
-    intermediate: {
-      school: '',
-      year: '',
-      percentage: ''
-    },
-    highschool: {
-      school: '',
-      year: '',
-      percentage: ''
-    }
-  });
+function Education() {
+  const dispatch = useDispatch();
 
-  const handleChange = (section, field, value) => {
-    setFormData(prevData => ({
-      ...prevData,
-      [section]: {
-        ...prevData[section],
-        [field]: value
-      }
-    }));
+  const education = useSelector((state)=>state.education)
+
+  const handleChange = (e) => {
+    dispatch(updateEducation({[e.target.id]:e.target.value}))
   };
 
   return (
-    <form className="space-y-8 max-w-2xl mx-auto">
-      <div className="space-y-4">
-        <h2 className="text-xl font-bold">Bachelor of Technology</h2>
-        <div>
-          <Label htmlFor="bachelor-degree">Degree</Label>
-          <Input
-            id="bachelor-degree"
-            value={formData.bachelor.degree}
-            onChange={(e) => handleChange('bachelor', 'degree', e.target.value)}
-            placeholder="e.g. Electronics and Communication Engineering"
-          />
-        </div>
-        <div>
-          <Label htmlFor="bachelor-institution">Institution</Label>
-          <Input
-            id="bachelor-institution"
-            value={formData.bachelor.institution}
-            onChange={(e) => handleChange('bachelor', 'institution', e.target.value)}
-            placeholder="e.g. Jaypee Institute of Information Technology, Noida"
-          />
-        </div>
-        <div className="flex space-x-4">
-          <div className="flex-1">
-            <Label htmlFor="bachelor-start-date">Start Date</Label>
+    <ScrollArea className="h-[800px]">
+      <form className="space-y-8 max-w-md mx-auto py-10">
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">Graduation/Equivalent</h2>
+          <div>
+            <Label htmlFor="degree">Degree</Label>
             <Input
-              id="bachelor-start-date"
-              type="month"
-              value={formData.bachelor.startDate}
-              onChange={(e) => handleChange('bachelor', 'startDate', e.target.value)}
+              id="degree"
+              value={education.degree}
+              onChange={handleChange}
+              placeholder=""
             />
           </div>
-          <div className="flex-1">
-            <Label htmlFor="bachelor-end-date">End Date</Label>
+          <div>
+            <Label htmlFor="branch">Branch</Label>
             <Input
-              id="bachelor-end-date"
-              type="month"
-              value={formData.bachelor.endDate}
-              onChange={(e) => handleChange('bachelor', 'endDate', e.target.value)}
+              id="branch"
+              value={education.branch}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
+          <div>
+            <Label htmlFor="college">Institution</Label>
+            <Input
+              id="college"
+              value={education.college}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <Label htmlFor="bachelor_duration">Start Date</Label>
+              <Input
+                id="bachelor_duration"
+                type="text"
+                value={education.bachelor_duration}
+                onChange={handleChange}
+                placeholder="eg: 2017 - 2019"
+              />
+            </div>
+            
+          </div>
+          <div>
+            <Label htmlFor="bachelor_score">CGPA</Label>
+            <Input
+              id="bachelor_score"
+              value={education.bachelor_score}
+              onChange={handleChange}
+              placeholder="CGPA/Percentage"
             />
           </div>
         </div>
-        <div>
-          <Label htmlFor="bachelor-cgpa">CGPA</Label>
-          <Input
-            id="bachelor-cgpa"
-            value={formData.bachelor.cgpa}
-            onChange={(e) => handleChange('bachelor', 'cgpa', e.target.value)}
-            placeholder="e.g. 6.5"
-          />
-        </div>
-      </div>
 
-      <div className="space-y-4">
-        <h2 className="text-xl font-bold">Intermediate</h2>
-        <div>
-          <Label htmlFor="intermediate-school">School</Label>
-          <Input
-            id="intermediate-school"
-            value={formData.intermediate.school}
-            onChange={(e) => handleChange('intermediate', 'school', e.target.value)}
-            placeholder="e.g. Sacred Heart Higher Secondary School, Sitapur"
-          />
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">Class 12th (Intermediate)</h2>
+          <div>
+            <Label htmlFor="int_school">School</Label>
+            <Input
+              id="int_school"
+              value={education.int_school}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
+          <div>
+            <Label htmlFor="int_year">Year</Label>
+            <Input
+              id="int_year"
+              value={education.int_year}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
+          <div>
+            <Label htmlFor="int_score">Percentage</Label>
+            <Input
+              id="int_score"
+              value={education.int_score}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
         </div>
-        <div>
-          <Label htmlFor="intermediate-year">Year</Label>
-          <Input
-            id="intermediate-year"
-            value={formData.intermediate.year}
-            onChange={(e) => handleChange('intermediate', 'year', e.target.value)}
-            placeholder="e.g. 2018 - 2019"
-          />
-        </div>
-        <div>
-          <Label htmlFor="intermediate-percentage">Percentage</Label>
-          <Input
-            id="intermediate-percentage"
-            value={formData.intermediate.percentage}
-            onChange={(e) => handleChange('intermediate', 'percentage', e.target.value)}
-            placeholder="e.g. 64 %"
-          />
-        </div>
-      </div>
 
-      <div className="space-y-4">
-        <h2 className="text-xl font-bold">Highschool</h2>
-        <div>
-          <Label htmlFor="highschool-school">School</Label>
-          <Input
-            id="highschool-school"
-            value={formData.highschool.school}
-            onChange={(e) => handleChange('highschool', 'school', e.target.value)}
-            placeholder="e.g. Sacred Heart Inter College, Sitapur"
-          />
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">Class 10th (Highschool)</h2>
+          <div>
+            <Label htmlFor="hs_school">School</Label>
+            <Input
+              id="hs_school"
+              value={education.hs_school}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
+          <div>
+            <Label htmlFor="hs_year">Year</Label>
+            <Input
+              id="hs_year"
+              value={education.hs_year}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
+          <div>
+            <Label htmlFor="hs_score">Percentage</Label>
+            <Input
+              id="hs_score"
+              value={education.hs_score}
+              onChange={handleChange}
+              placeholder=""
+            />
+          </div>
         </div>
-        <div>
-          <Label htmlFor="highschool-year">Year</Label>
-          <Input
-            id="highschool-year"
-            value={formData.highschool.year}
-            onChange={(e) => handleChange('highschool', 'year', e.target.value)}
-            placeholder="e.g. 2016 - 2017"
-          />
-        </div>
-        <div>
-          <Label htmlFor="highschool-percentage">Percentage</Label>
-          <Input
-            id="highschool-percentage"
-            value={formData.highschool.percentage}
-            onChange={(e) => handleChange('highschool', 'percentage', e.target.value)}
-            placeholder="e.g. 84 %"
-          />
-        </div>
-      </div>
-    </form>
+      </form>
+    </ScrollArea>
   );
-};
+}
 
 export default Education;

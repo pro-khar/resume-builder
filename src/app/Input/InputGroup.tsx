@@ -13,7 +13,7 @@ import Education from './modules/education';
 function InputGroup() {
   return (
     <div className='h-full'>
-        <Tabs defaultValue='intro' className='p-3 border-b '>
+        <Tabs defaultValue='education' className='p-3 border-b h-full'>
             <TabsList className='w-full p-2 h-[50px] text-[#6d28d9'>
                 <TabsTrigger value='intro' className='w-[85px] text-lg h-full'><PersonIcon/></TabsTrigger>
                 <TabsTrigger value='education' className='w-[85px] text-lg h-full'><FaGraduationCap/></TabsTrigger>
@@ -23,6 +23,7 @@ function InputGroup() {
                 <TabsTrigger value='certifications' className='w-[85px] text-lg h-full'><TbCertificate /></TabsTrigger>
                 <TabsTrigger value='pors' className='w-[85px] text-lg h-full'><FaTrophy /></TabsTrigger>
             </TabsList>
+            
           <TabsContent value='intro'><Intro/></TabsContent>
           <TabsContent value='education'><Education/></TabsContent>
           <TabsContent value='skills'></TabsContent>
