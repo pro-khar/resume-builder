@@ -69,6 +69,8 @@ function Education() {
           </div>
         </div>
 
+<div className="border p-6 rounded-md">
+        <p className="text-xs text-zinc-500 py-2">Leave these fields blank if you don't want to include them :</p>
         <div className="space-y-4">
           <h2 className="text-xl font-bold">Class 12th (Intermediate)</h2>
           <div>
@@ -100,7 +102,7 @@ function Education() {
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 mt-4">
           <h2 className="text-xl font-bold">Class 10th (Highschool)</h2>
           <div>
             <Label htmlFor="hs_school">School</Label>
@@ -129,6 +131,7 @@ function Education() {
               placeholder=""
             />
           </div>
+        </div>
         </div>
       </form>
     </ScrollArea>

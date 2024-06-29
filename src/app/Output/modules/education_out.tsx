@@ -30,7 +30,7 @@ function Education_out(){
                             </tr>
                         </table>        
                     </div>
-                    <div id = "part" className="mx-2"> 
+                    {education.int_school?(<div id = "part" className="mx-2"> 
                         <table className="w-full">
                             <tr className="">
                                 <td><h1 className="font-semibold">Intermediate</h1></td><td className="text-right font-semibold">{education.int_year}</td>
@@ -44,8 +44,8 @@ function Education_out(){
                                 </td>
                             </tr>
                         </table>        
-                    </div>
-                    <div id = "part" className="mx-2"> 
+                    </div>):null}
+                    {education.hs_school?<div id = "part" className="mx-2"> 
                         <table className="w-full">
                             <tr className="">
                                 <td><h1 className="font-semibold">High-school</h1></td><td className="text-right font-semibold">{education.hs_year}</td>
@@ -59,7 +59,7 @@ function Education_out(){
                                 </td>
                             </tr>
                         </table>        
-                    </div>
+                    </div>:null}
                 </div>
             </div>
         </>
