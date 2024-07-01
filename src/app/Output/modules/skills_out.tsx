@@ -13,9 +13,9 @@ function Skills_out() {
         <hr className="border-black border-t dark:border-white" />
 
         <div id="part_container" className="flex flex-col gap-[4px]">
-          <ul className="px-2 list-disc list-inside">
+          <ul className="mx-4 mt-1 list-disc list-inside">
             <li>
-              <span className="font-bold">
+              <span className="font-semibold">
                 {skills.category1 ? skills.category1 : "Category"}
               </span>{" "}
               -{" "}
@@ -24,7 +24,7 @@ function Skills_out() {
               </span>
             </li>
             <li>
-              <span className="font-bold">
+              <span className="font-semibold">
                 {skills.category2 ? skills.category2 : "Category"}
               </span>{" "}
               -{" "}
@@ -33,7 +33,7 @@ function Skills_out() {
               </span>
             </li>
             <li>
-              <span className="font-bold">
+              <span className="font-semibold">
                 {skills.category3 ? skills.category3 : "Category"}
               </span>{" "}
               -{" "}
@@ -42,7 +42,7 @@ function Skills_out() {
               </span>
             </li>
             <li>
-              <span className="font-bold">
+              <span className="font-semibold">
                 {skills.category4 ? skills.category4 : "Category"}
               </span>{" "}
               -{" "}
@@ -51,7 +51,7 @@ function Skills_out() {
               </span>
             </li>
             <li>
-              <span className="font-bold">
+              <span className="font-semibold">
                 {skills.category5 ? skills.category5 : "Category"}
               </span>{" "}
               -{" "}
@@ -60,7 +60,7 @@ function Skills_out() {
               </span>
             </li>
             <li>
-              <span className="font-bold">
+              <span className="font-semibold">
                 {skills.category6 ? skills.category6 : "Category"}
               </span>{" "}
               -{" "}

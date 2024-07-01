@@ -2,6 +2,7 @@
 import Intro_out from "./modules/intro_out";
 import Education_out from "./modules/education_out";
 import Skills_out from "./modules/skills_out";
+import Projects_out from "./modules/Projects_out";
 
 
 
@@ -14,7 +15,7 @@ function OutputGroup() {
       <Intro_out/>
       <Education_out/>
       <Skills_out/>
-      
+      <Projects_out/>
     </div>
     
     

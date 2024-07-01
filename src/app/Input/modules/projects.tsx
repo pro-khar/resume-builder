@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -18,11 +16,11 @@ const Projects = () => {
     <div className="max-w-md mx-auto mt-10 border rounded-md p-6">
       <form className="space-y-4">
         <div>
-          <Label htmlFor="projectTitle">Project Title</Label>
+          <Label htmlFor="title1">Project Title</Label>
           <Input
             type="text"
-            id="projectTitle"
-            name="projectTitle"
+            id="title1"
+            name="title1"
             value={projects.title1}
             onChange={handleChange}
             required
@@ -30,11 +28,11 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="projectDuration">Project Duration</Label>
+          <Label htmlFor="duration1">Project Duration</Label>
           <Input
             type="text"
-            id="projectDuration"
-            name="projectDuration"
+            id="duration1"
+            name="duration1"
             value={projects.duration1}
             onChange={handleChange}
             required
@@ -42,11 +40,11 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="description">One-line Description</Label>
+          <Label htmlFor="desc1">One-line desc1</Label>
           <Input
             type="text"
-            id="description"
-            name="description"
+            id="desc1"
+            name="desc1"
             value={projects.desc1}
             onChange={handleChange}
             required
@@ -54,11 +52,11 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="feature1">Feature 1</Label>
+          <Label htmlFor="feature1_1">Feature 1</Label>
           <Input
             type="text"
-            id="feature1"
-            name="feature1"
+            id="feature1_1"
+            name="feature1_1"
             value={projects.feature1_1}
             onChange={handleChange}
             required
@@ -66,11 +64,11 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="feature2">Feature 2</Label>
+          <Label htmlFor="feature1_2">Feature 2</Label>
           <Input
             type="text"
-            id="feature2"
-            name="feature2"
+            id="feature1_2"
+            name="feature1_2"
             value={projects.feature1_2}
             onChange={handleChange}
             required
@@ -78,11 +76,11 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="feature3">Feature 3</Label>
+          <Label htmlFor="feature1_3">Feature 3</Label>
           <Input
             type="text"
-            id="feature3"
-            name="feature3"
+            id="feature1_3"
+            name="feature1_3"
             value={projects.feature1_3}
             onChange={handleChange}
             required
@@ -90,12 +88,23 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="techStack">Tech Stack</Label>
+          <Label htmlFor="techStack1">Tech Stack</Label>
           <Input
             type="text"
-            id="techStack"
-            name="techStack"
+            id="techStack1"
+            name="techStack1"
             value={projects.techStack1}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="link1">Deployement / repository link</Label>
+          <Input
+            type="url"
+            id="link1"
+            name="link1"
+            value={projects.link1}
             onChange={handleChange}
             required
           />

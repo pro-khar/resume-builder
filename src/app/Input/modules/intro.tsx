@@ -80,7 +80,7 @@ function Intro(){
           type="url"
           value={intro.linkedin}
           onChange={handleChange}
-          placeholder="https://www.linkedin.com/in/username"
+          placeholder="linkedIn profile URL"
         />
       </div>
 
