@@ -14,9 +14,11 @@ const Projects = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10 border rounded-md p-6">
+      <h1 className="font-extralight text-2xl mb-4 ">Project 1</h1>
       <form className="space-y-4">
+        <div className="flex gap-4">
         <div>
-          <Label htmlFor="title1">Project Title</Label>
+          <Label htmlFor="title1">Title</Label>
           <Input
             type="text"
             id="title1"
@@ -28,7 +30,7 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="duration1">Project Duration</Label>
+          <Label htmlFor="duration1">Duration</Label>
           <Input
             type="text"
             id="duration1"
@@ -38,9 +40,10 @@ const Projects = () => {
             required
           />
         </div>
+        </div>
 
         <div>
-          <Label htmlFor="desc1">One-line desc1</Label>
+          <Label htmlFor="desc1">One-line desccription</Label>
           <Input
             type="text"
             id="desc1"
@@ -52,7 +55,9 @@ const Projects = () => {
         </div>
 
         <div>
-          <Label htmlFor="feature1_1">Feature 1</Label>
+          <Label htmlFor="feature1_1">Features</Label>
+          <div className="flex items-center gap-2">
+          <p>1. </p>
           <Input
             type="text"
             id="feature1_1"
@@ -61,10 +66,9 @@ const Projects = () => {
             onChange={handleChange}
             required
           />
-        </div>
-
-        <div>
-          <Label htmlFor="feature1_2">Feature 2</Label>
+          </div>
+          <div className="flex items-center gap-2">
+          <p>2. </p>
           <Input
             type="text"
             id="feature1_2"
@@ -73,10 +77,9 @@ const Projects = () => {
             onChange={handleChange}
             required
           />
-        </div>
-
-        <div>
-          <Label htmlFor="feature1_3">Feature 3</Label>
+          </div>
+          <div className="flex items-center gap-2">
+          <p>3. </p>
           <Input
             type="text"
             id="feature1_3"
@@ -85,6 +88,7 @@ const Projects = () => {
             onChange={handleChange}
             required
           />
+          </div>
         </div>
 
         <div>
