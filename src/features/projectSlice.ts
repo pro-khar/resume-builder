@@ -9,6 +9,7 @@ const initialState = {
   feature1_2: "Product search and filter functionality",
   feature1_3: "Secure payment gateway integration",
   techStack1: "React, Node.js, Express, MongoDB",
+  link1: "https://blahblahblah.org/me/project"
 };
 
 const projetSlice = createSlice({
