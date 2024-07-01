@@ -1,4 +1,3 @@
-import { useState, useContext } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 
@@ -10,7 +9,7 @@ function Intro_out() {
     <>
       <div
         id="header"
-        className="bg-gray-200 text-black h-[134px] py-5 px-5 flex flex-nowrap gap-4 border-b border-black border-dashed"
+        className="bg-gray-200 dark:bg-gray-500 text-black dark:text-white h-[134px] py-5 px-5 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed"
       >
         <img
           className="border-black border"
@@ -19,7 +18,7 @@ function Intro_out() {
         />
         <div className="w-full flex flex-col gap-1 max-h-auto">
           <h1 className="font-bold text-3xl tracking-tight">{intro.name}</h1>
-          <hr className="border-black border-t" />
+          <hr className="border-black border-t dark:border-white" />
           <div className="flex justify-between">
             <div id="span_container" className="flex flex-col">
               <a
@@ -65,9 +64,9 @@ function Intro_out() {
           </div>
         </div>
       </div>
-      {intro.summary?<div id = "plain-container" className="px-5 py-3 text-xs pb-0">
+      {intro.summary?<div id = "plain-container" className="px-5 py-3 text-xs pb-0 dark:text-white">
                 <h1 className="font-semibold tracking-tight">SUMMARY</h1>
-                <hr className="border-black border-t"/>
+                <hr className="border-black border-t dark:border-white"/>
                 <p className="leading-tight">{intro.summary}</p>
             </div>:null}
     </>

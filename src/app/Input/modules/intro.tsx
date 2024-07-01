@@ -22,7 +22,7 @@ function Intro(){
 
 
   return (
-    <form className="space-y-5 max-w-md mx-auto h-full pt-10">
+    <form className="space-y-5 max-w-md mx-auto h-full my-10 p-6 border rounded-md">
       <div>
         <Label htmlFor="name">Name</Label>
         <Input

@@ -9,12 +9,13 @@ import { FaTrophy } from "react-icons/fa";
 import Intro from './modules/intro';
 import Education from './modules/education';
 import Skills from './modules/skills';
+import Projects from './modules/projects';
 
 function InputGroup() {
   return (
     <div className='h-full'>
-        <Tabs defaultValue='education' className='p-3 border-b h-full'>
-            <TabsList className='w-full p-2 h-[50px] text-[#6d28d9'>
+        <Tabs defaultValue='projects' className='p-3 border-b h-full'>
+            <TabsList className='w-full p-2 h-[50px] rounded-sm'>
                 <TabsTrigger value='intro' className='w-[85px] text-lg h-full'><PersonIcon/></TabsTrigger>
                 <TabsTrigger value='education' className='w-[85px] text-lg h-full'><FaGraduationCap/></TabsTrigger>
                 <TabsTrigger value='skills' className='w-[85px] text-lg h-full'><FaCode/></TabsTrigger>
@@ -27,7 +28,7 @@ function InputGroup() {
           <TabsContent value='intro'><Intro/></TabsContent>
           <TabsContent value='education'><Education/></TabsContent>
           <TabsContent value='skills'><Skills/></TabsContent>
-          <TabsContent value='projects'></TabsContent>
+          <TabsContent value='projects'><Projects/></TabsContent>
           <TabsContent value='experience'></TabsContent>
           <TabsContent value='skills'></TabsContent>
 

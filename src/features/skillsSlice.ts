@@ -27,3 +27,4 @@ const skillsSlice = createSlice({
 
 export const { updateSkills } = skillsSlice.actions;
 export default skillsSlice.reducer;
+ 
