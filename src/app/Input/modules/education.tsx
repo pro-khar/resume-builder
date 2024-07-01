@@ -16,6 +16,7 @@ function Education() {
   return (
     <ScrollArea className="h-[800px]">
       <form className="space-y-8 max-w-md mx-auto py-10">
+        
         <div className="space-y-4 p-6 border rounded-md">
           <h2 className="text-xl font-bold">Graduation/Equivalent</h2>
           <div>
