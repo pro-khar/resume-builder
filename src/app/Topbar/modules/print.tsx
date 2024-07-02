@@ -5,7 +5,7 @@ function Print() {
   const handlePrint = () => {};
   return (
     <div>
-      <Button onClick={handlePrint}>
+      <Button onClick={handlePrint} disabled>
         <FaPrint />
       </Button>
     </div>
