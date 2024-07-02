@@ -7,11 +7,12 @@ import Projects_out from "./modules/Projects_out";
 
 
 function OutputGroup() {
+  let f_size = 12;
   return (
     <>
     
       
-    <div id="resume" className="text-black bg-white dark:bg-gray-600 h-[900px] w-[636px] rounded-md shadow-lg">
+    <div id="resume" className={`text-black bg-white dark:bg-gray-600 h-[1200px] w-[636px] rounded-md shadow-lg text-[${f_size}px] space-y-2`}>
       <Intro_out/>
       <Education_out/>
       <Skills_out/>
@@ -21,7 +22,7 @@ function OutputGroup() {
     
     
     </>
-  );
+  )
 }
 
 export default OutputGroup;

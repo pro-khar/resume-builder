@@ -9,12 +9,12 @@ function Intro_out() {
     <>
       <div
         id="header"
-        className="bg-gray-200 dark:bg-gray-500 text-black dark:text-white h-[134px] py-5 px-5 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed"
+        className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-3 px-6 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed`}
       >
         <img
-          className="border-black border"
+          className="border-black border w-[80px]"
           src={""}
-          style={{ minWidth: "70px", maxWidth: "70px" }}
+          
         />
         <div className="w-full flex flex-col gap-1 max-h-auto">
           <h1 className="font-bold text-3xl tracking-tight">{intro.name}</h1>
@@ -22,7 +22,7 @@ function Intro_out() {
           <div className="flex justify-between">
             <div id="span_container" className="flex flex-col">
               <a
-                className="text-xs"
+                className=""
                 target="_blank"
                 href={`mailto:${intro.email}`}
               >
@@ -30,7 +30,7 @@ function Intro_out() {
                 {intro.email}
               </a>
               <a
-                className="text-xs"
+                className=""
                 target="_blank"
                 href={`${intro.github}`}
               >
@@ -38,7 +38,7 @@ function Intro_out() {
                 {intro.github}
               </a>
               <a
-                className="text-xs"
+                className=""
                 target="_blank"
                 href={`${intro.linkedin}`}
               >
@@ -47,14 +47,14 @@ function Intro_out() {
             </div>
             <div id="span_container" className="flex flex-col">
               <a
-                className="text-xs"
+                className=""
                 target="none"
                 href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
               >
                 <IoLocationSharp className="inline" /> {intro.address}
               </a>
               <a
-                className="text-xs"
+                className=""
                 target="_blank"
                 href={`tel:${intro.phone}`}
               >
@@ -64,7 +64,7 @@ function Intro_out() {
           </div>
         </div>
       </div>
-      {intro.summary?<div id = "plain-container" className="px-5 py-3 text-xs pb-0 dark:text-white">
+      {intro.summary?<div id = "plain-container" className="px-6 py-2 pb-0 dark:text-white">
                 <h1 className="font-semibold tracking-tight">SUMMARY</h1>
                 <hr className="border-black border-t dark:border-white"/>
                 <p className="leading-tight">{intro.summary}</p>
