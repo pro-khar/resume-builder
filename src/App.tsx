@@ -18,23 +18,23 @@ function App() {
         id="base"
         className="hidden md:block xl:block 2xl:block m-3 rounded-md border "
       >
-        
         <TopBar />
-        
 
         <div className="h-[889px]">
-        <ResizablePanelGroup direction="horizontal" className="h-1/2">
-          <ResizablePanel className="" defaultSize={50}>
-            <InputGroup />
-          </ResizablePanel>
-          <ResizableHandle className="" />
-          <ResizablePanel className="bg-[#f3f4f6] dark:bg-[#1e2837]  flex justify-center p-10" defaultSize={50}>
-             <ScrollArea className="h-[800px] border-2 rounded-md scale-100">
-            <OutputGroup />
-            </ScrollArea>
-            
-          </ResizablePanel>
-        </ResizablePanelGroup>
+          <ResizablePanelGroup direction="horizontal" className="h-1/2">
+            <ResizablePanel className="" defaultSize={50}>
+              <InputGroup />
+            </ResizablePanel>
+            <ResizableHandle className="" />
+            <ResizablePanel
+              className="bg-[#f3f4f6] dark:bg-[#1e2837]  flex justify-center p-10"
+              defaultSize={50}
+            >
+              <ScrollArea className="h-[800px] border-2 rounded-md scale-100">
+                <OutputGroup />
+              </ScrollArea>
+            </ResizablePanel>
+          </ResizablePanelGroup>
         </div>
       </div>
     </>

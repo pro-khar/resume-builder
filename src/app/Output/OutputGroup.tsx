@@ -9,6 +9,7 @@ import Projects_out from "./modules/Projects_out";
 function OutputGroup() {
   let f = 11
   let f_size = f + "px";
+  
   return (
     <>
     
