@@ -18,7 +18,7 @@ export function FullScreen() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline"><BiFullscreen/></Button>
+        <Button variant="default"><BiFullscreen/></Button>
       </DialogTrigger>
       <DialogContent className="h-full w-[fit-content]">
         
