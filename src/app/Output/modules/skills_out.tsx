@@ -7,7 +7,7 @@ function Skills_out() {
     <>
       <div
         id="plain-container"
-        className="px-5 py-3 text-xs pb-0 dark:text-white"
+        className="px-6 pb-0 dark:text-white"
       >
         <h1 className="font-semibold tracking-tight">SKILLS</h1>
         <hr className="border-black border-t dark:border-white" />
