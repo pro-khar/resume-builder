@@ -7,13 +7,13 @@ function Skills_out() {
     <>
       <div
         id="plain-container"
-        className="px-6 pb-0 dark:text-white"
+        className="px-8 pb-0 dark:text-white"
       >
         <h1 className="font-semibold tracking-tight">SKILLS</h1>
         <hr className="border-black border-t dark:border-white" />
 
-        <div id="part_container" className="flex flex-col gap-[4px]">
-          <ul className="mx-4 mt-1 list-disc list-inside">
+        <div id="part_container" className="flex flex-col gap-[4px] leading-[1.2]">
+          <div className="mx-4 mt-1">
             <li>
               <span className="font-semibold">
                 {skills.category1 ? skills.category1 : "Category"}
@@ -68,7 +68,7 @@ function Skills_out() {
                 {skills.skills6 ? skills.skills6 : "Skills, Skills, Skills"}
               </span>
             </li>
-          </ul>
+          </div>
         </div>
       </div>
     </>

@@ -27,10 +27,10 @@ function App() {
             </ResizablePanel>
             <ResizableHandle className="" />
             <ResizablePanel
-              className="bg-[#f3f4f6] dark:bg-[#1e2837]  flex justify-center p-10"
+              className="bg-[#f3f4f6] dark:bg-[#1e2837]  flex justify-center py-5"
               defaultSize={50}
             >
-              <ScrollArea className="h-[800px] border-2 rounded-md scale-100">
+              <ScrollArea className="h-[800px] border-2 rounded-md scale-[1]">
                 <OutputGroup />
               </ScrollArea>
             </ResizablePanel>

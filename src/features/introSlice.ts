@@ -10,7 +10,7 @@ const introSlice = createSlice({
     github: "https://github.com/johndoe",
     linkedin: "https://linkedin.com/in/johndoe",
     summary: "Experienced software developer with a strong background in JavaScript and Python.",
-    picture: "https://example.com/johndoe.jpg",
+    // picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLA994hpL3PMmq0scCuWOu0LGsjef49dyXVg&s",
   },
   reducers: {
     updateIntro: (state, action) => {
