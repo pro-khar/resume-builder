@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateProject } from "@/features/projectSlice";
+import { Button } from "@/components/ui/button";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Projects = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10 border rounded-md p-6">
-      <h1 className="font-extralight text-2xl mb-4 ">Project 1</h1>
+      <h1 className="font-extralight text-2xl mb-4 ">Projects</h1>
       <form className="space-y-4">
         <div className="flex gap-4">
         <div>
@@ -114,6 +115,7 @@ const Projects = () => {
           />
         </div>
       </form>
+      <Button className="mt-4 w-full">Add</Button>
     </div>
   );
 };

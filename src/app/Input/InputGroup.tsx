@@ -9,7 +9,7 @@ import { FaTrophy } from "react-icons/fa";
 import Intro from './modules/intro';
 import Education from './modules/education';
 import Skills from './modules/skills';
-import Projects from './modules/projects';
+import Projects from './modules/Projects/projects';
 
 import {
   Tooltip,

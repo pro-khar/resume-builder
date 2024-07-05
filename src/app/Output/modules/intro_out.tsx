@@ -9,7 +9,7 @@ function Intro_out() {
     <>
       <div
         id="header"
-        className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed`}
+        className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed `}
       >
         {intro.picture ? (
           <img className="border-black border w-[80px]" src={intro.picture} />
@@ -21,27 +21,27 @@ function Intro_out() {
             <hr className="border-black border-t dark:border-white" />
             <div className="flex justify-between">
               <div id="span_container" className="flex flex-col">
-                <a className="" target="_blank" href={`mailto:${intro.email}`}>
-                  <FaEnvelope className="inline" /> {intro.email}
-                </a>
-                <a className="" target="_blank" href={`${intro.github}`}>
-                  <FaGithub className="inline" /> {intro.github}
-                </a>
-                <a className="" target="_blank" href={`${intro.linkedin}`}>
-                  <FaLinkedin className="inline" /> {intro.linkedin}
-                </a>
+              <a className="flex items-center gap-1" target="_blank" href={`mailto:${intro.email}`}>
+                <FaEnvelope className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.email}</p>
+              </a>
+              <a className="flex items-center gap-1" target="_blank" href={`${intro.github}`}>
+                <FaGithub className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.github}</p>
+              </a>
+              <a className="flex items-center gap-1" target="_blank" href={`${intro.linkedin}`}>
+                <FaLinkedin className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.linkedin}</p>
+              </a>
               </div>
               <div id="span_container" className="flex flex-col">
-                <a
-                  className=""
-                  target="none"
-                  href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
-                >
-                  <IoLocationSharp className="inline" /> {intro.address}
-                </a>
-                <a className="" target="_blank" href={`tel:${intro.phone}`}>
-                  <FaPhone className="inline" /> {intro.phone}
-                </a>
+              <a
+                className="flex items-center gap-1"
+                target="none"
+                href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
+              >
+                <IoLocationSharp className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.address}</p>
+              </a>
+              <a className="flex items-center gap-1" target="_blank" href={`tel:${intro.phone}`}>
+                <FaPhone className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.phone}</p>
+              </a>
               </div>
             </div>
           </div>
@@ -51,25 +51,25 @@ function Intro_out() {
               {intro.name}
             </h1>
             <hr className="border-black border-t dark:border-white" />
-            <div id="span_container" className="flex gap-x-2 flex-wrap justify-center">
+            <div id="span_container" className="flex gap-x-4 flex-wrap justify-center">
               <a className="flex items-center gap-1" target="_blank" href={`mailto:${intro.email}`}>
-                <FaEnvelope className="" /> {intro.email}
+                <FaEnvelope className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.email}</p>
               </a>
               <a className="flex items-center gap-1" target="_blank" href={`${intro.github}`}>
-                <FaGithub className="" /> {intro.github}
+                <FaGithub className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.github}</p>
               </a>
               <a className="flex items-center gap-1" target="_blank" href={`${intro.linkedin}`}>
-                <FaLinkedin className="" /> {intro.linkedin}
+                <FaLinkedin className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.linkedin}</p>
               </a>
               <a
                 className="flex items-center gap-1"
                 target="none"
                 href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
               >
-                <IoLocationSharp className="" /> {intro.address}
+                <IoLocationSharp className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.address}</p>
               </a>
               <a className="flex items-center gap-1" target="_blank" href={`tel:${intro.phone}`}>
-                <FaPhone className="" /> {intro.phone}
+                <FaPhone className="" /> <p className="text-zinc-700 dark:text-zinc-100">{intro.phone}</p>
               </a>
             </div>
           </div>
