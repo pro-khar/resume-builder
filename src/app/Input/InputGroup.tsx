@@ -21,7 +21,7 @@ import {
 function InputGroup() {
   return (
     <div className="h-full">
-      <Tabs defaultValue="projects" className="p-3 border-b h-full">
+      <Tabs defaultValue="intro" className="p-3 border-b h-full">
         <TabsList className="w-full p-2 h-[50px] rounded-sm">
           <TooltipProvider>
             <Tooltip>

@@ -3,20 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const projectSlice = createSlice({
   name: "project",
   initialState: {
-    projects: [
-      {
-        id: "",
-        title: "E-commerce Website",
-        duration: "Jan 2022 - Dec 2022",
-        desc:
-          "Developed a full-featured e-commerce website with user authentication, product listings, and payment.",
-        f1: "User authentication and authorization",
-        f2: "Product search and filter functionality",
-        f3: "Secure payment gateway integration",
-        techStack: "React, Node.js, Express, MongoDB",
-        link: "https://blahblahblah.org/me/project",
-      },
-    ],
+    projects: [],
   },
   reducers: {
     updateProject: (state, action) => {

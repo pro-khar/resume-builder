@@ -15,7 +15,7 @@ function OutputGroup() {
 
   return (
     <>
-      <ScrollArea className="w-[636px] border-2 m-5 h-[850px]">
+      <ScrollArea className="w-[636px] border-2 m-5 max-h-[850px]">
         {intro.name ? (
           <div
             id="resume"
