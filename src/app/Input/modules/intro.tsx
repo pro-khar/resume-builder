@@ -6,10 +6,11 @@ import { Label } from "@/components/ui/label";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateIntro } from '@/features/introSlice';
+import { RootState } from '@/app/store';
 
 function Intro(){
   const dispatch = useDispatch();
-  const intro = useSelector(state => state.intro);
+  const intro = useSelector((state:RootState) => state.intro);
 
   
 

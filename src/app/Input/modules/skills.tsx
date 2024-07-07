@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateSkills } from "@/features/skillsSlice";
 import { IoInformationCircle } from "react-icons/io5";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { RootState } from "@/app/store";
 
 function Skills() {
   const dispatch = useDispatch();
-  const skills = useSelector((state) => state.skills);
+  const skills = useSelector((state:RootState) => state.skills);
 
   const handleSubmit = (e) => {
     dispatch(updateSkills({ [e.target.name]: e.target.value }));

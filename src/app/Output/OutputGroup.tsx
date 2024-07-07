@@ -3,24 +3,38 @@ import Education_out from "./modules/education_out";
 import Skills_out from "./modules/skills_out";
 import Projects_out from "./modules/Projects_out";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import { SiFormspree } from "react-icons/si";
 
 function OutputGroup() {
   let f = 12;
   let f_size = f + "px";
 
+  const intro = useSelector((state: RootState) => state.intro);
+
   return (
     <>
       <ScrollArea className="w-[636px] border-2 m-5 h-[850px]">
-      <div
-        id="resume"
-        className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-lg space-y-2 pb-10`}
-        style={{ fontSize: f_size }}
-      >
-        <Intro_out />
-        <Education_out />
-        <Skills_out />
-        <Projects_out />
-      </div>
+        {intro.name ? (
+          <div
+            id="resume"
+            className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-lg space-y-2 pb-10`}
+            style={{ fontSize: f_size }}
+          >
+            <Intro_out />
+            <Education_out />
+            <Skills_out />
+            <Projects_out />
+          </div>
+        ) : (
+          <div className="bg-white dark:bg-gray-600 h-[800px] min-w-[636px] rounded-md shadow-lg space-y-2 pb-10 flex items-center justify-center">
+            <div className="flex gap-2 justify-center items-center">
+              <SiFormspree className="text-3xl" />
+              <p className="text-sm">Start entering info <br/>to see Preview</p>
+            </div>
+          </div>
+        )}
       </ScrollArea>
     </>
   );

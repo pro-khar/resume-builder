@@ -3,11 +3,12 @@ import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEducation } from "@/features/educationSlice";
+import { RootState } from "@/app/store";
 
 function Education() {
   const dispatch = useDispatch();
 
-  const education = useSelector((state)=>state.education)
+  const education = useSelector((state:RootState)=>state.education)
 
   const handleChange = (e) => {
     dispatch(updateEducation({[e.target.id]:e.target.value}))

@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProject } from "@/features/projectSlice";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { RootState } from "@/app/store";
 
 const Projects = () => {
   const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projects);
+  const projects = useSelector((state:RootState) => state.projects);
 
   const handleChange = (e) => {
     dispatch(updateProject({ [e.target.id]: e.target.value }));
@@ -18,12 +19,12 @@ const Projects = () => {
     <>
       <ScrollArea className="h-[800px] py-6">
         <div className="max-w-md mt-4 mx-auto  border rounded-md p-6">
-          <h1 className="font-extralight text-2xl mb-4 ">Project 1</h1>
+          <h1 className="font-extralight text-2xl mb-4 ">Project 1 <span className="text-purple-500 ">*</span></h1>
           <form className="space-y-4">
             <div className="flex gap-4">
               <div>
                 <Label htmlFor="title1">
-                  Title <span className="text-purple-500">*</span>
+                  Title 
                 </Label>
                 <Input
                   type="text"
@@ -131,7 +132,7 @@ const Projects = () => {
             <div className="flex gap-4">
               <div>
                 <Label htmlFor="title2">
-                  Title <span className="text-purple-500">*</span>
+                  Title 
                 </Label>
                 <Input
                   type="text"
@@ -238,7 +239,7 @@ const Projects = () => {
             <div className="flex gap-4">
               <div>
                 <Label htmlFor="title3">
-                  Title <span className="text-purple-500">*</span>
+                  Title 
                 </Label>
                 <Input
                   type="text"
