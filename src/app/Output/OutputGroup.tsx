@@ -15,11 +15,11 @@ function OutputGroup() {
 
   return (
     <>
-      <ScrollArea className="w-[636px] border-2 m-5 h-[850px]">
+      <ScrollArea className="w-[636px] m-5 h-[850px]">
         {intro.name ? (
           <div
             id="resume"
-            className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-lg space-y-2 pb-10`}
+            className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-md space-y-2 pb-10`}
             style={{ fontSize: f_size }}
           >
             <Intro_out />
@@ -28,7 +28,7 @@ function OutputGroup() {
             <Projects_out />
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-600 h-[800px] min-w-[636px] rounded-md shadow-lg space-y-2 pb-10 flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-600 h-[850px] min-w-[636px] rounded-md shadow-md space-y-2 pb-10 flex items-center justify-center">
             <div className="flex gap-2 justify-center items-center">
               <SiFormspree className="text-3xl" />
               <p className="text-sm">Start entering info <br/>to see Preview</p>

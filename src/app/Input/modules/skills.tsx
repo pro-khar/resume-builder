@@ -16,7 +16,7 @@ function Skills() {
 
   return (
     <>
-    {skills.category1?null:(<div className="text-xs text-zinc-100 border rounded-md p-4 flex gap-2 bg-purple-700 ">
+    {skills.category1?null:(<div className="text-xs text-zinc-100 border rounded-md p-4 flex gap-2 bg-purple-700 max-w-md mx-auto">
         <IoInformationCircle className="text-lg" />
         <p>
           Please fill in sequence. Leave the unwanted 'category' blank to
