@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import introReducer from "../features/introSlice";
 import educationReducer from "../features/educationSlice";
-import skillsReducer from '../features/skillsSlice'
-import projectsReducer from '../features/projectSlice'
-
+import skillsReducer from '../features/skillsSlice';
+import projectsReducer from '../features/projectSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +10,10 @@ export const store = configureStore({
     education: educationReducer,
     skills: skillsReducer,
     projects: projectsReducer,
-    
   },
 });
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {intro: IntroState, education: EducationState, skills: SkillsState, projects: ProjectsState}
+export type AppDispatch = typeof store.dispatch;

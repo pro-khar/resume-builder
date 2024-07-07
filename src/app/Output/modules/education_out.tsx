@@ -1,8 +1,9 @@
+import { RootState } from "@/app/store";
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 
 function Education_out() {
-    const education = useSelector((state) => state.education);
+    const education = useSelector((state:RootState) => state.education);
 
     return (
         <>

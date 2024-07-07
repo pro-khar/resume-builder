@@ -6,9 +6,10 @@ import {
 } from "@radix-ui/react-icons";
 import { Link } from "lucide-react";
 import { useSelector } from "react-redux";
+import { RootState } from "@/app/store";
 
 function Projects_out() {
-  const projects = useSelector((state) => state.projects);
+  const projects = useSelector((state:RootState) => state.projects);
   return (
     <>
       <div id="projects" className="px-8 pb-0 dark:text-white">
