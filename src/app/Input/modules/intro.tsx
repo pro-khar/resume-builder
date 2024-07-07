@@ -25,7 +25,7 @@ function Intro(){
     <form className="space-y-5 max-w-md mx-auto h-full my-10 p-6 border rounded-md">
       <h1 className="font-extralight text-2xl">Introduction</h1>
       <div>
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="name">Name <span className="text-purple-500">*</span></Label>
         <Input
           id="name"
           name="name"
@@ -37,7 +37,7 @@ function Intro(){
       </div>
 
       <div>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">Email <span className="text-purple-500">*</span></Label>
         <Input
           id="email"
           name="email"
@@ -50,7 +50,7 @@ function Intro(){
       </div>
 
       <div>
-        <Label htmlFor="address">Address/Location</Label>
+        <Label htmlFor="address">Address/Location <span className="text-purple-500">*</span></Label>
         <Input
           id="address"
           name="address"
@@ -74,7 +74,7 @@ function Intro(){
       </div>
 
       <div>
-        <Label htmlFor="linkedin">LinkedIn Profile</Label>
+        <Label htmlFor="linkedin">LinkedIn Profile <span className="text-purple-500">*</span></Label>
         <Input
           id="linkedin"
           name="linkedin"
@@ -86,7 +86,7 @@ function Intro(){
       </div>
 
       <div>
-        <Label htmlFor="phone">Phone Number</Label>
+        <Label htmlFor="phone">Phone Number <span className="text-purple-500">*</span></Label>
         <Input
           id="phone"
           name="phone"

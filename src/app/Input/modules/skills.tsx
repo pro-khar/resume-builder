@@ -25,7 +25,7 @@ function Skills() {
       </div>)}
       <div className="flex flex-col gap-3 border p-6 rounded-md">
         <div className="w-1/2">
-          <Label htmlFor="category1">Category 1</Label>
+          <Label htmlFor="category1">Category 1 <span className="text-purple-500">*</span></Label>
           <Input
             type="text"
             name="category1"
@@ -36,7 +36,7 @@ function Skills() {
           />
         </div>
         <div className="w-full">
-          <Label htmlFor="skills1">Skills :</Label>
+          <Label htmlFor="skills1">Skills : <span className="text-purple-500">*</span></Label>
           <Input
             type="text"
             name="skills1"
@@ -49,7 +49,7 @@ function Skills() {
       </div>
       <div className="flex flex-col gap-3 border p-6 rounded-md">
         <div className="w-1/2">
-          <Label htmlFor="category1">Category 2</Label>
+          <Label htmlFor="category1">Category 2 <span className="text-purple-500">*</span></Label>
           <Input
             type="text"
             name="category2"
@@ -60,7 +60,7 @@ function Skills() {
           />
         </div>
         <div className="w-full">
-          <Label htmlFor="skills2">Skills :</Label>
+          <Label htmlFor="skills2">Skills : <span className="text-purple-500">*</span></Label>
           <Input
             type="text"
             name="skills2"

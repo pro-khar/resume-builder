@@ -20,7 +20,7 @@ function Education() {
         <div className="space-y-4 p-6 border rounded-md">
           <h2 className="text-xl font-bold">Graduation/Equivalent</h2>
           <div>
-            <Label htmlFor="degree">Degree</Label>
+            <Label htmlFor="degree">Degree <span className="text-purple-500">*</span></Label>
             <Input
               id="degree"
               value={education.degree}
@@ -29,7 +29,7 @@ function Education() {
             />
           </div>
           <div>
-            <Label htmlFor="branch">Branch</Label>
+            <Label htmlFor="branch">Branch <span className="text-purple-500">*</span></Label>
             <Input
               id="branch"
               value={education.branch}
@@ -38,7 +38,7 @@ function Education() {
             />
           </div>
           <div>
-            <Label htmlFor="college">Institution</Label>
+            <Label htmlFor="college">Institution <span className="text-purple-500">*</span></Label>
             <Input
               id="college"
               value={education.college}
@@ -48,7 +48,7 @@ function Education() {
           </div>
           <div className="flex space-x-4">
             <div className="flex-1">
-              <Label htmlFor="bachelor_duration">Start Date</Label>
+              <Label htmlFor="bachelor_duration">Start Date <span className="text-purple-500">*</span></Label>
               <Input
                 id="bachelor_duration"
                 type="text"
@@ -60,7 +60,7 @@ function Education() {
             
           </div>
           <div>
-            <Label htmlFor="bachelor_score">CGPA</Label>
+            <Label htmlFor="bachelor_score">CGPA <span className="text-purple-500">*</span></Label>
             <Input
               id="bachelor_score"
               value={education.bachelor_score}

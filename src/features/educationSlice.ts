@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const educationSlice = createSlice({
   name: "education",
   initialState: {
-    degree: "Bachelor of Science in Computer Science",
+    degree: "Bachelor of Science",
     branch: "Computer Science",
     college: "University of Example",
     bachelor_duration: "2015-2019",
