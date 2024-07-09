@@ -9,6 +9,7 @@ import { updateIntro } from "@/redux/introSlice";
 import { RootState } from "@/redux/store";
 
 function Intro() {
+  const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const intro = useSelector((state: RootState) => state.intro);
 
@@ -17,7 +18,14 @@ function Intro() {
   };
   function handleImage(e) {
     const file = e.target.files[0];
-    console.log(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageData = e.target.result;
+        dispatch(updateIntro({ picture: imageData }));
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
   return (
