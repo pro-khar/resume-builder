@@ -15,15 +15,17 @@ function Skills() {
   };
 
   return (
-    <ScrollArea className="h-[800px]">
-    <form className="space-y-8 max-w-md mx-auto py-10">
-      {skills.category1?null:(<div className="text-xs text-zinc-100 border rounded-md p-4 flex gap-2 bg-purple-700 ">
+    <>
+    {skills.category1?null:(<div className="text-xs text-zinc-100 border rounded-md p-4 flex gap-2 bg-purple-700 max-w-md mx-auto">
         <IoInformationCircle className="text-lg" />
         <p>
           Please fill in sequence. Leave the unwanted 'category' blank to
           exclude them
         </p>
       </div>)}
+    <ScrollArea className="h-[800px]">
+    <form className="space-y-2 max-w-md mx-auto pt-2 pb-20">
+      
       <div className="flex flex-col gap-3 border p-6 rounded-md">
         <div className="w-1/2">
           <Label htmlFor="category1">Category 1 <span className="text-purple-500">*</span></Label>
@@ -170,6 +172,7 @@ function Skills() {
       </div>
     </form>
     </ScrollArea>
+    </>
   );
 }
 

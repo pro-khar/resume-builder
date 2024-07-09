@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  category1: "Programming Languages",
-  skills1: "JavaScript, Python, Java",
-  category2: "Web Development",
-  skills2: "React, Node.js, CSS",
-  category3: "Databases",
-  skills3: "MySQL, MongoDB, PostgreSQL",
-  category4: "Tools & Technologies",
-  skills4: "Git, Docker, Jenkins",
-  category5: "Cloud Platforms",
-  skills5: "AWS, Azure, Google Cloud",
-  category6: "Soft Skills",
-  skills6: "Communication, Teamwork, Problem-solving",
+  category1: "",
+  skills1: "",
+  category2: "",
+  skills2: "",
+  category3: "",
+  skills3: "",
+  category4: "",
+  skills4: "",
+  category5: "",
+  skills5: "",
+  category6: "",
+  skills6: "",
 };
 
 const skillsSlice = createSlice({
@@ -27,4 +27,3 @@ const skillsSlice = createSlice({
 
 export const { updateSkills } = skillsSlice.actions;
 export default skillsSlice.reducer;
- 
