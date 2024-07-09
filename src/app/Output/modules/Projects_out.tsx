@@ -21,9 +21,9 @@ function Projects_out() {
               <table className="w-full">
                 <tr className="font-semibold">
                   <td className="py-[0.001em] flex gap-2">
-                    <a href={project.link} target="_blank">
+                    {project.link?(<a href={project.link} target="_blank">
                       {project.title} <ExternalLinkIcon className="inline" />
-                    </a>
+                    </a>):project.title}
                     {project.techStack ? (
                       <p className="font-normal">|</p>
                     ) : null}

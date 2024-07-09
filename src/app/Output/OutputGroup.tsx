@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { SiFormspree } from "react-icons/si";
+import Experience_out from "./modules/Experience_out";
 
 function OutputGroup() {
   let f = 12;
@@ -26,6 +27,7 @@ function OutputGroup() {
             <Education_out />
             <Skills_out />
             <Projects_out />
+            <Experience_out/>
           </div>
         ) : (
           <div className="bg-white dark:bg-gray-600 h-[850px] min-w-[636px] rounded-md shadow-md space-y-2 pb-10 flex items-center justify-center">

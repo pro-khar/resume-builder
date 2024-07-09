@@ -6,7 +6,7 @@ function Skills_out() {
   const skills = useSelector((state: RootState) => state.skills.skills);
   return (
     <>
-      <div id="plain-container" className="px-8 pb-0 dark:text-white">
+      {skills.length?(<div id="plain-container" className="px-8 pb-0 dark:text-white">
         <h1 className="font-semibold tracking-tight">SKILLS</h1>
         <hr className="border-black border-t dark:border-white" />
 
@@ -24,7 +24,7 @@ function Skills_out() {
             ))}
           </div>
         </div>
-      </div>
+      </div>):null}
     </>
   );
 }
