@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEducation } from "@/redux/educationSlice";
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 
 function Education() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function Education() {
 
   return (
     <ScrollArea className="h-[800px]">
-      <form className="space-y-8 max-w-md mx-auto py-10">
+      <form className="space-y-8 max-w-md mx-auto py-4">
         <div className="space-y-4 p-6 border rounded-md">
           <h2 className="text-xl font-bold">Graduation/Equivalent</h2>
           <div>
