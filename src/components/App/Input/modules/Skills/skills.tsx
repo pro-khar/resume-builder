@@ -26,7 +26,7 @@ function Skills() {
   return (
     <>
       <form
-        className="flex flex-col gap-3 border p-6 rounded-md"
+        className="flex flex-col gap-3 border p-6 rounded-md max-w-md mx-auto mt-4"
         onSubmit={handleSubmit}
       >
         <h1 className="font-extralight text-2xl">Skills</h1>
