@@ -22,58 +22,68 @@ function Intro_out() {
             <hr className="border-black border-t dark:border-white" />
             <div className="flex justify-between">
               <div id="span_container" className="flex flex-col">
-                <a
-                  className="flex items-center gap-1"
-                  target="_blank"
-                  href={`mailto:${intro.email}`}
-                >
-                  <FaEnvelope className="" />{" "}
-                  <p className="text-zinc-700 dark:text-zinc-100">
-                    {intro.email}
-                  </p>
-                </a>
-                <a
-                  className="flex items-center gap-1"
-                  target="_blank"
-                  href={`${intro.github}`}
-                >
-                  <FaGithub className="" />{" "}
-                  <p className="text-zinc-700 dark:text-zinc-100">
-                    {intro.github}
-                  </p>
-                </a>
-                <a
-                  className="flex items-center gap-1"
-                  target="_blank"
-                  href={`${intro.linkedin}`}
-                >
-                  <FaLinkedin className="" />{" "}
-                  <p className="text-zinc-700 dark:text-zinc-100">
-                    {intro.linkedin}
-                  </p>
-                </a>
+                {intro.email && (
+                  <a
+                    className="flex items-center gap-1"
+                    target="_blank"
+                    href={`mailto:${intro.email}`}
+                  >
+                    <FaEnvelope className="" />{" "}
+                    <p className="text-zinc-700 dark:text-zinc-100">
+                      {intro.email}
+                    </p>
+                  </a>
+                )}
+                {intro.github && (
+                  <a
+                    className="flex items-center gap-1"
+                    target="_blank"
+                    href={`${intro.github}`}
+                  >
+                    <FaGithub className="" />{" "}
+                    <p className="text-zinc-700 dark:text-zinc-100">
+                      {intro.github}
+                    </p>
+                  </a>
+                )}
+                {intro.linkedin && (
+                  <a
+                    className="flex items-center gap-1"
+                    target="_blank"
+                    href={`${intro.linkedin}`}
+                  >
+                    <FaLinkedin className="" />{" "}
+                    <p className="text-zinc-700 dark:text-zinc-100">
+                      {intro.linkedin}
+                    </p>
+                  </a>
+                )}
               </div>
               <div id="span_container" className="flex flex-col">
-                <a
-                  className="flex items-center gap-1"
-                  target="none"
-                  href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
-                >
-                  <IoLocationSharp className="" />{" "}
-                  <p className="text-zinc-700 dark:text-zinc-100">
-                    {intro.address}
-                  </p>
-                </a>
-                <a
-                  className="flex items-center gap-1"
-                  target="_blank"
-                  href={`tel:${intro.phone}`}
-                >
-                  <FaPhone className="" />{" "}
-                  <p className="text-zinc-700 dark:text-zinc-100">
-                    {intro.phone}
-                  </p>
-                </a>
+                {intro.address && (
+                  <a
+                    className="flex items-center gap-1"
+                    target="none"
+                    href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
+                  >
+                    <IoLocationSharp className="" />{" "}
+                    <p className="text-zinc-700 dark:text-zinc-100">
+                      {intro.address}
+                    </p>
+                  </a>
+                )}
+                {intro.phone && (
+                  <a
+                    className="flex items-center gap-1"
+                    target="_blank"
+                    href={`tel:${intro.phone}`}
+                  >
+                    <FaPhone className="" />{" "}
+                    <p className="text-zinc-700 dark:text-zinc-100">
+                      {intro.phone}
+                    </p>
+                  </a>
+                )}
               </div>
             </div>
           </div>
