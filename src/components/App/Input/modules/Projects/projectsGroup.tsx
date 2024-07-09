@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProject } from "@/redux/projectSlice";
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 import { Button } from "@/components/ui/button";
 import { Edit2Icon } from "lucide-react";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";

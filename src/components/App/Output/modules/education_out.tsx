@@ -1,4 +1,4 @@
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 

@@ -4,7 +4,7 @@ import Skills_out from "./modules/skills_out";
 import Projects_out from "./modules/Projects_out";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "@/redux/store";
 import { SiFormspree } from "react-icons/si";
 import Experience_out from "./modules/Experience_out";
 

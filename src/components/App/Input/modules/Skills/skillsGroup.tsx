@@ -2,7 +2,7 @@ import React from "react";
 import { removeSkill } from "@/redux/skillsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
 

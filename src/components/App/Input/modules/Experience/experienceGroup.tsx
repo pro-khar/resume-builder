@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 import { removeExp } from "@/redux/expSlice";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "lucide-react";

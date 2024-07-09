@@ -2,7 +2,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 
 function Intro_out() {
   const intro = useSelector((state: RootState) => state.intro);

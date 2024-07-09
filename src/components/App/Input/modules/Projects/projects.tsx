@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProject } from "@/redux/projectSlice";
 
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 import { useState } from "react";
 import ProjectsGroup from "./projectsGroup";
 

@@ -1,4 +1,4 @@
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UseSelector, useDispatch, useSelector } from "react-redux";
 

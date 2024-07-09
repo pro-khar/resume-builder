@@ -6,7 +6,7 @@ import {
 } from "@radix-ui/react-icons";
 import { Link } from "lucide-react";
 import { useSelector } from "react-redux";
-import { RootState } from "@/components/App/store";
+import { RootState } from "@/redux/store";
 
 function Projects_out() {
   const projects = useSelector((state: RootState) => state.projects.projects);
