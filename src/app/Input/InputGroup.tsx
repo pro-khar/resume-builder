@@ -8,7 +8,7 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { FaTrophy } from "react-icons/fa";
 import Intro from "./modules/intro";
 import Education from "./modules/education";
-import Skills from "./modules/skills";
+import Skills from "./modules/Skills/skills";
 import Projects from "./modules/Projects/projects";
 
 import {
