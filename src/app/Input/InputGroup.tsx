@@ -17,11 +17,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Experience from "./modules/Experience/experience";
 
 function InputGroup() {
   return (
     <div className="h-full">
-      <Tabs defaultValue="projects" className="p-3 border-b h-full">
+      <Tabs defaultValue="experience" className="p-3 border-b h-full">
         <TabsList className="w-full p-2 h-[50px] rounded-sm">
           <TooltipProvider>
             <Tooltip>
@@ -109,7 +110,9 @@ function InputGroup() {
         <TabsContent value="projects">
           <Projects />
         </TabsContent>
-        <TabsContent value="experience"></TabsContent>
+        <TabsContent value="experience">
+          <Experience />
+        </TabsContent>
         <TabsContent value="certifications"></TabsContent>
         <TabsContent value="pors"></TabsContent>
       </Tabs>
