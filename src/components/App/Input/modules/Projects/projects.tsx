@@ -3,9 +3,9 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateProject } from "@/features/projectSlice";
+import { updateProject } from "@/redux/projectSlice";
 
-import { RootState } from "@/app/store";
+import { RootState } from "@/components/App/store";
 import { useState } from "react";
 import ProjectsGroup from "./projectsGroup";
 

@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { useDispatch } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { addSkill } from "@/features/skillsSlice";
+import { addSkill } from "@/redux/skillsSlice";
 import SkillsGroup from "./skillsGroup";
 
 function Skills() {
@@ -59,7 +59,7 @@ function Skills() {
         </div>
         <Button type="submit">Add Skill</Button>
       </form>
-      <SkillsGroup/>
+      <SkillsGroup />
     </>
   );
 }

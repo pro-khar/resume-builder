@@ -4,10 +4,10 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "./components/ui/resizable";
-import TopBar from "./app/Topbar/TopBar";
-import Morescreen from "./app/morescreen";
-import InputGroup from "./app/Input/InputGroup";
-import OutputGroup from "./app/Output/OutputGroup";
+import TopBar from "./components/App/Topbar/TopBar";
+import Morescreen from "./components/App/morescreen";
+import InputGroup from "./components/App/Input/InputGroup";
+import OutputGroup from "./components/App/Output/OutputGroup";
 import { ScrollArea } from "./components/ui/scroll-area";
 
 function App() {
@@ -30,9 +30,7 @@ function App() {
               className="bg-[#f3f4f6] dark:bg-[#1e2837] flex justify-center items-center"
               defaultSize={50}
             >
-              
-                <OutputGroup />
-              
+              <OutputGroup />
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>

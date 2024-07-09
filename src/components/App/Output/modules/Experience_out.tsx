@@ -1,7 +1,7 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/app/store";
+import { RootState } from "@/components/App/store";
 
 function Experience_out() {
   const experience = useSelector((state: RootState) => state.experience.exps);
@@ -17,9 +17,13 @@ function Experience_out() {
                 <table className="w-full">
                   <tr className="font-semibold">
                     <td className="py-[0.001em] flex gap-2">
-                      {exp.link?(<a href={exp.link} target="_blank">
-                        {exp.orgName} <ExternalLinkIcon className="inline" />
-                      </a>):exp.orgName}
+                      {exp.link ? (
+                        <a href={exp.link} target="_blank">
+                          {exp.orgName} <ExternalLinkIcon className="inline" />
+                        </a>
+                      ) : (
+                        exp.orgName
+                      )}
 
                       <p className="font-normal"> - </p>
                       <p className="font-normal italic">{exp.desig}</p>

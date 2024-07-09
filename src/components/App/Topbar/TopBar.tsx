@@ -1,4 +1,4 @@
-import { ModeToggle } from "@/components/ThemeToggle";
+import { ModeToggle } from "@/components/ui/ThemeToggle";
 import React from "react";
 import { FullScreen } from "./modules/fullScreen";
 import Print from "./modules/print";

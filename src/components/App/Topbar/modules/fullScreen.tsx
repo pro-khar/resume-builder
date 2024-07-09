@@ -1,17 +1,13 @@
-import OutputGroup from "@/app/Output/OutputGroup"
-import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { BiFullscreen } from "react-icons/bi"
+import OutputGroup from "@/components/App/Output/OutputGroup";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { BiFullscreen } from "react-icons/bi";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 export function FullScreen() {
   return (
@@ -20,7 +16,9 @@ export function FullScreen() {
         <Tooltip>
           <TooltipTrigger asChild>
             <DialogTrigger asChild>
-              <Button variant="default"><BiFullscreen size={17} /></Button>
+              <Button variant="default">
+                <BiFullscreen size={17} />
+              </Button>
             </DialogTrigger>
           </TooltipTrigger>
           <TooltipContent>
@@ -29,8 +27,8 @@ export function FullScreen() {
         </Tooltip>
       </TooltipProvider>
       <DialogContent className="h-full w-[fit-content]">
-        <OutputGroup/>
+        <OutputGroup />
       </DialogContent>
     </Dialog>
-  )
+  );
 }

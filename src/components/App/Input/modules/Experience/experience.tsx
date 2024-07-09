@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useDispatch } from "react-redux";
-import { addExp } from "@/features/expSlice";
+import { addExp } from "@/redux/expSlice";
 
 import { useState } from "react";
 import ExperienceGroup from "./experienceGroup";
@@ -152,7 +152,7 @@ const Experience = () => {
           </Button>
         </form>
       </div>
-      <ExperienceGroup/>
+      <ExperienceGroup />
     </>
   );
 };
