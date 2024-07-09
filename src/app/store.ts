@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import introReducer from "../features/introSlice";
 import educationReducer from "../features/educationSlice";
-import skillsReducer from '../features/skillsSlice';
-import projectsReducer from '../features/projectSlice';
+import skillsReducer from "../features/skillsSlice";
+import projectsReducer from "../features/projectSlice";
+import expReducer from "@/features/expSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     education: educationReducer,
     skills: skillsReducer,
     projects: projectsReducer,
+    experience: expReducer,
   },
 });
 

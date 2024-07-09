@@ -16,15 +16,15 @@ function ProjectsGroup() {
 
   return (
     <>
-      <ScrollArea className="h-[800px]">
+      <ScrollArea className="h-[250px]">
         {projects.length ? (
           <div className="mt-5">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="max-w-md mt-2 mx-auto border rounded-md pl-6 pr-2 py-2 flex justify-between items-center"
+                className="max-w-md mt-2 mx-auto border rounded-md pl-6 pr-2 py-2 flex justify-between items-center dark:bg-[#1f2937] bg-[#f3f4f6]"
               >
-                <p className="font-light">{project.title}</p>
+                <p className="font-extralight">{project.title}</p>
                 <div className="flex gap-1">
                   <Dialog>
                     <DialogTrigger>
