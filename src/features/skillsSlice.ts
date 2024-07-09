@@ -1,29 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  category1: "",
-  skills1: "",
-  category2: "",
-  skills2: "",
-  category3: "",
-  skills3: "",
-  category4: "",
-  skills4: "",
-  category5: "",
-  skills5: "",
-  category6: "",
-  skills6: "",
+  skills: [],
 };
 
 const skillsSlice = createSlice({
   name: "skills",
   initialState,
   reducers: {
-    updateSkills: (state, action) => {
-      return { ...state, ...action.payload };
+    addSkill: (state, action) => {
+      const { cat, sk } = action.payload;
+      const skill = {
+        id: nanoid(),
+        cat,
+        sk,
+      };
+      state.skills.push(skill);
+    },
+    removeSkill: (state, action) => {
+      state.skills = state.skills.filter(
+        (skill) => skill.id !== action.payload
+      );
     },
   },
 });
 
-export const { updateSkills } = skillsSlice.actions;
+export const { addSkill, removeSkill } = skillsSlice.actions;
 export default skillsSlice.reducer;
