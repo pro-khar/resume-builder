@@ -10,7 +10,7 @@ function SkillsGroup() {
   const dispatch = useDispatch();
   const skills = useSelector((state: RootState) => state.skills.skills);
   return (
-    <ScrollArea className="h-[250px]">
+    <ScrollArea className="h-[600px]">
       {skills.length ? (
         <div className="mt-5">
           {skills.map((skill) => (

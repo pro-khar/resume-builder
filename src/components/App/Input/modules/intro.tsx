@@ -15,6 +15,10 @@ function Intro() {
   const handleChange = (e) => {
     dispatch(updateIntro({ [e.target.name]: e.target.value }));
   };
+  function handleImage(e) {
+    const file = e.target.files[0];
+    console.log(file);
+  }
 
   return (
     <form className="space-y-5 max-w-md mx-auto h-full my-10 p-6 border rounded-md">
@@ -46,6 +50,29 @@ function Intro() {
           onChange={handleChange}
           required
         />
+      </div>
+      <div className="flex gap-2">
+        <div className="w-[40%]">
+          <Label htmlFor="phone">
+            Phone Number <span className="text-purple-500">*</span>
+          </Label>
+          <Input
+            id="phone"
+            name="phone"
+            type="text"
+            value={intro.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="w-[60%]">
+          <Label htmlFor="picture">Picture</Label>
+          <Input
+            type="file"
+            accept="image/*"
+            className="file:dark:text-white"
+            onChange={handleImage}
+          />
+        </div>
       </div>
 
       <div>
@@ -85,19 +112,6 @@ function Intro() {
           value={intro.linkedin}
           onChange={handleChange}
           placeholder="linkedIn profile URL"
-        />
-      </div>
-
-      <div>
-        <Label htmlFor="phone">
-          Phone Number <span className="text-purple-500">*</span>
-        </Label>
-        <Input
-          id="phone"
-          name="phone"
-          type="text"
-          value={intro.phone}
-          onChange={handleChange}
         />
       </div>
 
