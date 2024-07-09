@@ -42,6 +42,7 @@ function Skills() {
             value={data.cat}
             placeholder=""
             onChange={handleChange}
+            required
           />
         </div>
         <div className="w-full ">
@@ -55,6 +56,7 @@ function Skills() {
             value={data.sk}
             placeholder=""
             onChange={handleChange}
+            required
           />
         </div>
         <Button type="submit">Add Skill</Button>

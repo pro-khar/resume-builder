@@ -55,7 +55,7 @@ function Education() {
           <div className="flex space-x-4">
             <div className="flex-1">
               <Label htmlFor="bachelor_duration">
-                Start Date <span className="text-purple-500">*</span>
+                Duration <span className="text-purple-500">*</span>
               </Label>
               <Input
                 id="bachelor_duration"

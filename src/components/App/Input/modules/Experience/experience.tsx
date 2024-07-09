@@ -127,7 +127,7 @@ const Experience = () => {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <Label htmlFor="techStack">Tech Stack</Label>
             <Input
               type="text"
@@ -136,7 +136,7 @@ const Experience = () => {
               value={data.techStack}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div>
             <Label htmlFor="link">Certificates/Relevant document links</Label>
             <Input
