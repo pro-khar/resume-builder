@@ -22,8 +22,16 @@ const skillsSlice = createSlice({
         (skill) => skill.id !== action.payload
       );
     },
+    updateSkill: (state, action) => {
+      const { id, cat, sk } = action.payload;
+      const existingSkill = state.skills.find((skill) => skill.id === id);
+      if (existingSkill) {
+        existingSkill.cat = cat;
+        existingSkill.sk = sk;
+      }
+    },
   },
 });
 
-export const { addSkill, removeSkill } = skillsSlice.actions;
+export const { addSkill, removeSkill, updateSkill } = skillsSlice.actions;
 export default skillsSlice.reducer;
