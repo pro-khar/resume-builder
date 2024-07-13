@@ -4,6 +4,7 @@ import educationReducer from "../redux/educationSlice";
 import skillsReducer from "../redux/skillsSlice";
 import projectsReducer from "../redux/projectSlice";
 import expReducer from "@/redux/expSlice";
+import certiReducer from "../redux/certSlice";
 
 // Define the root reducer
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   skills: skillsReducer,
   projects: projectsReducer,
   experience: expReducer,
+  certi: certiReducer,
 });
 
 // Infer the `RootState` type from the root reducer
@@ -20,7 +22,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 // Function to load state from localStorage
 const loadState = (): RootState | undefined => {
   try {
-    const serializedState = localStorage.getItem('reduxState');
+    const serializedState = localStorage.getItem("reduxState");
     if (serializedState === null) {
       return undefined;
     }
@@ -35,7 +37,7 @@ const loadState = (): RootState | undefined => {
 const saveState = (state: RootState) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('reduxState', serializedState);
+    localStorage.setItem("reduxState", serializedState);
   } catch (err) {
     console.error("Error saving state:", err);
   }
