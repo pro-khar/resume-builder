@@ -26,10 +26,10 @@ const Certifications = () => {
     e.preventDefault();
     dispatch(addCerti(data));
     setData({
-        name: "",
-        provider: "",
-        link: "",
-        duration: "",
+      name: "",
+      provider: "",
+      link: "",
+      duration: "",
     });
   };
 
@@ -92,8 +92,8 @@ const Certifications = () => {
             Add Certificate
           </Button>
         </form>
-        <Certi_group/>
       </div>
+      <Certi_group />
     </>
   );
 };
