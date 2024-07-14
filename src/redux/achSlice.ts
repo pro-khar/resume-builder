@@ -18,6 +18,7 @@ const achievements = createSlice({
         d3,
         link,
       };
+      state.achievements.push(ach);
     },
     delAch: (state, action) => {
       state.achievements = state.achievements.filter(

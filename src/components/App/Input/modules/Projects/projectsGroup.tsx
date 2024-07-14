@@ -9,6 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { ArrowUp } from "lucide-react";
 
 function ProjectsGroup() {
   const dispatch = useDispatch();
@@ -137,7 +138,7 @@ function ProjectsGroup() {
               </div>
             ))}
           </div>
-        ) : null}
+        ) : (<div className="flex gap-2 text-gray-500 text-xs items-center justify-center p-6 mt-5"><p>Add a Project to continue</p> <ArrowUp/></div>)}
       </ScrollArea>
     </>
   );

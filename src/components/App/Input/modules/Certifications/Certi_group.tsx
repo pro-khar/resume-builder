@@ -4,6 +4,7 @@ import { RootState } from "@/redux/store";
 import { deleteCerti } from "@/redux/certSlice";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 function Certi_group() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Certi_group() {
               </div>
             ))}
           </div>
-        ) : null}
+        ) : (<div className="flex gap-2 text-gray-500 text-xs items-center justify-center p-6 mt-5"><p>Add a Certification to continue</p> <ArrowUp/></div>)}
       </ScrollArea>
     </>
   );

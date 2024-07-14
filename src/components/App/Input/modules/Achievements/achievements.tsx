@@ -3,9 +3,10 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useDispatch } from "react-redux";
-import { addExp } from "@/redux/expSlice";
 
 import { useState } from "react";
+import { addAch } from "@/redux/achSlice";
+import AchGroup from "./achGroup";
 
 const Achievements = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Achievements = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addExp(data));
+    dispatch(addAch(data));
     setData({
       position: "",
       orgName: "",
@@ -58,28 +59,26 @@ const Achievements = () => {
               />
             </div>
             <div>
-              <Label htmlFor="duration">Duration</Label>
+              <Label htmlFor="duration">Duration/Year</Label>
               <Input
                 type="text"
                 id="duration"
                 name="duration"
                 value={data.duration}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
 
           <div>
-            <Label htmlFor="orgName">
-              Organistion/Event <span className="text-purple-500">*</span>
-            </Label>
+            <Label htmlFor="orgName">Organistion/Event</Label>
             <Input
               type="text"
               id="orgName"
               name="orgName"
               value={data.orgName}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -96,7 +95,6 @@ const Achievements = () => {
                 name="d1"
                 value={data.d1}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="flex items-center gap-2">
@@ -107,7 +105,6 @@ const Achievements = () => {
                 name="d2"
                 value={data.d2}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="flex items-center gap-2">
@@ -133,10 +130,11 @@ const Achievements = () => {
             />
           </div>
           <Button className="w-full" type="submit">
-            Add Experience
+            Add
           </Button>
         </form>
       </div>
+      <AchGroup />
     </>
   );
 };

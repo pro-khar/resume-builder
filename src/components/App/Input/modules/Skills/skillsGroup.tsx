@@ -5,6 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { RootState } from "@/redux/store";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
+import { ArrowUp } from "lucide-react";
 
 function SkillsGroup() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function SkillsGroup() {
             </div>
           ))}
         </div>
-      ) : null}
+      ) : (<div className="flex gap-2 text-gray-500 text-xs items-center justify-center p-6 mt-5"><p>Add a Skill to continue</p> <ArrowUp/></div>)}
     </ScrollArea>
   );
 }
