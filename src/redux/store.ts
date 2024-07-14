@@ -5,6 +5,7 @@ import skillsReducer from "../redux/skillsSlice";
 import projectsReducer from "../redux/projectSlice";
 import expReducer from "@/redux/expSlice";
 import certiReducer from "../redux/certSlice";
+import achReducer from "../redux/achSlice";
 
 // Define the root reducer
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   projects: projectsReducer,
   experience: expReducer,
   certi: certiReducer,
+  achievements: achReducer,
 });
 
 // Infer the `RootState` type from the root reducer

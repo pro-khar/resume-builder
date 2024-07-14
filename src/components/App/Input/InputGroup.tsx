@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/tooltip";
 import Experience from "./modules/Experience/experience";
 import Certifications from "./modules/Certifications/Certifications";
+import Achievements from "./modules/Achievements/achievements";
 
 function InputGroup() {
   return (
@@ -115,7 +116,7 @@ function InputGroup() {
           <Experience />
         </TabsContent>
         <TabsContent value="certifications"><Certifications/></TabsContent>
-        <TabsContent value="pors"></TabsContent>
+        <TabsContent value="pors"><Achievements/></TabsContent>
       </Tabs>
     </div>
   );
