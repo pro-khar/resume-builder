@@ -29,7 +29,7 @@ function Intro() {
   }
 
   return (
-    <form className="space-y-5 max-w-md mx-auto h-full my-10 p-6 border rounded-md">
+    <form className="space-y-5 max-w-md mx-auto h-full mt-4 p-6 border rounded-md">
       <h1 className="font-extralight text-2xl">Introduction</h1>
       <div>
         <Label htmlFor="name">
