@@ -117,8 +117,9 @@ export default function Landing() {
         <div className="">
           <p className="text-xs">a fun project by</p>
           <a
-            href="#"
+            href="https://github.com/pro-khar"
             className=" hover:underline underline-offset-4 flex gap-1 text-wrap items-center"
+            target="_blank"
           >
             <FaGithub className="text-lg" />
             pro-khar
