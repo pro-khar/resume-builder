@@ -2,8 +2,13 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../ui/ThemeToggle";
 import { FaGithub } from "react-icons/fa6";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { BiRightArrow } from "react-icons/bi";
+import { ArrowBigRight, ArrowRight } from "lucide-react";
 
 export default function Landing() {
+  const intro = useSelector((state: RootState) => state.intro);
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="px-4 lg:px-6 h-14 flex items-center justify-end">
@@ -30,17 +35,27 @@ export default function Landing() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link to="/resume-builder/app">
-                    <Button>Start Building</Button>
+                    <Button>
+                      {intro.name ? (
+                        <p className="flex gap-2 items-center">
+                          Continue Editing <ArrowRight className="w-4" />
+                        </p>
+                      ) : (
+                        "Start Building"
+                      )}
+                    </Button>
                   </Link>
                 </div>
               </div>
-              <img
-                src="https://s3.resume.io/uploads/examples/resume/resume_pages/222/persistent-resource/student-resume-examples.jpg"
-                width="550"
-                height="550"
-                alt="Hero"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-top sm:w-full lg:order-last lg:aspect-square shadow-xl border-2"
-              />
+              {intro.name ? null : (
+                <img
+                  src="https://s3.resume.io/uploads/examples/resume/resume_pages/222/persistent-resource/student-resume-examples.jpg"
+                  width="550"
+                  height="550"
+                  alt="Hero"
+                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-top sm:w-full lg:order-last lg:aspect-square shadow-xl border-2"
+                />
+              )}
             </div>
           </div>
         </section>
