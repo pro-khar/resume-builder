@@ -3,6 +3,8 @@
  * @see https://v0.dev/t/6NAuEjSCBMn
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 export default function Landing() {
   return (
@@ -55,20 +57,17 @@ export default function Landing() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <a
-                    href="#"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  >
-                    Start Building
-                  </a>
+                  <Link to="/resume-builder/app">
+                    <Button>Start Building</Button>
+                  </Link>
                 </div>
               </div>
               <img
-                src="/placeholder.svg"
+                src="https://s3.resume.io/uploads/examples/resume/resume_pages/222/persistent-resource/student-resume-examples.jpg"
                 width="550"
                 height="550"
                 alt="Hero"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
+                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-top sm:w-full lg:order-last lg:aspect-square shadow-xl border-2"
               />
             </div>
           </div>
