@@ -9,7 +9,7 @@ function Experience_out() {
     <>
       {experience.length ? (
         <div id="experience" className="px-8 pb-0 dark:text-white">
-          <h1 className="font-semibold tracking-tight">Experience</h1>
+          <h1 className="font-semibold tracking-tight">EXPERIENCE</h1>
           <hr className="border-black dark:border-white border-t" />
           <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">
             {experience.map((exp) => (
