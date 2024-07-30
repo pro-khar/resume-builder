@@ -22,7 +22,7 @@ function OutputGroup() {
         {intro.name ? (
           <div
             id="resume"
-            className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-md space-y-2 pb-10`}
+            className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-md pb-10 flex flex-col gap-3`}
             style={{ fontSize: f_size }}
           >
             <Intro_out />
