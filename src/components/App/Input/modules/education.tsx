@@ -68,7 +68,7 @@ function Education() {
           </div>
           <div>
             <Label htmlFor="bachelor_score">
-              CGPA <span className="text-purple-500">*</span>
+              CGPA/Percentage <span className="text-purple-500">*</span>
             </Label>
             <Input
               id="bachelor_score"

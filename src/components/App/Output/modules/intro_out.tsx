@@ -165,7 +165,7 @@ function Intro_out() {
         <div id="plain-container" className=" px-8 py-4 pb-0 dark:text-white">
           <h1 className="font-semibold tracking-tight">SUMMARY</h1>
           <hr className="border-black border-t dark:border-white" />
-          <p className="">{intro.summary}</p>
+          <p className="leading-[1.2] mt-1">{intro.summary}</p>
         </div>
       ) : null}
     </>

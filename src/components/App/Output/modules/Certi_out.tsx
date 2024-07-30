@@ -11,7 +11,7 @@ function Certi_out() {
         <div id="experience" className="px-8 pb-0 dark:text-white">
           <h1 className="font-semibold tracking-tight">CERTIFICATIONS</h1>
           <hr className="border-black dark:border-white border-t" />
-          <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">
+          <div id="part_container" className="space-y-1 mt-1 leading-[1]">
             {certificate.map((cer) => (
               <div key={cer.id} id="part" className="mx-8 list-item">
                 <table className="w-full">
