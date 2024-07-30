@@ -51,8 +51,8 @@ export default function Landing() {
                 </div>
               </div>
               {intro.name ? (
-                <div className="mx-auto aspect-video overflow-hidden rounded-xl lg:order-last lg:aspect-square shadow-xl border-2 max-w-fit hidden md:block lg:block xl:block 2xl:block md:mx-0">
-                  <div className="">
+                <div className="mx-auto aspect-video overflow-hidden rounded-xl lg:order-last lg:aspect-square shadow-xl border-2 border-dashed 2xl:min-w-fit xl:min-w-fit lg:min-w-fit md:max-w-fit hidden md:block lg:block xl:block 2xl:block md:mx-0">
+                  <div className="blur-md hover:blur-none transition-all duration-400">
                     <OutputGroup />
                   </div>
                 </div>
