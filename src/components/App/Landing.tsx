@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { BiRightArrow } from "react-icons/bi";
 import { ArrowBigRight, ArrowRight } from "lucide-react";
+import OutputGroup from "./Output/OutputGroup";
+import { PiLaptopDuotone } from "react-icons/pi";
 
 export default function Landing() {
   const intro = useSelector((state: RootState) => state.intro);
@@ -37,8 +39,9 @@ export default function Landing() {
                   <Link to="/resume-builder/app">
                     <Button>
                       {intro.name ? (
-                        <p className="flex gap-2 items-center">
-                          Continue Editing <ArrowRight className="w-4" />
+                        <p className="flex gap-1 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2 items-center">
+                          Continue Editing <span className="md:hidden flex items-center">on <PiLaptopDuotone className="text-2xl ml-1"/></span>{" "}
+                          <ArrowRight className="w-4 hidden md:block lg:block xl:block 2xl:block" />
                         </p>
                       ) : (
                         "Start Building"
@@ -47,7 +50,13 @@ export default function Landing() {
                   </Link>
                 </div>
               </div>
-              {intro.name ? null : (
+              {intro.name ? (
+                <div className="mx-auto aspect-video overflow-hidden rounded-xl lg:order-last lg:aspect-square shadow-xl border-2 max-w-fit hidden md:block lg:block xl:block 2xl:block md:mx-0">
+                  <div className="">
+                    <OutputGroup />
+                  </div>
+                </div>
+              ) : (
                 <img
                   src="https://s3.resume.io/uploads/examples/resume/resume_pages/222/persistent-resource/student-resume-examples.jpg"
                   width="550"
