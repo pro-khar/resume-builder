@@ -10,7 +10,7 @@ function Intro_out() {
     <>
       <div
         id="header"
-        className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed mb-4 `}
+        className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed mb-4`}
       >
         {intro.picture ? (
           <img className="border-black border w-[80px]" src={intro.picture} />
@@ -162,7 +162,7 @@ function Intro_out() {
         )}
       </div>
       {intro.summary ? (
-        <div id="plain-container" className=" px-8 py-4 pb-0 dark:text-white">
+        <div id="plain-container" className=" px-8 mb-1 dark:text-white">
           <h1 className="font-semibold tracking-tight">SUMMARY</h1>
           <hr className="border-black border-t dark:border-white" />
           <p className="leading-[1.2] mt-1">{intro.summary}</p>

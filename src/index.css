@@ -10,6 +10,10 @@ html {
   background-color: red;
 }
 
+.spacer{
+  margin-top: 10px;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -10,7 +10,7 @@ function Experience_out() {
   return (
     <>
       {achievements.length ? (
-        <div id="experience" className="px-8 pb-0 dark:text-white">
+        <div id="experience" className="px-8 pb-0 dark:text-white mb-1">
           <h1 className="font-semibold tracking-tight">
             ACHIEVEMENTS / POSITIONS OF RESPONSIBILITY
           </h1>

@@ -13,7 +13,7 @@ function Projects_out() {
   return (
     <>
       {projects.length ? (
-        <div id="projects" className="px-8 pb-0 dark:text-white">
+        <div id="projects" className="px-8 pb-0 dark:text-white mb-1">
           <h1 className="font-semibold tracking-tight">PROJECTS</h1>
           <hr className="border-black dark:border-white border-t" />
           <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">

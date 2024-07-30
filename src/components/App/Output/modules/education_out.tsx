@@ -8,7 +8,7 @@ function Education_out() {
   return (
     <>
       {education.degree ? (
-        <div id="plain-container" className="px-8 dark:text-white">
+        <div id="plain-container" className="px-8 dark:text-white mb-1">
           <h1 className="font-semibold tracking-tight">EDUCATION</h1>
           <hr className="border-black dark:border-white border-t" />
           <div id="part_container" className="flex flex-col mt-1 leading-[1.4]">
