@@ -21,7 +21,7 @@ function Intro_out() {
             <h1 className="font-bold text-4xl tracking-tight">{intro.name}</h1>
             <hr className="border-black border-t dark:border-white" />
             <div className="flex justify-between">
-              <div id="span_container" className="flex flex-col">
+              <div id="span_container" className="flex flex-col leading-[1.2]">
                 {intro.email && (
                   <a
                     className="flex items-center gap-1"
