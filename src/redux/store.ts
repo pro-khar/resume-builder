@@ -76,13 +76,17 @@ export const downloadStateAsJSON = () => {
   const blob = new Blob([jsonString], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
+
+  const timestamp = new Date().toLocaleString().replace(/[\/:]/g, "-"); // to make it filename safe
   link.href = url;
-  link.download = "redux_state.json";
+  link.download = `resume-data-${timestamp}.json`;
+
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 };
+
 
 // Function to upload JSON file and update state
 export const uploadJSONAndUpdateState = (file: File) => {
@@ -91,7 +95,7 @@ export const uploadJSONAndUpdateState = (file: File) => {
     reader.onload = (event) => {
       try {
         const jsonState = JSON.parse(
-          event.target?.result as string,
+          event.target?.result as string
         ) as RootState;
         store.dispatch({ type: "RESET_STATE", payload: jsonState });
         saveState(jsonState);
