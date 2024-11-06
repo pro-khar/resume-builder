@@ -37,6 +37,7 @@ function Experience_out() {
                         <li>{exp.t1}</li>
                         <li>{exp.t2}</li>
                         {exp.t3 ? <li>{exp.t3}</li> : null}
+                        {exp.t4 ? <li>{exp.t4}</li> : null}
                       </div>
                     </td>
                   </tr>
