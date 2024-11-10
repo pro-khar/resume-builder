@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Button } from "../ui/button";
-import { ModeToggle } from "../ui/ThemeToggle";
+import { Button } from "./ui/button";
+import { ModeToggle } from "./ui/ThemeToggle";
 import { FaGithub } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -40,7 +40,10 @@ export default function Landing() {
                     <Button>
                       {intro.name ? (
                         <p className="flex gap-1 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2 items-center">
-                          Continue Editing <span className="md:hidden flex items-center">on <PiLaptopDuotone className="text-2xl ml-1"/></span>{" "}
+                          Continue Editing{" "}
+                          <span className="md:hidden flex items-center">
+                            on <PiLaptopDuotone className="text-2xl ml-1" />
+                          </span>{" "}
                           <ArrowRight className="w-4 hidden md:block lg:block xl:block 2xl:block" />
                         </p>
                       ) : (

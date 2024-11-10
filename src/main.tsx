@@ -6,8 +6,8 @@ import { ThemeProvider } from "./components/ui/theme-provider.tsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./components/App/Landing.tsx";
-import Error from "./components/App/Error.tsx";
+import Landing from "./components/Landing.tsx";
+import Error from "./components/Error.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Error/>,
+    element: <Error />,
   },
 ]);
 

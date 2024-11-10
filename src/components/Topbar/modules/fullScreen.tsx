@@ -1,4 +1,4 @@
-import OutputGroup from "@/components/App/Output/OutputGroup";
+import OutputGroup from "@/components/Output/OutputGroup";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { BiFullscreen } from "react-icons/bi";

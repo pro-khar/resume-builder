@@ -4,10 +4,10 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "./components/ui/resizable";
-import TopBar from "./components/App/Topbar/TopBar";
-import Morescreen from "./components/App/morescreen";
-import InputGroup from "./components/App/Input/InputGroup";
-import OutputGroup from "./components/App/Output/OutputGroup";
+import TopBar from "./components/Topbar/TopBar";
+import Morescreen from "./components/morescreen";
+import InputGroup from "./components/Input/InputGroup";
+import OutputGroup from "./components/Output/OutputGroup";
 import { ScrollArea } from "./components/ui/scroll-area";
 
 function App() {
