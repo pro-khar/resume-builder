@@ -1,36 +1,66 @@
-import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateIntro } from "@/redux-beta/dataSlice";
+import SaveButton from "@/components/SaveButton";
 
-import { useSelector, useDispatch } from "react-redux";
-import { updateIntro } from "@/redux/introSlice";
-import { RootState } from "@/redux/store";
 
 function Intro() {
-  const [image, setImage] = useState(null);
-  const dispatch = useDispatch();
-  const intro = useSelector((state: RootState) => state.intro);
+  const [intro, setIntro] = useState({
+    profile: "",
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    github: "",
+    linkedin: "",
+    summary: "",
+    picture: null,
+  });
 
-  const handleChange = (e) => {
-    dispatch(updateIntro({ [e.target.name]: e.target.value }));
-  };
+  function handleChange(e) {
+    setIntro({ ...intro, [e.target.name]: e.target.value });
+  }
+
   function handleImage(e) {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const imageData = e.target.result;
-        dispatch(updateIntro({ picture: imageData }));
+        setIntro({ ...intro, picture: imageData });
       };
       reader.readAsDataURL(file);
     }
   }
 
+  const dispatch = useDispatch();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // console.log("Intro from input: ", intro);
+    dispatch(updateIntro(intro));
+  }
+
   return (
-    <form className="space-y-5 max-w-md mx-auto h-full mt-4 p-6 border rounded-md">
+    <form
+      className="space-y-5 max-w-md mx-auto h-full mt-4 p-6 border rounded-md relative"
+      onSubmit={handleSubmit}
+    >
       <h1 className="font-extralight text-2xl">Introduction</h1>
+      <div>
+        <Label htmlFor="profile">Profile</Label>
+        <Input
+          id="profile"
+          name="profile"
+          value={intro.profile}
+          onChange={handleChange}
+          placeholder="e.g.:Backend Developer"
+        />
+      </div>
       <div>
         <Label htmlFor="name">
           Name <span className="text-purple-500">*</span>
@@ -41,7 +71,6 @@ function Intro() {
           value={intro.name}
           onChange={handleChange}
           placeholder="Enter your Full Name"
-          required
         />
       </div>
 
@@ -56,7 +85,6 @@ function Intro() {
           value={intro.email}
           placeholder="someone@example.com"
           onChange={handleChange}
-          required
         />
       </div>
       <div className="flex gap-2">
@@ -93,7 +121,6 @@ function Intro() {
           value={intro.address}
           placeholder="451, Hotel, Transylvania"
           onChange={handleChange}
-          required
         />
       </div>
 
@@ -133,6 +160,8 @@ function Intro() {
           rows={4}
         />
       </div>
+
+      <SaveButton />
     </form>
   );
 }

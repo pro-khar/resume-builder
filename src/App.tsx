@@ -8,7 +8,7 @@ import TopBar from "./components/Topbar/TopBar";
 import Morescreen from "./components/morescreen";
 import InputGroup from "./components/Input/InputGroup";
 import OutputGroup from "./components/Output/OutputGroup";
-import { ScrollArea } from "./components/ui/scroll-area";
+import { FullScreen } from "./components/Topbar/modules/fullScreen";
 
 function App() {
   return (
@@ -16,11 +16,11 @@ function App() {
       <Morescreen />
       <div
         id="base"
-        className="hidden md:block xl:block 2xl:block m-3 rounded-md border "
+        className="hidden md:block xl:block 2xl:block m-3 rounded-md border"
       >
         <TopBar />
 
-        <div className="h-[889px]">
+        <div className="">
           <ResizablePanelGroup direction="horizontal" className="h-1/2">
             <ResizablePanel className="" defaultSize={50}>
               <InputGroup />

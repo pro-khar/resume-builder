@@ -1,21 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import introReducer from "./introSlice";
-import educationReducer from "./educationSlice";
-import skillsReducer from "./skillsSlice";
-import projectsReducer from "./projectSlice";
-import expReducer from "@/redux/expSlice";
-import certiReducer from "./certSlice";
-import achReducer from "./achSlice";
+import dataReducer from "./dataSlice";
 
 // Define the root reducer
 const rootReducer = combineReducers({
-  intro: introReducer,
-  education: educationReducer,
-  skills: skillsReducer,
-  projects: projectsReducer,
-  experience: expReducer,
-  certi: certiReducer,
-  achievements: achReducer,
+  data: dataReducer,
 });
 
 // Infer the `RootState` type from the root reducer

@@ -6,10 +6,10 @@ import {
 } from "@radix-ui/react-icons";
 import { Link } from "lucide-react";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 
 function Projects_out() {
-  const projects = useSelector((state: RootState) => state.projects.projects);
+  const projects = useSelector((state: RootState) => state.data.projects);
   return (
     <>
       {projects.length ? (

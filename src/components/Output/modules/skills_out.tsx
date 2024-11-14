@@ -1,9 +1,9 @@
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UseSelector, useDispatch, useSelector } from "react-redux";
 
 function Skills_out() {
-  const skills = useSelector((state: RootState) => state.skills.skills);
+  const skills = useSelector((state: RootState) => state.data.skills);
   return (
     <>
       {skills.length ? (

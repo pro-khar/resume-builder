@@ -5,12 +5,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 import { FaPrint } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 function Print() {
-  const intro = useSelector((state: RootState) => state.intro);
+  const intro = useSelector((state: RootState) => state.data.intro);
   const handlePrint = () => {
     var contentDiv = document.getElementById("resume");
     var printWindow = window.open("", "_blank");
@@ -44,7 +44,7 @@ function Print() {
 
   return (
     <div>
-      {intro.name ? (
+      {intro ? (
         <Button onClick={handlePrint}>
           <FaPrint />
         </Button>
@@ -52,9 +52,11 @@ function Print() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div><Button onClick={handlePrint} disabled>
-                <FaPrint />
-              </Button></div>
+              <div>
+                <Button onClick={handlePrint} disabled>
+                  <FaPrint />
+                </Button>
+              </div>
             </TooltipTrigger>
             <TooltipContent>
               <p>Bhai pehle bana to le :)</p>

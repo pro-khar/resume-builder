@@ -1,9 +1,9 @@
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 
 function Education_out() {
-  const education = useSelector((state: RootState) => state.education);
+  const education = useSelector((state: RootState) => state.data.education);
 
   return (
     <>

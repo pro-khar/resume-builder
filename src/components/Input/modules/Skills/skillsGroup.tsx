@@ -1,15 +1,14 @@
-import React from "react";
 import { removeSkill } from "@/redux/skillsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { ArrowUp } from "lucide-react";
 
 function SkillsGroup() {
   const dispatch = useDispatch();
-  const skills = useSelector((state: RootState) => state.skills.skills);
+  const skills = useSelector((state: RootState) => state.data.skills);
   return (
     <ScrollArea className="h-[600px]">
       {skills.length ? (
@@ -34,7 +33,11 @@ function SkillsGroup() {
             </div>
           ))}
         </div>
-      ) : (<div className="flex gap-2 text-gray-500 text-xs items-center justify-center p-6 mt-5"><p>Add a Skill to continue</p> <ArrowUp/></div>)}
+      ) : (
+        <div className="flex gap-2 text-gray-500 text-xs items-center justify-center p-6 mt-5">
+          <p>Add a Skill to continue</p> <ArrowUp />
+        </div>
+      )}
     </ScrollArea>
   );
 }

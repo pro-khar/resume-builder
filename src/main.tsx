@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { ThemeProvider } from "./components/ui/theme-provider.tsx";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.ts";
+import { store } from "./redux-beta/store.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./components/Landing.tsx";
 import Error from "./components/Error.tsx";
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "*",
+    path: "resume-builder/*",
     element: <Error />,
   },
 ]);

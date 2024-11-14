@@ -1,10 +1,10 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 
 function Experience_out() {
-  const experience = useSelector((state: RootState) => state.experience.exps);
+  const experience = useSelector((state: RootState) => state.data.experience);
   return (
     <>
       {experience.length ? (

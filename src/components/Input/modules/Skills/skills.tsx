@@ -5,28 +5,35 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { addSkill } from "@/redux/skillsSlice";
 import SkillsGroup from "./skillsGroup";
+import SaveButton from "@/components/SaveButton";
+import { updateSkills } from "@/redux-beta/dataSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 function Skills() {
-  const dispatch = useDispatch();
-  const [data, setdata] = useState({
+  const [skills, setSkills] = useState([]);
+  const [skill, setSkill] = useState({
+    id: nanoid(),
     cat: "",
     sk: "",
   });
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setdata((prevData) => ({ ...prevData, [id]: value }));
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(addSkill(data));
-    setdata({ cat: "", sk: "" });
-  };
+  const dispatch = useDispatch();
 
+  function handleChange(e) {
+    setSkill({ ...skill, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSkills((prevSkills) => [...prevSkills, skill]);
+    setSkill({ id: nanoid(), cat: "", sk: "" });
+    dispatch(updateSkills(skills));
+  }
+  
   return (
     <>
       <form
-        className="flex flex-col gap-3 border p-6 rounded-md max-w-md mx-auto mt-4"
+        className="flex flex-col gap-3 border p-6 rounded-md max-w-md mx-auto mt-4 relative"
         onSubmit={handleSubmit}
       >
         <h1 className="font-extralight text-2xl">Skills</h1>
@@ -39,8 +46,8 @@ function Skills() {
             type="text"
             name="cat"
             id="cat"
-            value={data.cat}
-            placeholder=""
+            value={skill.cat}
+            placeholder="Databases"
             onChange={handleChange}
             required
           />
@@ -53,13 +60,16 @@ function Skills() {
             type="text"
             name="sk"
             id="sk"
-            value={data.sk}
-            placeholder=""
+            value={skill.sk}
+            placeholder="mySQL, Cassandra, MongoDB"
             onChange={handleChange}
             required
           />
         </div>
-        <Button type="submit">Add Skill</Button>
+        <Button type="submit" onClick={addSkill}>
+          Add Skill
+        </Button>
+        <SaveButton />
       </form>
       <SkillsGroup />
     </>
