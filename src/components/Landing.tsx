@@ -3,14 +3,14 @@ import { Button } from "./ui/button";
 import { ModeToggle } from "./ui/ThemeToggle";
 import { FaGithub } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/redux-beta/store";
 import { BiRightArrow } from "react-icons/bi";
 import { ArrowBigRight, ArrowRight } from "lucide-react";
 import OutputGroup from "./Output/OutputGroup";
 import { PiLaptopDuotone } from "react-icons/pi";
 
 export default function Landing() {
-  const intro = useSelector((state: RootState) => state.intro);
+  const intro = useSelector((state: RootState) => state.data.intro);
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="px-4 lg:px-6 h-14 flex items-center justify-end">
@@ -54,7 +54,7 @@ export default function Landing() {
                 </div>
               </div>
               {intro.name ? (
-                <div className="mx-auto aspect-video overflow-hidden rounded-xl lg:order-last lg:aspect-square shadow-xl border-2 border-dashed 2xl:min-w-fit xl:min-w-fit lg:min-w-fit md:max-w-fit hidden md:block lg:block xl:block 2xl:block md:mx-0">
+                <div className="mx-auto aspect-video overflow-hidden rounded-xl lg:order-last lg:aspect-square shadow-xl border-2 border-dashed 2xl:min-w-fit xl:min-w-fit lg:min-w-fit md:max-w-fit hidden md:block lg:block xl:block 2xl:block md:mx-0 border-black">
                   <div className="blur-md hover:blur-none transition-all duration-400">
                     <OutputGroup />
                   </div>

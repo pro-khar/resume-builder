@@ -11,8 +11,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux-beta/store";
 
 function App() {
-  // const data = useSelector((state: RootState) => state.data);
-  // console.log(data);
+  const data = useSelector((state: RootState) => state.data);
+  console.log(data);
   return (
     <>
       <Morescreen />
@@ -24,7 +24,7 @@ function App() {
 
         <div className="">
           <ResizablePanelGroup direction="horizontal" className="h-1/2">
-            <ResizablePanel className="" defaultSize={50}>
+            <ResizablePanel className="" defaultSize={50} minSize={25}>
               <InputGroup />
             </ResizablePanel>
             <ResizableHandle className="" />
