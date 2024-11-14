@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useDispatch } from "react-redux";
-import { addExp } from "@/redux/expSlice";
+import { addExperience } from "@/redux-beta/dataSlice";
 
 import { useState } from "react";
 import ExperienceGroup from "./experienceGroup";
@@ -17,6 +17,7 @@ const Experience = () => {
     t1: "",
     t2: "",
     t3: "",
+    t4: "",
     techStack: "",
     link: "",
   });
@@ -28,7 +29,7 @@ const Experience = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addExp(data));
+    dispatch(addExperience(data));
     setData({
       orgName: "",
       desig: "",
@@ -36,6 +37,7 @@ const Experience = () => {
       t1: "",
       t2: "",
       t3: "",
+      t4: "",
       techStack: "",
       link: "",
     });
@@ -125,9 +127,19 @@ const Experience = () => {
                 onChange={handleChange}
               />
             </div>
+            <div className="flex items-center gap-2">
+              <p>4. </p>
+              <Input
+                type="text"
+                id="t4"
+                name="t4"
+                value={data.t4}
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
-          {/* <div>
+          <div>
             <Label htmlFor="techStack">Tech Stack</Label>
             <Input
               type="text"
@@ -136,7 +148,7 @@ const Experience = () => {
               value={data.techStack}
               onChange={handleChange}
             />
-          </div> */}
+          </div>
           <div>
             <Label htmlFor="link">Certificates/Relevant document links</Label>
             <Input

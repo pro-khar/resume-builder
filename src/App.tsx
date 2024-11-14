@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -8,9 +7,12 @@ import TopBar from "./components/Topbar/TopBar";
 import Morescreen from "./components/morescreen";
 import InputGroup from "./components/Input/InputGroup";
 import OutputGroup from "./components/Output/OutputGroup";
-import { FullScreen } from "./components/Topbar/modules/fullScreen";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux-beta/store";
 
 function App() {
+  // const data = useSelector((state: RootState) => state.data);
+  // console.log(data);
   return (
     <>
       <Morescreen />

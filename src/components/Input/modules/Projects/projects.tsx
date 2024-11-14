@@ -2,17 +2,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-import { useDispatch, useSelector } from "react-redux";
-import { updateProject } from "@/redux/projectSlice";
+import { useDispatch } from "react-redux";
 
-import { RootState } from "@/redux/store";
 import { useState } from "react";
 import ProjectsGroup from "./projectsGroup";
+import { addProject } from "@/redux-beta/dataSlice";
 
 const Projects = () => {
   const dispatch = useDispatch();
-  const projects = useSelector((state: RootState) => state.projects);
-  const [error, setError] = useState("");
   const [data, setData] = useState({
     title: "",
     duration: "",
@@ -20,18 +17,18 @@ const Projects = () => {
     f1: "",
     f2: "",
     f3: "",
+    f4: "",
     link: "",
     techStack: "",
   });
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setData((prevData) => ({ ...prevData, [id]: value }));
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProject(data));
+    dispatch(addProject(data));
     setData({
       title: "",
       duration: "",
@@ -39,6 +36,7 @@ const Projects = () => {
       f1: "",
       f2: "",
       f3: "",
+      f4: "",
       link: "",
       techStack: "",
     });
@@ -125,6 +123,16 @@ const Projects = () => {
                 id="f3"
                 name="f3"
                 value={data.f3}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <p>4. </p>
+              <Input
+                type="text"
+                id="f4"
+                name="f4"
+                value={data.f4}
                 onChange={handleChange}
               />
             </div>

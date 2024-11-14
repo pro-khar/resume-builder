@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
 import { SiFormspree } from "react-icons/si";
 import Experience_out from "./modules/Experience_out";
-import Certi_out from "./modules/Certi_out";
-import Ach_out from "./modules/Ach_out";
 
 function OutputGroup() {
   let f = 12;
@@ -28,9 +26,9 @@ function OutputGroup() {
             <Intro_out />
             <Education_out />
             <Skills_out />
-            {/* <Projects_out />
+            <Projects_out />
             <Experience_out />
-            <Certi_out />
+            {/* <Certi_out />
             <Ach_out /> */}
           </div>
         ) : (

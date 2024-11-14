@@ -1,36 +1,24 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useDispatch } from "react-redux";
-import { updateEducation } from "@/redux/educationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateEducation } from "@/redux-beta/dataSlice";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { RootState } from "@/redux-beta/store";
 
 function Education() {
-  const [education, setEducation] = useState({
-    degree: "",
-    branch: "",
-    college: "",
-    bachelor_duration: "",
-    bachelor_score: "",
-    int_school: "",
-    int_year: "",
-    int_score: "",
-    hs_school: "",
-    hs_year: "",
-    hs_score: "",
-  });
+  const education = useSelector((state: RootState) => state.data.education);
+  const [localEducation, setLocalEducation] = useState(education);
+  const dispatch = useDispatch();
 
   function handleChange(e) {
-    setEducation({ ...education, [e.target.id]: e.target.value });
+    setLocalEducation({ ...localEducation, [e.target.id]: e.target.value });
   }
-
-  const dispatch = useDispatch();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(education);
-    dispatch(updateEducation(education));
+    dispatch(updateEducation(localEducation));
   }
 
   return (
@@ -46,7 +34,7 @@ function Education() {
           </Label>
           <Input
             id="degree"
-            value={education.degree}
+            value={localEducation.degree}
             onChange={handleChange}
             placeholder=""
           />
@@ -57,7 +45,7 @@ function Education() {
           </Label>
           <Input
             id="branch"
-            value={education.branch}
+            value={localEducation.branch}
             onChange={handleChange}
             placeholder=""
           />
@@ -68,7 +56,7 @@ function Education() {
           </Label>
           <Input
             id="college"
-            value={education.college}
+            value={localEducation.college}
             onChange={handleChange}
             placeholder=""
           />
@@ -81,7 +69,7 @@ function Education() {
             <Input
               id="bachelor_duration"
               type="text"
-              value={education.bachelor_duration}
+              value={localEducation.bachelor_duration}
               onChange={handleChange}
               placeholder="eg: 2017 - 2019"
             />
@@ -93,7 +81,7 @@ function Education() {
           </Label>
           <Input
             id="bachelor_score"
-            value={education.bachelor_score}
+            value={localEducation.bachelor_score}
             onChange={handleChange}
             placeholder="CGPA/Percentage"
           />
@@ -110,7 +98,7 @@ function Education() {
             <Label htmlFor="int_school">School</Label>
             <Input
               id="int_school"
-              value={education.int_school}
+              value={localEducation.int_school}
               onChange={handleChange}
               placeholder=""
             />
@@ -119,7 +107,7 @@ function Education() {
             <Label htmlFor="int_year">Year</Label>
             <Input
               id="int_year"
-              value={education.int_year}
+              value={localEducation.int_year}
               onChange={handleChange}
               placeholder=""
             />
@@ -128,7 +116,7 @@ function Education() {
             <Label htmlFor="int_score">Percentage</Label>
             <Input
               id="int_score"
-              value={education.int_score}
+              value={localEducation.int_score}
               onChange={handleChange}
               placeholder=""
             />
@@ -141,7 +129,7 @@ function Education() {
             <Label htmlFor="hs_school">School</Label>
             <Input
               id="hs_school"
-              value={education.hs_school}
+              value={localEducation.hs_school}
               onChange={handleChange}
               placeholder=""
             />
@@ -150,7 +138,7 @@ function Education() {
             <Label htmlFor="hs_year">Year</Label>
             <Input
               id="hs_year"
-              value={education.hs_year}
+              value={localEducation.hs_year}
               onChange={handleChange}
               placeholder=""
             />
@@ -159,7 +147,7 @@ function Education() {
             <Label htmlFor="hs_score">Percentage</Label>
             <Input
               id="hs_score"
-              value={education.hs_score}
+              value={localEducation.hs_score}
               onChange={handleChange}
               placeholder=""
             />

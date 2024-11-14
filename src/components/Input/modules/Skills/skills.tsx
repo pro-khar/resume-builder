@@ -3,16 +3,12 @@ import { Label } from "@/components/ui/label";
 import { useDispatch } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { addSkill } from "@/redux/skillsSlice";
+
 import SkillsGroup from "./skillsGroup";
-import SaveButton from "@/components/SaveButton";
-import { updateSkills } from "@/redux-beta/dataSlice";
-import { nanoid } from "@reduxjs/toolkit";
+import { addSkill } from "@/redux-beta/dataSlice";
 
 function Skills() {
-  const [skills, setSkills] = useState([]);
   const [skill, setSkill] = useState({
-    id: nanoid(),
     cat: "",
     sk: "",
   });
@@ -25,11 +21,13 @@ function Skills() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setSkills((prevSkills) => [...prevSkills, skill]);
-    setSkill({ id: nanoid(), cat: "", sk: "" });
-    dispatch(updateSkills(skills));
+    dispatch(addSkill(skill));
+    setSkill({
+      cat: "",
+      sk: "",
+    });
   }
-  
+
   return (
     <>
       <form
@@ -66,10 +64,9 @@ function Skills() {
             required
           />
         </div>
-        <Button type="submit" onClick={addSkill}>
-          Add Skill
+        <Button type="submit" className="">
+          Save
         </Button>
-        <SaveButton />
       </form>
       <SkillsGroup />
     </>

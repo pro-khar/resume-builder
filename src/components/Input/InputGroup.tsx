@@ -10,15 +10,12 @@ import Intro from "./modules/Intro/intro";
 import Education from "./modules/Education/education";
 import Skills from "./modules/Skills/skills";
 import Projects from "./modules/Projects/projects";
-
 import Experience from "./modules/Experience/experience";
-import Certifications from "./modules/Certifications/Certifications";
-import Achievements from "./modules/Achievements/achievements";
 
 function InputGroup() {
   return (
     <div className="h-full">
-      <Tabs defaultValue="intro" className="p-3 border-b h-full">
+      <Tabs defaultValue="experience" className="p-3 border-b h-full">
         <TabsList className="w-full p-2 h-[50px] rounded-sm">
           <TabsTrigger value="intro" className="w-full h-full">
             <PersonIcon className="w-5 h-5" />
@@ -74,10 +71,10 @@ function InputGroup() {
           value="certifications"
           className="h-[780px] border-b overflow-auto"
         >
-          <Certifications />
+          {/* <Certifications /> */}
         </TabsContent>
         <TabsContent value="pors" className="h-[780px] border-b overflow-auto">
-          <Achievements />
+          {/* <Achievements /> */}
         </TabsContent>
       </Tabs>
     </div>

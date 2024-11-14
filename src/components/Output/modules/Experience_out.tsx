@@ -15,31 +15,37 @@ function Experience_out() {
             {experience.map((exp) => (
               <div key={exp.id} id="part" className="mx-2">
                 <table className="w-full">
-                  <tr className="font-semibold">
-                    <td className="py-[0.001em] flex gap-2">
-                      {exp.link ? (
-                        <a href={exp.link} target="_blank">
-                          {exp.orgName} <ExternalLinkIcon className="inline" />
-                        </a>
-                      ) : (
-                        exp.orgName
-                      )}
+                  <tbody>
+                    <tr className="font-semibold">
+                      <td className="py-[0.001em] flex gap-2">
+                        {exp.link ? (
+                          <a href={exp.link} target="_blank">
+                            {exp.orgName}{" "}
+                            <ExternalLinkIcon className="inline" />
+                          </a>
+                        ) : (
+                          exp.orgName
+                        )}
 
-                      <p className="font-normal"> - </p>
-                      <p className="font-normal italic">{exp.desig}</p>
-                    </td>
-                    <td className="text-right py-[0.001em]">{exp.duration}</td>
-                  </tr>
+                        <p className="font-normal"> - </p>
+                        <p className="font-normal italic">{exp.desig}</p>
+                      </td>
+                      <td className="text-right py-[0.001em]">
+                        {exp.duration}
+                      </td>
+                    </tr>
 
-                  <tr>
-                    <td colSpan={2} className="py-[0.001em]">
-                      <div className="px-2">
-                        <li>{exp.t1}</li>
-                        <li>{exp.t2}</li>
-                        {exp.t3 ? <li>{exp.t3}</li> : null}
-                      </div>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td colSpan={2} className="py-[0.001em]">
+                        <div className="ml-2 list-disc">
+                          <li>{exp.t1}</li>
+                          <li>{exp.t2}</li>
+                          {exp.t3 ? <li>{exp.t3}</li> : null}
+                          {exp.t4 ? <li>{exp.t4}</li> : null}
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             ))}
