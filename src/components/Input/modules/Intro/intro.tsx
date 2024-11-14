@@ -6,23 +6,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateIntro } from "@/redux-beta/dataSlice";
 import SaveButton from "@/components/SaveButton";
-
+import { RootState } from "@/redux-beta/store";
 
 function Intro() {
-  const [intro, setIntro] = useState({
-    profile: "",
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    github: "",
-    linkedin: "",
-    summary: "",
-    picture: null,
-  });
+  const intro = useSelector((state:RootState) => state.data.intro);
+  const [localIntro, setLocalIntro] = useState(intro);
+  const dispatch = useDispatch();
 
   function handleChange(e) {
-    setIntro({ ...intro, [e.target.name]: e.target.value });
+    setLocalIntro({ ...localIntro, [e.target.name]: e.target.value });
   }
 
   function handleImage(e) {
@@ -31,18 +23,15 @@ function Intro() {
       const reader = new FileReader();
       reader.onload = (e) => {
         const imageData = e.target.result;
-        setIntro({ ...intro, picture: imageData });
+        setLocalIntro({ ...localIntro, picture: imageData });
       };
       reader.readAsDataURL(file);
     }
   }
 
-  const dispatch = useDispatch();
-
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log("Intro from input: ", intro);
-    dispatch(updateIntro(intro));
+    dispatch(updateIntro(localIntro));
   }
 
   return (
@@ -56,7 +45,7 @@ function Intro() {
         <Input
           id="profile"
           name="profile"
-          value={intro.profile}
+          value={localIntro.profile}
           onChange={handleChange}
           placeholder="e.g.:Backend Developer"
         />
@@ -68,7 +57,7 @@ function Intro() {
         <Input
           id="name"
           name="name"
-          value={intro.name}
+          value={localIntro.name}
           onChange={handleChange}
           placeholder="Enter your Full Name"
         />
@@ -82,7 +71,7 @@ function Intro() {
           id="email"
           name="email"
           type="email"
-          value={intro.email}
+          value={localIntro.email}
           placeholder="someone@example.com"
           onChange={handleChange}
         />
@@ -96,7 +85,7 @@ function Intro() {
             id="phone"
             name="phone"
             type="text"
-            value={intro.phone}
+            value={localIntro.phone}
             onChange={handleChange}
           />
         </div>
@@ -118,7 +107,7 @@ function Intro() {
         <Input
           id="address"
           name="address"
-          value={intro.address}
+          value={localIntro.address}
           placeholder="451, Hotel, Transylvania"
           onChange={handleChange}
         />
@@ -130,7 +119,7 @@ function Intro() {
           id="github"
           name="github"
           type="url"
-          value={intro.github}
+          value={localIntro.github}
           onChange={handleChange}
           placeholder="https://github.com/username"
         />
@@ -144,7 +133,7 @@ function Intro() {
           id="linkedin"
           name="linkedin"
           type="url"
-          value={intro.linkedin}
+          value={localIntro.linkedin}
           onChange={handleChange}
           placeholder="linkedIn profile URL"
         />
@@ -155,7 +144,7 @@ function Intro() {
         <Textarea
           id="summary"
           name="summary"
-          value={intro.summary}
+          value={localIntro.summary}
           onChange={handleChange}
           rows={4}
         />
