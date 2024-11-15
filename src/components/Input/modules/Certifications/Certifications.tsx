@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useDispatch } from "react-redux";
-import { addCerti } from "@/redux/certSlice";
+import { addCertification } from "@/redux-beta/dataSlice";
 
 import { useState } from "react";
 import Certi_group from "./Certi_group";
@@ -24,7 +24,7 @@ const Certifications = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addCerti(data));
+    dispatch(addCertification(data));
     setData({
       name: "",
       provider: "",

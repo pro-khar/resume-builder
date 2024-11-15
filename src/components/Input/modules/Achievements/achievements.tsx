@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 
 import { useState } from "react";
-import { addAch } from "@/redux/achSlice";
+
 import AchGroup from "./achGroup";
+import { addAch } from "@/redux-beta/dataSlice";
 
 const Achievements = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Achievements = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addAch(data));
+    dispatch(addAch(data))
     setData({
       position: "",
       orgName: "",

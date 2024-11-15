@@ -126,12 +126,52 @@ const dataSlice = createSlice({
 
     //CERTIFICATIONS
     addCertification: (state, action) => {
-      state.certifications = action.payload;
+      if (!Array.isArray(state.certifications)) {
+        state.certifications = [];
+      }
+
+      const newCertification = {
+        id: nanoid(),
+        ...action.payload,
+      };
+      state.certifications.push(newCertification);
+    },
+    removeCertification: (state, action) => {
+      state.certifications = state.certifications.filter(
+        (certification) => certification.id !== action.payload
+      );
+    },
+    updateCertification: (state, action) => {
+      const { id } = action.payload;
+      const existingCertification = state.certifications.find(
+        (certification) => certification.id === id
+      );
+      if (existingCertification) {
+        Object.assign(existingCertification, action.payload);
+      }
     },
 
     //ACHIEVEMENTS
     addAch: (state, action) => {
-      state.ach = action.payload;
+      if (!Array.isArray(state.ach)) {
+        state.ach = [];
+      }
+
+      const newAch = {
+        id: nanoid(),
+        ...action.payload,
+      };
+      state.ach.push(newAch);
+    },
+    removeAch: (state, action) => {
+      state.ach = state.ach.filter((ach) => ach.id !== action.payload);
+    },
+    updateAch: (state, action) => {
+      const { id } = action.payload;
+      const existingAch = state.ach.find((ach) => ach.id === id);
+      if (existingAch) {
+        Object.assign(existingAch, action.payload);
+      }
     },
   },
 });
@@ -145,12 +185,15 @@ export const {
   addProject,
   removeProject,
   updateProject,
-
   addExperience,
   removeExperience,
   updateExperience,
   addCertification,
+  removeCertification,
+  updateCertification,
   addAch,
+  removeAch,
+  updateAch,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

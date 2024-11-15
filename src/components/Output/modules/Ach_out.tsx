@@ -1,5 +1,4 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
-
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
 
@@ -9,7 +8,7 @@ function Experience_out() {
   );
   return (
     <>
-      {achievements ? (
+      {achievements.length ? (
         <div id="experience" className="px-8 pb-0 dark:text-white mb-1">
           <h1 className="font-semibold tracking-tight">
             ACHIEVEMENTS / POSITIONS OF RESPONSIBILITY

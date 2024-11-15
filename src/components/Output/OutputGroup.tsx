@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
 import { SiFormspree } from "react-icons/si";
 import Experience_out from "./modules/Experience_out";
+import Certi_out from "./modules/Certi_out";
+import Ach_out from "./modules/Ach_out";
 
 function OutputGroup() {
   let f = 12;
@@ -28,8 +30,8 @@ function OutputGroup() {
             <Skills_out />
             <Projects_out />
             <Experience_out />
-            {/* <Certi_out />
-            <Ach_out /> */}
+            <Certi_out />
+            <Ach_out />
           </div>
         ) : (
           <div className="bg-white dark:bg-gray-600 h-[850px] min-w-[636px] rounded-md shadow-md space-y-2 pb-10 flex items-center justify-center">
