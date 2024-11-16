@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dataReducer from "./dataSlice";
 import lookReducer from "./lookSlice";
+import dataReducer2 from "./dataSlice2";
 
 // Define the root reducer
 const rootReducer = combineReducers({
   data: dataReducer,
+  data2: dataReducer2,
   looks: lookReducer,
 });
 

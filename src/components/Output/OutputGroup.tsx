@@ -23,7 +23,7 @@ function OutputGroup() {
         {intro ? (
           <div
             id="resume"
-            className={`text-black min-w-[636px] rounded-md shadow-md pb-10 mt-10 transition-all duration-300`}
+            className={`text-black min-w-[636px] rounded-md shadow-md pb-10 transition-all duration-300`}
             style={{ fontSize: f_size, backgroundColor: looks.bodyColor }}
           >
             <Intro_out />

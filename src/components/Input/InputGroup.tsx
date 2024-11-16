@@ -17,7 +17,7 @@ import Achievements from "./modules/Achievements/achievements";
 function InputGroup() {
   return (
     <div className="h-full">
-      <Tabs defaultValue="pors" className="p-3 border-b h-full">
+      <Tabs defaultValue="experience" className="p-3 border-b h-full">
         <TabsList className="w-full p-2 h-[50px] rounded-sm">
           <TabsTrigger value="intro" className="w-full h-full">
             <PersonIcon className="w-5 h-5" />
@@ -45,10 +45,7 @@ function InputGroup() {
         <TabsContent value="intro" className="h-[780px] border-b overflow-auto">
           <Intro />
         </TabsContent>
-        <TabsContent
-          value="education"
-          className="h-[780px]  overflow-auto"
-        >
+        <TabsContent value="education" className="h-[780px]  overflow-auto">
           <Education />
         </TabsContent>
         <TabsContent
