@@ -22,17 +22,17 @@ function InputGroup() {
           <TabsTrigger value="intro" className="w-full h-full">
             <PersonIcon className="w-5 h-5" />
           </TabsTrigger>
-          <TabsTrigger value="education" className="w-full h-full">
-            <FaGraduationCap size={20} />
-          </TabsTrigger>
-          <TabsTrigger value="skills" className="w-full h-full">
-            <FaCode size={20} />
+          <TabsTrigger value="experience" className="w-full h-full">
+            <BiBuildingHouse size={20} />
           </TabsTrigger>
           <TabsTrigger value="projects" className="w-full h-full">
             <FaBoxOpen size={20} />
           </TabsTrigger>
-          <TabsTrigger value="experience" className="w-full h-full">
-            <BiBuildingHouse size={20} />
+          <TabsTrigger value="skills" className="w-full h-full">
+            <FaCode size={20} />
+          </TabsTrigger>
+          <TabsTrigger value="education" className="w-full h-full">
+            <FaGraduationCap size={20} />
           </TabsTrigger>
           <TabsTrigger value="certifications" className="w-full h-full">
             <TbCertificate size={20} />

@@ -7,9 +7,9 @@ function Skills_out() {
   return (
     <>
       {skills.length ? (
-        <div id="plain-container" className="px-8 pb-0 dark:text-white mb-1">
+        <div id="plain-container" className="px-8 pb-0  mb-1">
           <h1 className="font-semibold tracking-tight">SKILLS</h1>
-          <hr className="border-black border-t dark:border-white" />
+          <hr className="border-black border-t " />
 
           <div
             id="part_container"

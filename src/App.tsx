@@ -25,14 +25,11 @@ function App() {
 
         <div className="">
           <ResizablePanelGroup direction="horizontal" className="h-1/2">
-            <ResizablePanel className="" defaultSize={50} minSize={25}>
+            <ResizablePanel className="" defaultSize={25} minSize={25}>
               <InputGroup />
             </ResizablePanel>
-            <ResizableHandle className="" />
-            <ResizablePanel
-              className="bg-secondary flex justify-center items-center relative"
-              defaultSize={50}
-            >
+            <ResizableHandle className="bg-secondary" withHandle/>
+            <ResizablePanel className="bg-secondary flex justify-center items-center relative">
               <OutputTools />
               <OutputGroup />
             </ResizablePanel>

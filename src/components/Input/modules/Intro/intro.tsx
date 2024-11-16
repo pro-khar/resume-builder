@@ -9,7 +9,7 @@ import SaveButton from "@/components/SaveButton";
 import { RootState } from "@/redux-beta/store";
 
 function Intro() {
-  const intro = useSelector((state:RootState) => state.data.intro);
+  const intro = useSelector((state: RootState) => state.data.intro);
   const [localIntro, setLocalIntro] = useState(intro);
   const dispatch = useDispatch();
 
@@ -40,16 +40,7 @@ function Intro() {
       onSubmit={handleSubmit}
     >
       <h1 className="font-extralight text-2xl">Introduction</h1>
-      <div>
-        <Label htmlFor="profile">Profile</Label>
-        <Input
-          id="profile"
-          name="profile"
-          value={localIntro.profile}
-          onChange={handleChange}
-          placeholder="e.g.:Backend Developer"
-        />
-      </div>
+
       <div>
         <Label htmlFor="name">
           Name <span className="text-purple-500">*</span>
@@ -62,7 +53,16 @@ function Intro() {
           placeholder="Enter your Full Name"
         />
       </div>
-
+      <div>
+        <Label htmlFor="profile">Profile</Label>
+        <Input
+          id="profile"
+          name="profile"
+          value={localIntro.profile}
+          onChange={handleChange}
+          placeholder="e.g.:Backend Developer"
+        />
+      </div>
       <div>
         <Label htmlFor="email">
           Email <span className="text-purple-500">*</span>

@@ -9,11 +9,11 @@ function Experience_out() {
   return (
     <>
       {achievements.length ? (
-        <div id="experience" className="px-8 pb-0 dark:text-white mb-1">
+        <div id="experience" className="px-8 pb-0  mb-1">
           <h1 className="font-semibold tracking-tight">
             ACHIEVEMENTS / POSITIONS OF RESPONSIBILITY
           </h1>
-          <hr className="border-black dark:border-white border-t" />
+          <hr className="border-black  border-t" />
           <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">
             {achievements.map((ach) => (
               <div key={ach.id} id="part" className="mx-2">
