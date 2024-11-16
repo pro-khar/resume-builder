@@ -12,7 +12,8 @@ function Intro_out() {
     <>
       <div
         id="header"
-        className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed mb-4`}
+        className={` text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed mb-4`}
+        style={{ backgroundColor: looks.headerColor }}
       >
         {intro.picture && looks.imageEnable ? (
           <img

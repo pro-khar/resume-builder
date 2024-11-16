@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  imageEnable: true,
+  imageEnable: false,
+  headerColor: "#FFFFFF",
+  bodyColor: "#FFFFFF",
 };
 
 export const lookSlice = createSlice({
@@ -12,9 +14,16 @@ export const lookSlice = createSlice({
       state.imageEnable = !state.imageEnable;
       console.log(state.imageEnable);
     },
+    setHeaderColor: (state, action) => {
+      state.headerColor = action.payload;
+    },
+    setBodyColor: (state, action) => {
+      state.bodyColor = action.payload;
+    },
   },
 });
 
-export const { setImageEnable } = lookSlice.actions;
+export const { setImageEnable, setHeaderColor, setBodyColor } =
+  lookSlice.actions;
 
 export default lookSlice.reducer;

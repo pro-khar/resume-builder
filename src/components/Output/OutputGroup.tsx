@@ -15,24 +15,22 @@ function OutputGroup() {
   let f_size = f + "px";
 
   const intro = useSelector((state: RootState) => state.data.intro);
-
+  const looks = useSelector((state: RootState) => state.looks);
   return (
     <>
       <ScrollArea className="w-[636px] h-[850px]">
         {intro ? (
           <div
             id="resume"
-            className={`text-black bg-white dark:bg-gray-600 min-w-[636px] rounded-md shadow-md pb-10`}
-            style={{ fontSize: f_size }}
+            className={`text-black dark:bg-gray-600 min-w-[636px] rounded-md shadow-md pb-10`}
+            style={{ fontSize: f_size, backgroundColor: looks.bodyColor }}
           >
             <Intro_out />
             <Experience_out />
             <Projects_out />
             <Skills_out />
             <Education_out />
-            
-            
-            
+
             <Certi_out />
             <Ach_out />
           </div>
