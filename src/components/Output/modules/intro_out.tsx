@@ -6,6 +6,7 @@ import { RootState } from "@/redux-beta/store";
 
 function Intro_out() {
   const intro = useSelector((state: RootState) => state.data.intro);
+  const looks = useSelector((state: RootState) => state.looks);
 
   return (
     <>
@@ -13,7 +14,7 @@ function Intro_out() {
         id="header"
         className={`bg-gray-200 dark:bg-gray-500 text-black dark:text-white py-8 px-8 flex flex-nowrap gap-4 border-b border-black dark:border-white border-dashed mb-4`}
       >
-        {intro.picture ? (
+        {intro.picture && looks.imageEnable ? (
           <img
             className="border-black border aspect-auto w-[100px] rounded"
             src={intro.picture}

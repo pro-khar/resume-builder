@@ -9,6 +9,7 @@ import InputGroup from "./components/Input/InputGroup";
 import OutputGroup from "./components/Output/OutputGroup";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux-beta/store";
+import OutputTools from "./components/OutputTools";
 
 function App() {
   const data = useSelector((state: RootState) => state.data);
@@ -29,9 +30,10 @@ function App() {
             </ResizablePanel>
             <ResizableHandle className="" />
             <ResizablePanel
-              className="bg-[#f3f4f6] dark:bg-[#1e2837] flex justify-center items-center"
+              className="bg-secondary flex justify-center items-center relative"
               defaultSize={50}
             >
+              <OutputTools />
               <OutputGroup />
             </ResizablePanel>
           </ResizablePanelGroup>

@@ -1,9 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dataReducer from "./dataSlice";
+import lookReducer from "./lookSlice";
 
 // Define the root reducer
 const rootReducer = combineReducers({
   data: dataReducer,
+  looks: lookReducer,
 });
 
 // Infer the `RootState` type from the root reducer

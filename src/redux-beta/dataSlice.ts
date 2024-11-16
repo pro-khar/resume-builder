@@ -11,6 +11,7 @@ const initialState = {
     linkedin: "",
     summary: "",
     picture: null,
+    pictureEnable: false,
   },
   education: {
     degree: "",

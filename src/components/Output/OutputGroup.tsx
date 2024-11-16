@@ -26,10 +26,13 @@ function OutputGroup() {
             style={{ fontSize: f_size }}
           >
             <Intro_out />
-            <Education_out />
-            <Skills_out />
-            <Projects_out />
             <Experience_out />
+            <Projects_out />
+            <Skills_out />
+            <Education_out />
+            
+            
+            
             <Certi_out />
             <Ach_out />
           </div>
