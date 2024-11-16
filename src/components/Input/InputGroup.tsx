@@ -47,7 +47,7 @@ function InputGroup() {
         </TabsContent>
         <TabsContent
           value="education"
-          className="h-[780px] border-b overflow-auto"
+          className="h-[780px]  overflow-auto"
         >
           <Education />
         </TabsContent>

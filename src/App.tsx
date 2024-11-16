@@ -9,7 +9,7 @@ import InputGroup from "./components/Input/InputGroup";
 import OutputGroup from "./components/Output/OutputGroup";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux-beta/store";
-import OutputTools from "./components/OutputTools/OutputTools";
+import OutputTools from "./components/OutputTools/main";
 
 function App() {
   const data = useSelector((state: RootState) => state.data);

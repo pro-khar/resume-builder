@@ -23,74 +23,72 @@ function Education() {
 
   return (
     <form
-      className="space-y-3 max-w-md mx-auto relative"
+      className="space-y-5 max-w-md mx-auto mt-4 p-6 border rounded-md relative"
       onSubmit={handleSubmit}
     >
-      <div className="space-y-4 p-6 border rounded-md shadow-md">
-        <h2 className="text-xl font-bold">Graduation/Equivalent</h2>
-        <div>
-          <Label htmlFor="degree">
-            Degree <span className="text-purple-500">*</span>
+      <h1 className="font-extralight text-2xl mb-4">Education</h1>
+
+      <h2 className="text-xl font-bold">Graduation/Equivalent</h2>
+      <div>
+        <Label htmlFor="degree">
+          Degree <span className="text-purple-500">*</span>
+        </Label>
+        <Input
+          id="degree"
+          value={localEducation.degree}
+          onChange={handleChange}
+          placeholder=""
+        />
+      </div>
+      <div>
+        <Label htmlFor="branch">
+          Branch <span className="text-purple-500">*</span>
+        </Label>
+        <Input
+          id="branch"
+          value={localEducation.branch}
+          onChange={handleChange}
+          placeholder=""
+        />
+      </div>
+      <div>
+        <Label htmlFor="college">
+          Institution <span className="text-purple-500">*</span>
+        </Label>
+        <Input
+          id="college"
+          value={localEducation.college}
+          onChange={handleChange}
+          placeholder=""
+        />
+      </div>
+      <div className="flex space-x-4">
+        <div className="flex-1">
+          <Label htmlFor="bachelor_duration">
+            Duration <span className="text-purple-500">*</span>
           </Label>
           <Input
-            id="degree"
-            value={localEducation.degree}
+            id="bachelor_duration"
+            type="text"
+            value={localEducation.bachelor_duration}
             onChange={handleChange}
-            placeholder=""
-          />
-        </div>
-        <div>
-          <Label htmlFor="branch">
-            Branch <span className="text-purple-500">*</span>
-          </Label>
-          <Input
-            id="branch"
-            value={localEducation.branch}
-            onChange={handleChange}
-            placeholder=""
-          />
-        </div>
-        <div>
-          <Label htmlFor="college">
-            Institution <span className="text-purple-500">*</span>
-          </Label>
-          <Input
-            id="college"
-            value={localEducation.college}
-            onChange={handleChange}
-            placeholder=""
-          />
-        </div>
-        <div className="flex space-x-4">
-          <div className="flex-1">
-            <Label htmlFor="bachelor_duration">
-              Duration <span className="text-purple-500">*</span>
-            </Label>
-            <Input
-              id="bachelor_duration"
-              type="text"
-              value={localEducation.bachelor_duration}
-              onChange={handleChange}
-              placeholder="eg: 2017 - 2019"
-            />
-          </div>
-        </div>
-        <div>
-          <Label htmlFor="bachelor_score">
-            CGPA/Percentage <span className="text-purple-500">*</span>
-          </Label>
-          <Input
-            id="bachelor_score"
-            value={localEducation.bachelor_score}
-            onChange={handleChange}
-            placeholder="CGPA/Percentage"
+            placeholder="eg: 2017 - 2019"
           />
         </div>
       </div>
-
-      <div className="border p-6 rounded-md shadow-md">
-        <p className="text-xs text-zinc-500 py-2">
-          Leave these fields blank if you don't want to include them :
+      <div>
+        <Label htmlFor="bachelor_score">
+          CGPA/Percentage <span className="text-purple-500">*</span>
+        </Label>
+        <Input
+          id="bachelor_score"
+          value={localEducation.bachelor_score}
+          onChange={handleChange}
+          placeholder="CGPA/Percentage"
+        />
+        <hr className="border border-t mt-5" />
+        <p className="text-xs text-zinc-500 my-5 text-center">
+          Leave the following fields blank if you don't want to include them :
         </p>
         <div className="space-y-4">
           <h2 className="text-xl font-bold">Class 12th (Intermediate)</h2>

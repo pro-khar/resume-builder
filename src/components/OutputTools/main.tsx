@@ -10,7 +10,7 @@ function OutputTools() {
   const dispatch = useDispatch();
   const looks = useSelector((state: RootState) => state.looks);
   return (
-    <div className="absolute left-0 bg-white dark:bg-zinc-700 border-r-2 h-full p-2 flex flex-col gap-2">
+    <div className="absolute right-0 bg-white dark:bg-zinc-700 border-l-2 h-full p-2 flex flex-col gap-2">
       <Toggle onClick={() => dispatch(setImageEnable())} variant="outline">
         {looks.imageEnable ? <Image className="w-5 h-5" /> : <ImageOff />}
       </Toggle>
