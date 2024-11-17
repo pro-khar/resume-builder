@@ -10,28 +10,28 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
 import { setHeaderColor } from "@/redux-beta/lookSlice";
-
+("#e5e7eb");
 const colors = [
+  "#FFFFFF",
   "#e5e7eb",
-  "#4ECDC4",
-  "#45B7D1",
-  "#FFA07A",
-  "#98D8C8",
-  "#F06292",
-  "#AED581",
-  "#7986CB",
-  "#FFD54F",
-  "#4DB6AC",
-  "#9575CD",
-  "#4FC3F7",
-  "#FFF176",
-  "#FF8A65",
-  "#A1887F",
-  "#90A4AE",
-  "#81C784",
-  "#64B5F6",
-  "#FFB74D",
-  "#E57373",
+  "#B8E3F0",
+  "#FFD4C4",
+  "#CBE9E2",
+  "#FFC4DA",
+  "#D8EBC1",
+  "#C5CAE9",
+  "#FFF0C4",
+  "#B2E0DB",
+  "#D4C4E8",
+  "#B3E5FC",
+  "#FFF9C4",
+  "#FFD3C4",
+  "#D7CCC8",
+  "#CFD8DC",
+  "#C8E6C9",
+  "#BBDEFB",
+  "#FFE0B2",
+  "#FFCDD2",
 ];
 
 export default function HeaderColorPicker() {

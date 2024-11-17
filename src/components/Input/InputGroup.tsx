@@ -13,11 +13,29 @@ import Projects from "./modules/Projects/projects";
 import Experience from "./modules/Experience/experience";
 import Certifications from "./modules/Certifications/Certifications";
 import Achievements from "./modules/Achievements/achievements";
+import { useDispatch, useSelector } from "react-redux";
+import { setLastOpenTab } from "@/redux-beta/dataSlice2";
+import { RootState } from "@/redux-beta/store";
+import { useState } from "react";
 
 function InputGroup() {
+  const dispatch = useDispatch();
+
+  const lastOpenTab = useSelector(
+    (state: RootState) => state.data2.lastOpenTab
+  );
+  const [tab, setTab] = useState(lastOpenTab);
+
   return (
     <div className="h-full">
-      <Tabs defaultValue="experience" className="p-3 border-b h-full">
+      <Tabs
+        defaultValue={tab}
+        className="p-3 border-b h-full"
+        onValueChange={(value) => {
+          console.log(value);
+          dispatch(setLastOpenTab(value));
+        }}
+      >
         <TabsList className="w-full p-2 h-[50px] rounded-sm">
           <TabsTrigger value="intro" className="w-full h-full">
             <PersonIcon className="w-5 h-5" />
