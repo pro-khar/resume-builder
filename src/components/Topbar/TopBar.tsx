@@ -1,7 +1,8 @@
 import { ModeToggle } from "@/components/ui/ThemeToggle";
-import { FullScreen } from "./modules/fullScreen";
+
 import Print from "./modules/print";
 import { Link } from "react-router-dom";
+import Fullscreen from "./modules/fullScreen";
 
 function TopBar() {
   return (
@@ -13,7 +14,7 @@ function TopBar() {
       </Link>
       <div className="flex items-center justify-center gap-1">
         <Print />
-        <FullScreen />
+        <Fullscreen/>
         <ModeToggle />
       </div>
     </div>
