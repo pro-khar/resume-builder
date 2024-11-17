@@ -242,8 +242,8 @@ export default function Experience() {
                 </Label>
                 <Input
                   type="text"
-                  id="l-orgName"
-                  name="l-orgName"
+                  id="orgName"
+                  name="orgName"
                   value={largeData.orgName}
                   onChange={handleLargeChange}
                   required
@@ -253,8 +253,8 @@ export default function Experience() {
                 <Label htmlFor="duration">Duration</Label>
                 <Input
                   type="text"
-                  id="l-duration"
-                  name="l-duration"
+                  id="duration"
+                  name="duration"
                   value={largeData.duration}
                   onChange={handleLargeChange}
                 />
@@ -267,8 +267,8 @@ export default function Experience() {
               </Label>
               <Input
                 type="text"
-                id="l-desig"
-                name="l-desig"
+                id="desig"
+                name="desig"
                 value={largeData.desig}
                 onChange={handleLargeChange}
                 required
@@ -449,8 +449,8 @@ export default function Experience() {
               <Label htmlFor="techStack">Tech Stack</Label>
               <Input
                 type="text"
-                id="l-techStack"
-                name="l-techStack"
+                id="techStack"
+                name="techStack"
                 value={largeData.techStack}
                 onChange={handleLargeChange}
               />
@@ -459,8 +459,8 @@ export default function Experience() {
               <Label htmlFor="link">Certificates/Relevant document links</Label>
               <Input
                 type="url"
-                id="l-link"
-                name="l-link"
+                id="link"
+                name="link"
                 value={largeData.link}
                 onChange={handleLargeChange}
               />
