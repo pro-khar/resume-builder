@@ -11,6 +11,7 @@ import { Switch } from "@/components/ui/switch";
 import { HelpCircle } from "lucide-react";
 import { setLongExp } from "@/redux-beta/dataSlice2";
 import { RootState } from "@/redux-beta/store";
+import LongExperienceGroup from "./longExperienceGroup";
 
 export default function Experience() {
   const dispatch = useDispatch();
@@ -50,23 +51,23 @@ export default function Experience() {
   };
 
   const [largeData, setLargeData] = useState({
-    orgName: "",
-    desig: "",
-    duration: "",
-    d1: "",
-    t1_1: "",
-    t1_2: "",
-    t1_3: "",
-    d2: "",
-    t2_1: "",
-    t2_2: "",
-    t2_3: "",
-    d3: "",
-    t3_1: "",
-    t3_2: "",
-    t3_3: "",
-    techStack: "",
-    link: "",
+    orgName: "Microsoft Corporation",
+    desig: "Senior Software Engineer",
+    duration: "Jan 2021 - Present",
+    d1: "Led the redesign and migration of legacy payment processing system",
+    t1_1: "Architected and implemented new microservices-based payment infrastructure using .NET Core",
+    t1_2: "Reduced payment processing time by 40% through optimized database queries and caching",
+    t1_3: "Mentored team of 4 junior developers in modern development practices and architecture",
+    d2: "Spearheaded adoption of DevOps practices across team",
+    t2_1: "Implemented CI/CD pipeline using Azure DevOps reducing deployment time from 2 days to 2 hours",
+    t2_2: "Achieved 95% test coverage through comprehensive unit and integration testing",
+    t2_3: "Created automated monitoring and alerting system for critical services",
+    d3: "Enhanced system security and compliance measures",
+    t3_1: "Implemented OAuth 2.0 and OpenID Connect for secure authentication across services",
+    t3_2: "Conducted security audits and resolved vulnerabilities in legacy systems",
+    t3_3: "Achieved PCI DSS compliance through systematic security improvements",
+    techStack: "C#, .NET Core, Azure, Docker, Kubernetes, MongoDB, Redis",
+    link: "https://certificates.microsoft.com/senior-dev-certification"
   });
 
   const handleLargeChange = (e) => {
@@ -471,7 +472,7 @@ export default function Experience() {
           </form>
         )}
       </div>
-      <ExperienceGroup />
+      {longExp ? <ExperienceGroup /> : <LongExperienceGroup />}
     </>
   );
 }

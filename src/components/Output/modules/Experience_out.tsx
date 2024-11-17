@@ -39,7 +39,7 @@ function Experience_out() {
 
                         <tr>
                           <td colSpan={2} className="pl-2">
-                            <p>{exp.d1}</p>
+                            <p className="font-medium">{exp.d1}</p>
                             <div className="flex flex-col pl-2">
                               <li>{exp.t1_1}</li>
                               <li>{exp.t1_2}</li>
@@ -50,7 +50,7 @@ function Experience_out() {
 
                         <tr>
                           <td colSpan={2} className="pl-2">
-                            <p>{exp.d2}</p>
+                            <p className="font-medium">{exp.d2}</p>
                             <div className="flex flex-col pl-2">
                               <li>{exp.t2_1}</li>
                               <li>{exp.t2_2}</li>
@@ -61,7 +61,7 @@ function Experience_out() {
 
                         <tr>
                           <td colSpan={2} className="pl-2">
-                            <p>{exp.d3}</p>
+                            <p className="font-medium">{exp.d3}</p>
                             <div className="flex flex-col pl-2">
                               <li>{exp.t3_1}</li>
                               <li>{exp.t3_2}</li>
