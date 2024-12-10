@@ -4,16 +4,25 @@ import { ModeToggle } from "./ui/ThemeToggle";
 import { FaGithub } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
-import { BiRightArrow } from "react-icons/bi";
-import { ArrowBigRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import OutputGroup from "./Output/OutputGroup";
 import { PiLaptopDuotone } from "react-icons/pi";
+import logo from "../assets/YARB.svg";
+import logo_dark from "../assets/YARB_dark.svg";
+import { useTheme } from "./ui/theme-provider";
 
 export default function Landing() {
   const intro = useSelector((state: RootState) => state.data.intro);
+  const { theme } = useTheme();
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <header className="px-4 lg:px-6 h-14 flex items-center justify-end">
+      <header className="flex items-center justify-between px-4 py-2">
+        <img
+          src={theme === "dark" ? logo_dark : logo}
+          alt="YARB"
+          className="w-32  -ml-4"
+        />
+
         <ModeToggle />
       </header>
       <main className="flex-1 ">
