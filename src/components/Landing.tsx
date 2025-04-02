@@ -9,18 +9,19 @@ import OutputGroup from "./Output/OutputGroup";
 import { PiLaptopDuotone } from "react-icons/pi";
 import logo from "../assets/YARB.svg";
 import logo_dark from "../assets/YARB_dark.svg";
-import { useTheme } from "./ui/theme-provider";
+import { Badge } from "./ui/badge";
 
 export default function Landing() {
   const intro = useSelector((state: RootState) => state.data.intro);
-  const { theme } = useTheme();
+
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <header className="flex items-center justify-between px-4 py-2">
+    <div className="flex flex-col">
+      <header className="flex items-center justify-between px-8 py-4">
+        <img src={logo} alt="YARB_Logo" className="w-32  -ml-4 dark:hidden" />
         <img
-          src={theme === "dark" ? logo_dark : logo}
-          alt="YARB"
-          className="w-32  -ml-4"
+          src={logo_dark}
+          alt="YARB_Logo"
+          className="w-32  -ml-4 hidden dark:block"
         />
 
         <ModeToggle />
@@ -81,74 +82,63 @@ export default function Landing() {
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted md:px-8 xl:px-8 2xl:px-8 px-4">
-          <div className="container space-y-12 px-4 md:px-6">
+          <div className="container space-y-12 px-4 md:px-6 flex flex-col items-center">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
-                  Key Features
-                </div>
+                <Badge>Key Features</Badge>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                   Effortless Resume Building
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   projectRB takes the hassle out of creating a professional
-                  resume. Customize pre-built templates, add your information,
-                  and download a mobile-friendly resume in minutes.
+                  resume by cutting all the bs! <br />
+                  <br className="md:hidden" />
+                  Just one robust ATS-tested template with strict layout and
+                  design constraints, and you're good to go!
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <ul className="grid gap-6">
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">
-                        Customizable Templates
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Choose from a variety of professional resume templates
-                        and customize them to fit your needs.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">
-                        Mobile-Friendly Design
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Your resume will look great on any device, making it
-                        easy to apply for jobs on the go.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">
-                        Automated Formatting
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Our projectRB handles the formatting for you, ensuring a
-                        clean and professional look.
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <img
-                src="/placeholder.svg"
-                width="550"
-                height="310"
-                alt="Features"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-              />
+
+            <div className="flex flex-col justify-center space-y-4 md:max-w-[50%]">
+              <ul className="grid gap-6">
+                <li>
+                  <div className="grid gap-1">
+                    <h3 className="text-xl font-bold">
+                      Uncomplicate the process
+                    </h3>
+                    <p className="text-muted-foreground ">
+                      Minimal and extremely lightweight client ensures a smooth
+                      experience. Just keep filling your info and download your
+                      resume in a few seconds.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div className="grid gap-1">
+                    <h3 className="text-xl font-bold">Data persistence</h3>
+                    <p className="text-muted-foreground ">
+                      Data remains on the app even after closing the browser. No
+                      need to worry about losing your work!
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div className="grid gap-1">
+                    <h3 className="text-xl font-bold">Automated Formatting</h3>
+                    <p className="text-muted-foreground ">
+                      YARB handles the formatting for you, ensuring a clean,
+                      consistent and professional look.
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t justify-between">
         <p className="text-xs text-muted-foreground">
-          &copy; 2024 projectRB. All rights reserved.
+          &copy; {new Date().getFullYear()} YARB. All rights reserved.
         </p>
         <div className="">
           <p className="text-xs">a fun project by</p>
