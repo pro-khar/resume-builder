@@ -1,6 +1,7 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
+import Hr from "@/components/Hr";
 
 function Projects_out() {
   const projects = useSelector((state: RootState) => state.data.projects);
@@ -9,7 +10,7 @@ function Projects_out() {
       {projects.length ? (
         <div id="projects" className="px-8 pb-0  mb-1">
           <h1 className="font-semibold tracking-tight">PROJECTS</h1>
-          <hr className="border-black  border-t" />
+          <Hr />
           <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">
             {projects.map((project) => (
               <div key={project.id} id="part" className="mx-2">

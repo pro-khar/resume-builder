@@ -1,3 +1,4 @@
+import Hr from "@/components/Hr";
 import { RootState } from "@/redux-beta/store";
 import { useSelector } from "react-redux";
 
@@ -9,7 +10,7 @@ function Education_out() {
       {education.degree ? (
         <div id="plain-container" className="px-8  mb-1">
           <h1 className="font-semibold tracking-tight">EDUCATION</h1>
-          <hr className="border-black  border-t" />
+          <Hr />
           <div id="part_container" className="flex flex-col mt-1 leading-[1.4]">
             <table className="w-full">
               <tbody>

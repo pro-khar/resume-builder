@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
@@ -7,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateIntro } from "@/redux-beta/dataSlice";
 import SaveButton from "@/components/SaveButton";
 import { RootState } from "@/redux-beta/store";
+import { Trash } from "lucide-react";
 
 function Intro() {
   const intro = useSelector((state: RootState) => state.data.intro);
@@ -27,6 +29,11 @@ function Intro() {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  function handleDeleteImage() {
+    setLocalIntro({ ...localIntro, picture: null });
+    dispatch(updateIntro({ ...localIntro, picture: null }));
   }
 
   function handleSubmit(e) {
@@ -91,12 +98,25 @@ function Intro() {
         </div>
         <div className="w-[60%]">
           <Label htmlFor="picture">Picture</Label>
-          <Input
-            type="file"
-            accept="image/*"
-            className="file:dark:text-white"
-            onChange={handleImage}
-          />
+          <div className="flex gap-2">
+            <Input
+              type="file"
+              accept="image/*"
+              className="file:dark:text-white"
+              onChange={handleImage}
+            />
+            {localIntro.picture && (
+              <Button
+                type="button"
+                variant="destructive"
+                size="icon"
+                onClick={handleDeleteImage}
+                className="shrink-0"
+              >
+                <Trash className="w-5 h-5" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 

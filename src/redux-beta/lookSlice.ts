@@ -4,6 +4,7 @@ const initialState = {
   imageEnable: false,
   headerColor: "#FFFFFF",
   bodyColor: "#FFFFFF",
+  showLine: true,
 };
 
 export const lookSlice = createSlice({
@@ -20,10 +21,14 @@ export const lookSlice = createSlice({
     setBodyColor: (state, action) => {
       state.bodyColor = action.payload;
     },
+    setShowLine: (state) => {
+      state.showLine = !state.showLine;
+      console.log(state.showLine);
+    },
   },
 });
 
-export const { setImageEnable, setHeaderColor, setBodyColor } =
+export const { setImageEnable, setHeaderColor, setBodyColor, setShowLine } =
   lookSlice.actions;
 
 export default lookSlice.reducer;

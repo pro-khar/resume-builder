@@ -2,6 +2,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
+import Hr from "@/components/Hr";
 
 function Experience_out() {
   const experience = useSelector((state: RootState) => state.data.experience);
@@ -11,7 +12,7 @@ function Experience_out() {
       {experience.length ? (
         <div id="experience" className="px-8 pb-0  mb-1">
           <h1 className="font-semibold tracking-tight">EXPERIENCE</h1>
-          <hr className="border-black  border-t" />
+          <Hr />
           <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">
             {!longExp
               ? experience.map((exp) => (
