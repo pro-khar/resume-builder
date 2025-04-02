@@ -1,6 +1,6 @@
+import Hr from "@/components/Hr";
 import { RootState } from "@/redux-beta/store";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Skills_out() {
   const skills = useSelector((state: RootState) => state.data.skills);
@@ -9,7 +9,7 @@ function Skills_out() {
       {skills.length ? (
         <div id="plain-container" className="px-8 pb-0  mb-1">
           <h1 className="font-semibold tracking-tight">SKILLS</h1>
-          <hr className="border-black border-t " />
+          <Hr />
 
           <div
             id="part_container"

@@ -17,23 +17,22 @@ function App() {
   return (
     <>
       <Morescreen />
-      <div
-        id="base"
-        className="hidden md:block xl:block 2xl:block m-3 rounded-md border"
-      >
-        <TopBar />
-
-        <div className="">
-          <ResizablePanelGroup direction="horizontal" className="h-1/2">
-            <ResizablePanel className="" defaultSize={25} minSize={25}>
-              <InputGroup />
-            </ResizablePanel>
-            <ResizableHandle className="bg-secondary" withHandle/>
-            <ResizablePanel className="bg-secondary flex justify-center items-center relative">
-              <OutputTools />
-              <OutputGroup />
-            </ResizablePanel>
-          </ResizablePanelGroup>
+      {/* Remove min-h-screen and use h-screen with flex to properly handle heights */}
+      <div className="p-3 h-screen flex flex-col">
+        <div id="base" className="hidden md:block rounded-md border  flex-1">
+          <TopBar />
+          <div className=" h-[calc(100%-48px)] rounded-md">
+            <ResizablePanelGroup direction="horizontal" className="h-full">
+              <ResizablePanel className="" minSize={30}>
+                <InputGroup />
+              </ResizablePanel>
+              <ResizableHandle className="bg-secondary" withHandle />
+              <ResizablePanel className="bg-secondary flex justify-center items-center relative">
+                <OutputTools />
+                <OutputGroup />
+              </ResizablePanel>
+            </ResizablePanelGroup>
+          </div>
         </div>
       </div>
     </>

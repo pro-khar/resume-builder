@@ -3,6 +3,7 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux-beta/store";
+import Hr from "@/components/Hr";
 
 function Intro_out() {
   const intro = useSelector((state: RootState) => state.data.intro);
@@ -87,7 +88,7 @@ function Intro_out() {
       {intro.summary ? (
         <div id="plain-container" className=" px-8 mb-1 ">
           <h1 className="font-semibold tracking-tight">SUMMARY</h1>
-          <hr className="border-black border-t " />
+          <Hr/>
           <p className="leading-[1.2] mt-1">{intro.summary}</p>
         </div>
       ) : null}

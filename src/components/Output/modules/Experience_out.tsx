@@ -107,6 +107,13 @@ function Experience_out() {
                             </div>
                           </td>
                         </tr>
+
+                        <tr>
+                          <td colSpan={2} className="py-[0.001em] pl-2">
+                            <span className="font-medium ">Tech Stack :</span>
+                            <span className="ml-2 text-zinc-600">{exp.techStack}</span>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

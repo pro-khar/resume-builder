@@ -1,11 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PersonIcon } from "@radix-ui/react-icons";
-import { FaGraduationCap } from "react-icons/fa6";
-import { FaCode } from "react-icons/fa";
-import { FaBoxOpen } from "react-icons/fa6";
+import { FaGraduationCap, FaCode, FaBoxOpen, FaTrophy } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { BiBuildingHouse } from "react-icons/bi";
-import { FaTrophy } from "react-icons/fa";
 import Intro from "./modules/Intro/intro";
 import Education from "./modules/Education/education";
 import Skills from "./modules/Skills/skills";
@@ -18,9 +15,54 @@ import { setLastOpenTab } from "@/redux-beta/dataSlice2";
 import { RootState } from "@/redux-beta/store";
 import { useState } from "react";
 
+const TAB_CONFIG = [
+  {
+    value: "intro",
+    icon: PersonIcon,
+    component: Intro,
+    iconSize: 5,
+    useIconClass: true,
+  },
+  {
+    value: "experience",
+    icon: BiBuildingHouse,
+    component: Experience,
+    iconSize: 20,
+  },
+  {
+    value: "projects",
+    icon: FaBoxOpen,
+    component: Projects,
+    iconSize: 20,
+  },
+  {
+    value: "skills",
+    icon: FaCode,
+    component: Skills,
+    iconSize: 20,
+  },
+  {
+    value: "education",
+    icon: FaGraduationCap,
+    component: Education,
+    iconSize: 20,
+  },
+  {
+    value: "certifications",
+    icon: TbCertificate,
+    component: Certifications,
+    iconSize: 20,
+  },
+  {
+    value: "pors",
+    icon: FaTrophy,
+    component: Achievements,
+    iconSize: 20,
+  },
+];
+
 function InputGroup() {
   const dispatch = useDispatch();
-
   const lastOpenTab = useSelector(
     (state: RootState) => state.data2.lastOpenTab
   );
@@ -37,62 +79,30 @@ function InputGroup() {
         }}
       >
         <TabsList className="w-full p-2 h-[50px] rounded-sm">
-          <TabsTrigger value="intro" className="w-full h-full">
-            <PersonIcon className="w-5 h-5" />
-          </TabsTrigger>
-          <TabsTrigger value="experience" className="w-full h-full">
-            <BiBuildingHouse size={20} />
-          </TabsTrigger>
-          <TabsTrigger value="projects" className="w-full h-full">
-            <FaBoxOpen size={20} />
-          </TabsTrigger>
-          <TabsTrigger value="skills" className="w-full h-full">
-            <FaCode size={20} />
-          </TabsTrigger>
-          <TabsTrigger value="education" className="w-full h-full">
-            <FaGraduationCap size={20} />
-          </TabsTrigger>
-          <TabsTrigger value="certifications" className="w-full h-full">
-            <TbCertificate size={20} />
-          </TabsTrigger>
-          <TabsTrigger value="pors" className="w-full h-full">
-            <FaTrophy size={20} />
-          </TabsTrigger>
+          {TAB_CONFIG.map(({ value, icon: Icon, iconSize, useIconClass }) => (
+            <TabsTrigger key={value} value={value} className="w-full h-full">
+              {useIconClass ? (
+                <Icon className={`w-${iconSize} h-${iconSize}`} />
+              ) : (
+                <Icon size={iconSize} />
+              )}
+            </TabsTrigger>
+          ))}
         </TabsList>
 
-        <TabsContent value="intro" className="h-[780px] border-b overflow-auto">
-          <Intro />
-        </TabsContent>
-        <TabsContent value="education" className="h-[780px]  overflow-auto">
-          <Education />
-        </TabsContent>
-        <TabsContent
-          value="skills"
-          className="h-[780px] border-b overflow-auto"
-        >
-          <Skills />
-        </TabsContent>
-        <TabsContent
-          value="projects"
-          className="h-[780px] border-b overflow-auto"
-        >
-          <Projects />
-        </TabsContent>
-        <TabsContent
-          value="experience"
-          className="h-[780px] border-b overflow-auto"
-        >
-          <Experience />
-        </TabsContent>
-        <TabsContent
-          value="certifications"
-          className="h-[780px] border-b overflow-auto"
-        >
-          <Certifications />
-        </TabsContent>
-        <TabsContent value="pors" className="h-[780px] border-b overflow-auto">
-          <Achievements />
-        </TabsContent>
+        {TAB_CONFIG.map(({ value, component: Component }) => (
+          <TabsContent
+            key={value}
+            value={value}
+            className={`${
+              value === "intro" || value === "education"
+                ? ""
+                : "h-[780px] border-b overflow-auto"
+            } `}
+          >
+            <Component />
+          </TabsContent>
+        ))}
       </Tabs>
     </div>
   );
