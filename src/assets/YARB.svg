@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="950.9552"
+   height="513.7439"
+   viewBox="0 0 950.95522 513.7439"
+   version="1.1"
+   id="svg1"
+   inkscape:export-batch-path="/home/pro-khar/Pictures"
+   inkscape:export-batch-name="YARB"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="950.9552"
+       height="513.7439"
+       id="page5"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-169.4917,-329.35304)">
+    <g
+       id="g120"
+       transform="translate(47.188128,-3.8520686)">
+      <rect
+         style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:28.8;stroke-dasharray:none;stroke-opacity:1"
+         id="rect118"
+         width="780.3783"
+         height="337.75537"
+         x="249.96492"
+         y="421.19937"
+         ry="42.219421" />
+      <g
+         id="g119"
+         transform="translate(30.921487,4.2210357e-5)">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:298.894px;line-height:0;font-family:'JetBrainsMono Nerd Font';-inkscape-font-specification:'JetBrainsMono Nerd Font, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:-28.34px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none"
+           x="305.3631"
+           y="699.01666"
+           id="text118"><tspan
+             sodipodi:role="line"
+             id="tspan118"
+             x="305.3631"
+             y="699.01666"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:298.894px;line-height:0;font-family:'JetBrainsMono Nerd Font';-inkscape-font-specification:'JetBrainsMono Nerd Font Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-28.34px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             rotate="0.1 0">Y</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:298.894px;line-height:0;font-family:'JetBrainsMono Nerd Font';-inkscape-font-specification:'JetBrainsMono Nerd Font Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:-28.34px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
+           x="440.44055"
+           y="699.1734"
+           id="text119"><tspan
+             sodipodi:role="line"
+             id="tspan119"
+             x="440.44055"
+             y="699.1734"
+             style="font-size:298.894px">ARB</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

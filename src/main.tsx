@@ -1,13 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { ThemeProvider } from "./components/ui/theme-provider.tsx";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.ts";
+import { store } from "./redux-beta/store.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./components/App/Landing.tsx";
-import Error from "./components/App/Error.tsx";
+import Landing from "./components/Landing.tsx";
+import Error from "./components/Error.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,13 +18,13 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "*",
-    element: <Error/>,
+    path: "resume-builder/*",
+    element: <Error />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+  <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
