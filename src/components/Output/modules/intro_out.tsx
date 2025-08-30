@@ -8,13 +8,13 @@ import Hr from "@/components/Hr";
 function Intro_out() {
   const intro = useSelector((state: RootState) => state.data.intro);
   const looks = useSelector((state: RootState) => state.looks);
-  const showLine = useSelector((state: RootState) => state.looks.showLine);
+  const showIntroSeparator = useSelector((state: RootState) => state.looks.showIntroSeparator);
 
   return (
     <>
       <div
         id="header"
-        className={` text-black py-8 px-8 flex flex-nowrap gap-4 ${showLine ? "border-b border-black border-dashed" : ""} mb-4 rounded-t-md transition-all duration-300`}
+        className={` text-black py-8 px-8 flex flex-nowrap gap-4 ${showIntroSeparator ? "border-b border-black border-dashed" : ""} mb-4 rounded-t-md transition-all duration-300`}
         style={{ backgroundColor: looks.headerColor }}
       >
         {intro.picture && looks.imageEnable ? (

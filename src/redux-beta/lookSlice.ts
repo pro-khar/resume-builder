@@ -5,6 +5,7 @@ const initialState = {
   headerColor: "#FFFFFF",
   bodyColor: "#FFFFFF",
   showLine: true,
+  showIntroSeparator: true,
 };
 
 export const lookSlice = createSlice({
@@ -25,10 +26,14 @@ export const lookSlice = createSlice({
       state.showLine = !state.showLine;
       console.log(state.showLine);
     },
+    setShowIntroSeparator: (state) => {
+      state.showIntroSeparator = !state.showIntroSeparator;
+      console.log(state.showIntroSeparator);
+    },
   },
 });
 
-export const { setImageEnable, setHeaderColor, setBodyColor, setShowLine } =
+export const { setImageEnable, setHeaderColor, setBodyColor, setShowLine, setShowIntroSeparator } =
   lookSlice.actions;
 
 export default lookSlice.reducer;
