@@ -10,15 +10,15 @@ import Error from "./components/Error.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "resume-builder/",
+    path: "/",
     element: <Landing />,
   },
   {
-    path: "resume-builder/app",
+    path: "/app",
     element: <App />,
   },
   {
-    path: "resume-builder/*",
+    path: "*",
     element: <Error />,
   },
 ]);

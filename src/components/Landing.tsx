@@ -46,7 +46,7 @@ export default function Landing() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link to="/resume-builder/app">
+                  <Link to="/app">
                     <Button>
                       {intro.name ? (
                         <p className="flex gap-1 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2 items-center">
