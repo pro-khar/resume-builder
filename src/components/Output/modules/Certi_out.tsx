@@ -1,13 +1,10 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
 
 function Certi_out() {
-  const certificate = useSelector(
-    (state: RootState) => state.data.certifications
-  );
+  const certificate = useAppSelector((state) => state.data.certifications);
   return (
     <>
       {certificate.length ? (

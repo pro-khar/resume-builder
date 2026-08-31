@@ -8,8 +8,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { setBodyColor } from "@/redux-beta/lookSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
 
 const colors = [
   "#FFFFFF",
@@ -36,10 +35,8 @@ const colors = [
 
 export default function BodyColorPicker() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const dispatch = useDispatch();
-  const color_from_state = useSelector(
-    (state: RootState) => state.looks.bodyColor
-  );
+  const dispatch = useAppDispatch();
+  const color_from_state = useAppSelector((state) => state.looks.bodyColor);
 
   return (
     <Popover>

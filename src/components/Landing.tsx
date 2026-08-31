@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ui/ThemeToggle";
 import { FaGithub } from "react-icons/fa6";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppSelector } from "@/redux-beta/hooks";
 import { ArrowRight } from "lucide-react";
 import OutputGroup from "./Output/OutputGroup";
 import { PiLaptopDuotone } from "react-icons/pi";
@@ -12,7 +11,7 @@ import logo_dark from "../assets/YARB_dark.svg";
 import { Badge } from "./ui/badge";
 
 export default function Landing() {
-  const intro = useSelector((state: RootState) => state.data.intro);
+  const intro = useAppSelector((state) => state.data.intro);
 
   return (
     <div className="flex flex-col">

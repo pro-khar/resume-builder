@@ -1,9 +1,8 @@
 import Hr from "@/components/Hr";
-import { RootState } from "@/redux-beta/store";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/redux-beta/hooks";
 
 function Education_out() {
-  const education = useSelector((state: RootState) => state.data.education);
+  const education = useAppSelector((state) => state.data.education);
 
   return (
     <>
