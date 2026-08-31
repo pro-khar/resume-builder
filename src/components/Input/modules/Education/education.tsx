@@ -1,16 +1,15 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
 import { updateEducation } from "@/redux-beta/dataSlice";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { RootState } from "@/redux-beta/store";
 
 function Education() {
-  const education = useSelector((state: RootState) => state.data.education);
+  const education = useAppSelector((state) => state.data.education);
   const [localEducation, setLocalEducation] = useState(education);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleChange(e) {
     setLocalEducation({ ...localEducation, [e.target.id]: e.target.value });

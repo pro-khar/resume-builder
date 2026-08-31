@@ -10,9 +10,8 @@ import Projects from "./modules/Projects/projects";
 import Experience from "./modules/Experience/experience";
 import Certifications from "./modules/Certifications/Certifications";
 import Achievements from "./modules/Achievements/achievements";
-import { useDispatch, useSelector } from "react-redux";
-import { setLastOpenTab } from "@/redux-beta/dataSlice2";
-import { RootState } from "@/redux-beta/store";
+import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
+import { setLastOpenTab } from "@/redux-beta/uiSlice";
 import { useState } from "react";
 
 const TAB_CONFIG = [
@@ -62,10 +61,8 @@ const TAB_CONFIG = [
 ];
 
 function InputGroup() {
-  const dispatch = useDispatch();
-  const lastOpenTab = useSelector(
-    (state: RootState) => state.data2.lastOpenTab
-  );
+  const dispatch = useAppDispatch();
+  const lastOpenTab = useAppSelector((state) => state.ui.lastOpenTab);
   const [tab, setTab] = useState(lastOpenTab);
 
   return (
@@ -74,7 +71,6 @@ function InputGroup() {
         defaultValue={tab}
         className="p-3 border-b h-full"
         onValueChange={(value) => {
-          console.log(value);
           dispatch(setLastOpenTab(value));
         }}
       >

@@ -1,74 +1,28 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useDispatch } from "react-redux";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-
-import SkillsGroup from "./skillsGroup";
-import { addSkill } from "@/redux-beta/dataSlice";
+import { SectionForm } from "@/components/Input/generic/SectionForm";
+import { SectionList } from "@/components/Input/generic/SectionList";
+import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
+import { addSkill, removeSkill, updateSkill } from "@/redux-beta/dataSlice";
+import { skillSchema } from "./skills.schema";
 
 function Skills() {
-  const [skill, setSkill] = useState({
-    cat: "",
-    sk: "",
-  });
-
-  const dispatch = useDispatch();
-
-  function handleChange(e) {
-    setSkill({ ...skill, [e.target.name]: e.target.value });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(addSkill(skill));
-    setSkill({
-      cat: "",
-      sk: "",
-    });
-  }
+  const dispatch = useAppDispatch();
+  const skills = useAppSelector((state) => state.data.skills);
 
   return (
     <>
-      <form
-        className="flex flex-col gap-3 border p-6 rounded-md max-w-md mx-auto mt-4 relative"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="font-extralight text-2xl">Skills</h1>
-
-        <div className="w-full ">
-          <Label htmlFor="cat">
-            Category name <span className="text-purple-500">*</span>
-          </Label>
-          <Input
-            type="text"
-            name="cat"
-            id="cat"
-            value={skill.cat}
-            placeholder="Databases"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="w-full ">
-          <Label htmlFor="sk">
-            Skills <span className="text-purple-500">*</span>
-          </Label>
-          <Input
-            type="text"
-            name="sk"
-            id="sk"
-            value={skill.sk}
-            placeholder="mySQL, Cassandra, MongoDB"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <Button type="submit" className="">
-          Save
-        </Button>
-      </form>
-      <SkillsGroup />
+      <div className="max-w-md mt-4 mx-auto border rounded-md p-6">
+        <h1 className="font-extralight text-2xl mb-4">Skills</h1>
+        <SectionForm
+          schema={skillSchema}
+          onSubmit={(draft) => dispatch(addSkill(draft))}
+        />
+      </div>
+      <SectionList
+        schema={skillSchema}
+        items={skills}
+        onUpdate={(item) => dispatch(updateSkill(item))}
+        onRemove={(id) => dispatch(removeSkill(id))}
+      />
     </>
   );
 }

@@ -1,6 +1,17 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { pushWithId, removeById, mergeById } from "./reducerHelpers";
+import type {
+  Achievement,
+  Certification,
+  DataState,
+  Education,
+  Experience,
+  Intro,
+  Project,
+  Skill,
+} from "./types";
 
-const initialState = {
+const initialState: DataState = {
   intro: {
     profile: "",
     name: "",
@@ -38,142 +49,91 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     //INTRO
-    updateIntro: (state, action) => {
+    updateIntro: (state, action: PayloadAction<Intro>) => {
       state.intro = action.payload;
     },
     //EDUCATION
-    updateEducation: (state, action) => {
+    updateEducation: (state, action: PayloadAction<Education>) => {
       state.education = action.payload;
     },
 
     //SKILLS
-    addSkill: (state, action) => {
-      const { cat, sk } = action.payload;
-      const skill = {
-        id: nanoid(),
-        cat,
-        sk,
-      };
-      state.skills.push(skill);
+    addSkill: (state, action: PayloadAction<Omit<Skill, "id">>) => {
+      pushWithId(state.skills, action.payload);
     },
-    removeSkill: (state, action) => {
-      state.skills = state.skills.filter(
-        (skill) => skill.id !== action.payload
-      );
+    removeSkill: (state, action: PayloadAction<string>) => {
+      state.skills = removeById(state.skills, action.payload);
     },
-    updateSkill: (state, action) => {
-      const { id, cat, sk } = action.payload;
-      const existingSkill = state.skills.find((skill) => skill.id === id);
-      if (existingSkill) {
-        existingSkill.cat = cat;
-        existingSkill.sk = sk;
-      }
+    updateSkill: (
+      state,
+      action: PayloadAction<Partial<Skill> & { id: string }>
+    ) => {
+      mergeById(state.skills, action.payload);
     },
 
     //PROJECTS
-    addProject: (state, action) => {
-      // Ensure projects array exists
-      if (!Array.isArray(state.projects)) {
-        state.projects = [];
-      }
-
-      const newProject = {
-        id: nanoid(),
-        ...action.payload,
-      };
-      state.projects.push(newProject);
+    addProject: (state, action: PayloadAction<Omit<Project, "id">>) => {
+      pushWithId(state.projects, action.payload);
     },
-    removeProject: (state, action) => {
-      state.projects = state.projects.filter(
-        (project) => project.id !== action.payload
-      );
+    removeProject: (state, action: PayloadAction<string>) => {
+      state.projects = removeById(state.projects, action.payload);
     },
-    updateProject: (state, action) => {
-      const { id } = action.payload;
-      const existingProject = state.projects.find(
-        (project) => project.id === id
-      );
-      if (existingProject) {
-        Object.assign(existingProject, action.payload);
-      }
+    updateProject: (
+      state,
+      action: PayloadAction<Partial<Project> & { id: string }>
+    ) => {
+      mergeById(state.projects, action.payload);
     },
 
     //EXPERIENCE
-    addExperience: (state, action) => {
-      if (!Array.isArray(state.experience)) {
-        state.experience = [];
-      }
-
-      const newExperience = {
-        id: nanoid(),
-        ...action.payload,
-      };
-      state.experience.push(newExperience);
+    addExperience: (state, action: PayloadAction<Omit<Experience, "id">>) => {
+      pushWithId(state.experience, action.payload);
     },
-    removeExperience: (state, action) => {
-      state.experience = state.experience.filter(
-        (experience) => experience.id !== action.payload
-      );
+    removeExperience: (state, action: PayloadAction<string>) => {
+      state.experience = removeById(state.experience, action.payload);
     },
-    updateExperience: (state, action) => {
-      const { id } = action.payload;
-      const existingExperience = state.experience.find(
-        (experience) => experience.id === id
-      );
-      if (existingExperience) {
-        Object.assign(existingExperience, action.payload);
-      }
+    updateExperience: (
+      state,
+      action: PayloadAction<Partial<Experience> & { id: string }>
+    ) => {
+      mergeById(state.experience, action.payload);
     },
 
     //CERTIFICATIONS
-    addCertification: (state, action) => {
-      if (!Array.isArray(state.certifications)) {
-        state.certifications = [];
-      }
-
-      const newCertification = {
-        id: nanoid(),
-        ...action.payload,
-      };
-      state.certifications.push(newCertification);
+    addCertification: (
+      state,
+      action: PayloadAction<Omit<Certification, "id">>
+    ) => {
+      pushWithId(state.certifications, action.payload);
     },
-    removeCertification: (state, action) => {
-      state.certifications = state.certifications.filter(
-        (certification) => certification.id !== action.payload
-      );
+    removeCertification: (state, action: PayloadAction<string>) => {
+      state.certifications = removeById(state.certifications, action.payload);
     },
-    updateCertification: (state, action) => {
-      const { id } = action.payload;
-      const existingCertification = state.certifications.find(
-        (certification) => certification.id === id
-      );
-      if (existingCertification) {
-        Object.assign(existingCertification, action.payload);
-      }
+    updateCertification: (
+      state,
+      action: PayloadAction<Partial<Certification> & { id: string }>
+    ) => {
+      mergeById(state.certifications, action.payload);
     },
 
     //ACHIEVEMENTS
-    addAch: (state, action) => {
-      if (!Array.isArray(state.ach)) {
-        state.ach = [];
-      }
+    addAch: (state, action: PayloadAction<Omit<Achievement, "id">>) => {
+      pushWithId(state.ach, action.payload);
+    },
+    removeAch: (state, action: PayloadAction<string>) => {
+      state.ach = removeById(state.ach, action.payload);
+    },
+    updateAch: (
+      state,
+      action: PayloadAction<Partial<Achievement> & { id: string }>
+    ) => {
+      mergeById(state.ach, action.payload);
+    },
 
-      const newAch = {
-        id: nanoid(),
-        ...action.payload,
-      };
-      state.ach.push(newAch);
-    },
-    removeAch: (state, action) => {
-      state.ach = state.ach.filter((ach) => ach.id !== action.payload);
-    },
-    updateAch: (state, action) => {
-      const { id } = action.payload;
-      const existingAch = state.ach.find((ach) => ach.id === id);
-      if (existingAch) {
-        Object.assign(existingAch, action.payload);
-      }
-    },
+    // HYDRATE — wholesale replace of the entire data slice, used when loading
+    // a cloud resume into Redux (and symmetrically, when restoring the local
+    // snapshot after leaving cloud mode).
+    hydrateData: (_state, action: PayloadAction<DataState>) => action.payload,
   },
 });
 
@@ -195,6 +155,7 @@ export const {
   addAch,
   removeAch,
   updateAch,
+  hydrateData,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

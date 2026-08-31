@@ -1,10 +1,9 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
 
 function Projects_out() {
-  const projects = useSelector((state: RootState) => state.data.projects);
+  const projects = useAppSelector((state) => state.data.projects);
   return (
     <>
       {projects.length ? (

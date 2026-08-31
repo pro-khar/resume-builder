@@ -1,14 +1,13 @@
 import { IoLocationSharp } from "react-icons/io5";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
 
 function Intro_out() {
-  const intro = useSelector((state: RootState) => state.data.intro);
-  const looks = useSelector((state: RootState) => state.looks);
-  const showIntroSeparator = useSelector((state: RootState) => state.looks.showIntroSeparator);
+  const intro = useAppSelector((state) => state.data.intro);
+  const looks = useAppSelector((state) => state.looks);
+  const showIntroSeparator = useAppSelector((state) => state.looks.showIntroSeparator);
 
   return (
     <>

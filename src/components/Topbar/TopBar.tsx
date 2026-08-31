@@ -3,6 +3,7 @@ import { ModeToggle } from "@/components/ui/ThemeToggle";
 import Print from "./modules/print";
 import { Link } from "react-router-dom";
 import Fullscreen from "./modules/fullScreen";
+import AccountMenu from "./AccountMenu";
 
 import logo from "../../assets/YARB.svg";
 import logo_dark from "../../assets/YARB_dark.svg";
@@ -23,6 +24,7 @@ function TopBar() {
         <Print />
         <Fullscreen />
         <ModeToggle />
+        <AccountMenu />
       </div>
     </div>
   );

@@ -5,12 +5,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { RootState } from "@/redux-beta/store";
 import { FaPrint } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/redux-beta/hooks";
 
 function Print() {
-  const intro = useSelector((state: RootState) => state.data.intro);
+  const intro = useAppSelector((state) => state.data.intro);
   function handlePrint() {
     try {
       const contentDiv = document.getElementById("resume");

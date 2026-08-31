@@ -4,16 +4,15 @@ import { Button } from "@/components/ui/button";
 
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
 import { updateIntro } from "@/redux-beta/dataSlice";
 import SaveButton from "@/components/SaveButton";
-import { RootState } from "@/redux-beta/store";
 import { Trash } from "lucide-react";
 
 function Intro() {
-  const intro = useSelector((state: RootState) => state.data.intro);
+  const intro = useAppSelector((state) => state.data.intro);
   const [localIntro, setLocalIntro] = useState(intro);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function handleChange(e) {
     setLocalIntro({ ...localIntro, [e.target.name]: e.target.value });
@@ -24,7 +23,7 @@ function Intro() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const imageData = e.target.result;
+        const imageData = e.target.result as string;
         setLocalIntro({ ...localIntro, picture: imageData });
       };
       reader.readAsDataURL(file);

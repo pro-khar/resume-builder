@@ -1,12 +1,11 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
 
 function Experience_out() {
-  const experience = useSelector((state: RootState) => state.data.experience);
-  const longExp = useSelector((state: RootState) => state.data2.longExp);
+  const experience = useAppSelector((state) => state.data.experience);
+  const experienceFormat = useAppSelector((state) => state.ui.experienceFormat);
   return (
     <>
       {experience.length ? (
@@ -14,7 +13,7 @@ function Experience_out() {
           <h1 className="font-semibold tracking-tight">EXPERIENCE</h1>
           <Hr />
           <div id="part_container" className="space-y-1 mt-1 leading-[1.2]">
-            {!longExp
+            {experienceFormat === "long"
               ? experience.map((exp) => (
                   <div key={exp.id} id="part" className="mx-2">
                     <table className="w-full">

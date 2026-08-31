@@ -1,10 +1,9 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux-beta/store";
+import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
 
 function Experience_out() {
-  const achievements = useSelector((state: RootState) => state.data.ach);
+  const achievements = useAppSelector((state) => state.data.ach);
   return (
     <>
       {achievements.length ? (

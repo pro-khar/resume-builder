@@ -1,9 +1,8 @@
 import Hr from "@/components/Hr";
-import { RootState } from "@/redux-beta/store";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/redux-beta/hooks";
 
 function Skills_out() {
-  const skills = useSelector((state: RootState) => state.data.skills);
+  const skills = useAppSelector((state) => state.data.skills);
   return (
     <>
       {skills.length ? (
