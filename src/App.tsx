@@ -27,6 +27,12 @@ import {
   mapRowToExperienceFormat,
 } from "./redux-beta/cloudMappers";
 import type { DataState } from "./redux-beta/types";
+import { captureAndUploadThumbnail } from "./lib/resumeThumbnail";
+
+// How long to wait after the last edit before snapshotting a new thumbnail —
+// long enough to not screenshot mid-keystroke, short enough that closing the
+// tab shortly after an edit still leaves a reasonably fresh thumbnail.
+const THUMBNAIL_CAPTURE_DEBOUNCE_MS = 4000;
 
 // Mirrors lookSlice's own initialState — used as the fallback when there's no
 // persisted local snapshot to restore (e.g. the very first visit ever).
@@ -74,9 +80,23 @@ const emptyDataState: DataState = {
 function App() {
   const dispatch = useAppDispatch();
   const cloud = useAppSelector((state) => state.cloud);
+  const user = useAppSelector((state) => state.auth.user);
+  const data = useAppSelector((state) => state.data);
+  const looks = useAppSelector((state) => state.looks);
   const [searchParams] = useSearchParams();
   const resumeId = searchParams.get("resume");
   const previousResumeId = useRef<string | null>(null);
+
+  // Snapshots the resume preview to a thumbnail image (used by the dashboard
+  // cards) a few seconds after the user stops editing. Resets on every
+  // data/looks change, so it only fires once things settle.
+  useEffect(() => {
+    if (!resumeId || !user || cloud.status !== "ready") return;
+    const timer = setTimeout(() => {
+      captureAndUploadThumbnail(resumeId, user.id);
+    }, THUMBNAIL_CAPTURE_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [data, looks, resumeId, user, cloud.status]);
 
   useEffect(() => {
     if (previousResumeId.current === resumeId) return;
@@ -148,7 +168,10 @@ function App() {
       <Morescreen />
       {/* Remove min-h-screen and use h-screen with flex to properly handle heights */}
       <div className="p-3 h-screen flex flex-col">
-        <div id="base" className="hidden md:block rounded-md border  flex-1">
+        <div
+          id="base"
+          className="hidden md:block rounded-md border flex-1 overflow-hidden"
+        >
           <TopBar />
           <div className=" h-[calc(100%-48px)] rounded-md">
             <ResizablePanelGroup direction="horizontal" className="h-full">

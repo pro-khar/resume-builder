@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ui/ThemeToggle";
 import { FaGithub } from "react-icons/fa6";
@@ -6,19 +6,28 @@ import { useAppSelector } from "@/redux-beta/hooks";
 import { ArrowRight } from "lucide-react";
 import OutputGroup from "./Output/OutputGroup";
 import { PiLaptopDuotone } from "react-icons/pi";
-import logo from "../assets/YARB.svg";
-import logo_dark from "../assets/YARB_dark.svg";
 import { Badge } from "./ui/badge";
 
 export default function Landing() {
   const intro = useAppSelector((state) => state.data.intro);
+  const { user, status } = useAppSelector((state) => state.auth);
+
+  // Authenticated users land on their resume dashboard, not the marketing
+  // page — this route stays live for logged-out visitors.
+  if (status === "loading")
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Loading…
+      </div>
+    );
+  if (user) return <Navigate to="/resumes" replace />;
 
   return (
     <div className="flex flex-col">
       <header className="flex items-center justify-between px-8 py-4">
-        <img src={logo} alt="YARB_Logo" className="w-32  -ml-4 dark:hidden" />
+        <img src={"./yarb.svg"} alt="YARB_Logo" className="w-32  -ml-4 dark:hidden" />
         <img
-          src={logo_dark}
+          src={"./yarb.svg"}
           alt="YARB_Logo"
           className="w-32  -ml-4 hidden dark:block"
         />
@@ -36,7 +45,7 @@ export default function Landing() {
                   </h1>
                   <br />
                   <p className="max-w-[600px] text-muted-foreground">
-                    projectRB makes it easy to craft a standout resume with
+                    YARB makes it easy to craft a standout resume with
                     pre-built templates, simple customization, and
                     mobile-friendly design.
                     <br />
@@ -89,7 +98,7 @@ export default function Landing() {
                   Effortless Resume Building
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  projectRB takes the hassle out of creating a professional
+                  YARB takes the hassle out of creating a professional
                   resume by cutting all the bs! <br />
                   <br className="md:hidden" />
                   Just one robust ATS-tested template with strict layout and

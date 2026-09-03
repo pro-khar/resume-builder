@@ -61,7 +61,7 @@ export default function Signup() {
       <header className="flex items-center justify-between px-8 py-4">
         <Link to="/">
           <img
-            src={theme === "dark" ? logo_dark : logo}
+            src={theme === "dark" ? "./yarb.svg":"./yarb.svg"}
             alt="YARB_Logo"
             className="w-32 -ml-4"
           />

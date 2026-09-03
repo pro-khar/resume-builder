@@ -66,15 +66,15 @@ function InputGroup() {
   const [tab, setTab] = useState(lastOpenTab);
 
   return (
-    <div className="h-full">
+    <div className="h-full overflow-hidden">
       <Tabs
         defaultValue={tab}
-        className="p-3 border-b h-full"
+        className="p-3 border-b h-full flex flex-col overflow-hidden"
         onValueChange={(value) => {
           dispatch(setLastOpenTab(value));
         }}
       >
-        <TabsList className="w-full p-2 h-[50px] rounded-sm">
+        <TabsList className="w-full p-2 h-[50px] rounded-sm shrink-0">
           {TAB_CONFIG.map(({ value, icon: Icon, iconSize, useIconClass }) => (
             <TabsTrigger key={value} value={value} className="w-full h-full">
               {useIconClass ? (
@@ -91,9 +91,7 @@ function InputGroup() {
             key={value}
             value={value}
             className={`${
-              value === "intro" || value === "education"
-                ? ""
-                : "h-[780px] border-b overflow-auto"
+              value === "intro" ? "" : "flex-1 min-h-0 border-b overflow-auto"
             } `}
           >
             <Component />

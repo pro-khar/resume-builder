@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import Fullscreen from "./modules/fullScreen";
 import AccountMenu from "./AccountMenu";
 
-import logo from "../../assets/YARB.svg";
-import logo_dark from "../../assets/YARB_dark.svg";
 import { useTheme } from "../ui/theme-provider";
 
 function TopBar() {
@@ -15,7 +13,7 @@ function TopBar() {
     <div className="border-b h-12 flex items-center justify-between px-2">
       <Link to="/">
         <img
-          src={theme === "dark" ? logo_dark : logo}
+          src={theme === "dark" ? "./yarb.svg" : "./yarb.svg"}
           alt="YARB"
           className="w-16"
         />
