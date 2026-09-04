@@ -18,7 +18,7 @@ function Projects_out() {
                     <tr className="font-semibold">
                       <td className="py-[0.001em] flex gap-2">
                         {project.link ? (
-                          <a href={project.link} target="_blank">
+                          <a href={project.link}>
                             {project.title}{" "}
                             <ExternalLinkIcon className="inline" />
                           </a>

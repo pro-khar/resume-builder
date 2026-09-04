@@ -80,3 +80,48 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* #print-resume is a portal rendered directly under <body> by PrintPortal,
+   sibling to #root. Parked off-screen (not display:none) on screen, swapped
+   in for the whole app on print so the exported PDF isn't the app chrome,
+   just the resume itself.
+
+   Deliberately NOT display:none: Chrome's print-to-PDF link-annotation pass
+   only picks up <a href> elements that are part of the live render tree at
+   print time, and misses ones that flip from display:none to visible via
+   @media print — the links render as plain text with no clickable area in
+   the exported PDF. Keeping it positioned off-canvas instead keeps it
+   "rendered" at all times, so its links stay intact. */
+#print-resume {
+  position: fixed;
+  top: 0;
+  left: -10000px;
+  width: 636px;
+}
+
+@media print {
+  /* body keeps its dark-mode bg-background (near-black) regardless of what's
+     printed on top of it, so in dark mode the page showed black wherever
+     #print-resume's own content didn't cover it. Force it to the user's
+     chosen page color instead (PrintPortal keeps --print-page-bg in sync),
+     falling back to white if it's somehow unset. */
+  html,
+  body {
+    background: var(--print-page-bg, #fff) !important;
+    color-scheme: light;
+  }
+
+  #root {
+    display: none;
+  }
+
+  #print-resume {
+    position: static;
+    left: auto;
+    width: auto;
+  }
+
+  @page {
+    margin: 0.4in;
+  }
+}

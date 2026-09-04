@@ -18,7 +18,7 @@ function Certi_out() {
                   <tr className="font-semibold">
                     <td className="py-[0.001em] flex gap-2">
                       {cer.link ? (
-                        <a href={cer.link} target="_blank">
+                        <a href={cer.link}>
                           {cer.name} <ExternalLinkIcon className="inline" />
                         </a>
                       ) : (

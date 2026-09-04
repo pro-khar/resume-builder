@@ -21,7 +21,7 @@ function Experience_out() {
                         <tr className="font-semibold">
                           <td className="py-[0.001em] flex gap-2">
                             {exp.link ? (
-                              <a href={exp.link} target="_blank">
+                              <a href={exp.link}>
                                 {exp.orgName}{" "}
                                 <ExternalLinkIcon className="inline" />
                               </a>
@@ -80,7 +80,7 @@ function Experience_out() {
                         <tr className="font-semibold">
                           <td className="py-[0.001em] flex gap-2">
                             {exp.link ? (
-                              <a href={exp.link} target="_blank">
+                              <a href={exp.link}>
                                 {exp.orgName}{" "}
                                 <ExternalLinkIcon className="inline" />
                               </a>

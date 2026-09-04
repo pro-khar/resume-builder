@@ -32,7 +32,6 @@ function Intro_out() {
               {intro.email && (
                 <a
                   className="flex items-center gap-1"
-                  target="_blank"
                   href={`mailto:${intro.email}`}
                 >
                   <FaEnvelope className="" />{" "}
@@ -42,7 +41,6 @@ function Intro_out() {
               {intro.github && (
                 <a
                   className="flex items-center gap-1"
-                  target="_blank"
                   href={`${intro.github}`}
                 >
                   <FaGithub className="" />{" "}
@@ -52,7 +50,6 @@ function Intro_out() {
               {intro.linkedin && (
                 <a
                   className="flex items-center gap-1"
-                  target="_blank"
                   href={`${intro.linkedin}`}
                 >
                   <FaLinkedin className="" />{" "}
@@ -64,7 +61,6 @@ function Intro_out() {
               {intro.address && (
                 <a
                   className="flex items-center gap-1"
-                  target="none"
                   href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
                 >
                   <IoLocationSharp className="" />{" "}
@@ -74,7 +70,6 @@ function Intro_out() {
               {intro.phone && (
                 <a
                   className="flex items-center gap-1"
-                  target="_blank"
                   href={`tel:${intro.phone}`}
                 >
                   <FaPhone className="" />{" "}

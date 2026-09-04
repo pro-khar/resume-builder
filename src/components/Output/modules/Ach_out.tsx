@@ -19,7 +19,7 @@ function Experience_out() {
                   <tr className="font-semibold">
                     <td className="py-[0.001em] flex gap-2">
                       {ach.link ? (
-                        <a href={ach.link} target="_blank">
+                        <a href={ach.link}>
                           {ach.position} <ExternalLinkIcon className="inline" />
                         </a>
                       ) : (
