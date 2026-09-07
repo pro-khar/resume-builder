@@ -20,6 +20,8 @@ const initialState: DataState = {
     address: "",
     github: "",
     linkedin: "",
+    leetcode: "",
+    website: "",
     summary: "",
     picture: null,
     pictureEnable: false,

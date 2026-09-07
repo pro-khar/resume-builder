@@ -9,7 +9,13 @@ import type {
   Skill,
 } from "./types";
 import type { LooksState } from "./lookSlice";
-import type { ExperienceFormat } from "./uiSlice";
+import {
+  DEFAULT_CONTACT_COLUMNS,
+  DEFAULT_SECTION_ORDER,
+  type ContactColumns,
+  type ExperienceFormat,
+  type SectionKey,
+} from "./uiSlice";
 
 // Mirrors dataSlice's own initialState.intro/education shape — used as a
 // fallback when the JSONB column is still the SQL default `{}` (a brand-new
@@ -22,6 +28,8 @@ const emptyIntro: Intro = {
   address: "",
   github: "",
   linkedin: "",
+  leetcode: "",
+  website: "",
   summary: "",
   picture: null,
   pictureEnable: false,
@@ -80,7 +88,14 @@ export interface ResumeRowWithChildren {
   intro: Partial<Intro> | Record<string, never> | null;
   education: Partial<Education> | Record<string, never> | null;
   look: Partial<LooksState> | Record<string, never> | null;
-  ui: Partial<{ experienceFormat: ExperienceFormat }> | Record<string, never> | null;
+  ui:
+    | Partial<{
+        experienceFormat: ExperienceFormat;
+        sectionOrder: SectionKey[];
+        contactColumns: ContactColumns;
+      }>
+    | Record<string, never>
+    | null;
   skills: (Skill & OrderedRow)[] | null;
   projects: (Project & OrderedRow)[] | null;
   experience: (Experience & OrderedRow)[] | null;
@@ -121,6 +136,69 @@ export function mapRowToExperienceFormat(
   ui: ResumeRowWithChildren["ui"]
 ): ExperienceFormat {
   return ui?.experienceFormat ?? DEFAULT_EXPERIENCE_FORMAT;
+}
+
+// Guards against a stored order that's stale relative to the app's current
+// set of section keys (e.g. a resume saved before a new section type existed,
+// or corrupt/hand-edited JSONB) — drops unknown/duplicate keys and appends
+// any known key missing from the stored list, so nothing silently disappears.
+export function normalizeSectionOrder(
+  order: SectionKey[] | undefined
+): SectionKey[] {
+  if (!order || !Array.isArray(order)) return DEFAULT_SECTION_ORDER;
+  const known = new Set(DEFAULT_SECTION_ORDER);
+  const seen = new Set<SectionKey>();
+  const cleaned = order.filter((key) => {
+    if (!known.has(key) || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  for (const key of DEFAULT_SECTION_ORDER) {
+    if (!seen.has(key)) cleaned.push(key);
+  }
+  return cleaned;
+}
+
+export function mapRowToSectionOrder(
+  ui: ResumeRowWithChildren["ui"]
+): SectionKey[] {
+  return normalizeSectionOrder(ui?.sectionOrder);
+}
+
+// Same guarding idea as normalizeSectionOrder, but across two columns: drops
+// unknown/duplicate keys (a key can only live in one column), then appends
+// any known key missing from both back into its default column.
+export function normalizeContactColumns(
+  input: ContactColumns | undefined
+): ContactColumns {
+  const known = new Set([
+    ...DEFAULT_CONTACT_COLUMNS.left,
+    ...DEFAULT_CONTACT_COLUMNS.right,
+  ]);
+  const seen = new Set<ContactColumns["left"][number]>();
+  const cleanColumn = (column: ContactColumns["left"] | undefined) => {
+    if (!column || !Array.isArray(column)) return [];
+    return column.filter((key) => {
+      if (!known.has(key) || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  };
+  const left = cleanColumn(input?.left);
+  const right = cleanColumn(input?.right);
+  for (const key of DEFAULT_CONTACT_COLUMNS.left) {
+    if (!seen.has(key)) left.push(key);
+  }
+  for (const key of DEFAULT_CONTACT_COLUMNS.right) {
+    if (!seen.has(key)) right.push(key);
+  }
+  return { left, right };
+}
+
+export function mapRowToContactColumns(
+  ui: ResumeRowWithChildren["ui"]
+): ContactColumns {
+  return normalizeContactColumns(ui?.contactColumns);
 }
 
 // Reverse direction — builds an insert payload for a child-table row from a

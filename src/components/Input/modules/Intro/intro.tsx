@@ -8,6 +8,12 @@ import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
 import { updateIntro } from "@/redux-beta/dataSlice";
 import SaveButton from "@/components/SaveButton";
 import { Trash } from "lucide-react";
+import { ensureHttpsUrl } from "@/lib/url";
+
+// Intro fields that hold a URL — normalized to always carry a protocol so
+// the output section's links work even if the user typed "github.com/foo"
+// without "https://".
+const URL_FIELDS = ["github", "linkedin", "leetcode", "website"] as const;
 
 function Intro() {
   const intro = useAppSelector((state) => state.data.intro);
@@ -16,6 +22,13 @@ function Intro() {
 
   function handleChange(e) {
     setLocalIntro({ ...localIntro, [e.target.name]: e.target.value });
+  }
+
+  function handleUrlBlur(e) {
+    setLocalIntro((prev) => ({
+      ...prev,
+      [e.target.name]: ensureHttpsUrl(e.target.value),
+    }));
   }
 
   function handleImage(e) {
@@ -37,12 +50,16 @@ function Intro() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(updateIntro(localIntro));
+    const normalized = { ...localIntro };
+    for (const field of URL_FIELDS) {
+      normalized[field] = ensureHttpsUrl(normalized[field]);
+    }
+    dispatch(updateIntro(normalized));
   }
 
   return (
     <form
-      className="space-y-5 max-w-md mx-auto h-full mt-4 p-6 border rounded-md relative"
+      className="space-y-5 max-w-md mx-auto mt-4 p-6 border rounded-md relative"
       onSubmit={handleSubmit}
     >
       <h1 className="font-extralight text-2xl">Introduction</h1>
@@ -140,6 +157,7 @@ function Intro() {
           type="url"
           value={localIntro.github}
           onChange={handleChange}
+          onBlur={handleUrlBlur}
           placeholder="https://github.com/username"
         />
       </div>
@@ -154,7 +172,34 @@ function Intro() {
           type="url"
           value={localIntro.linkedin}
           onChange={handleChange}
+          onBlur={handleUrlBlur}
           placeholder="linkedIn profile URL"
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="leetcode">LeetCode Profile</Label>
+        <Input
+          id="leetcode"
+          name="leetcode"
+          type="url"
+          value={localIntro.leetcode}
+          onChange={handleChange}
+          onBlur={handleUrlBlur}
+          placeholder="https://leetcode.com/username"
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="website">Website</Label>
+        <Input
+          id="website"
+          name="website"
+          type="url"
+          value={localIntro.website}
+          onChange={handleChange}
+          onBlur={handleUrlBlur}
+          placeholder="https://yourwebsite.com"
         />
       </div>
 

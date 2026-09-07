@@ -70,16 +70,28 @@ export const cloudSyncMiddleware: Middleware<object, RootState> =
       return result;
     }
 
-    // Per-resume experience format — mirrors the `ui` JSONB column.
-    // hydrateExperienceFormat (used when loading a resume) is deliberately a
-    // different action type from setExperienceFormat (the user flipping the
-    // switch), precisely so this branch only fires on real edits.
-    if (action.type === "ui/setExperienceFormat") {
+    // Per-resume experience format / section order / contact-info column
+    // layout — all three mirror the `ui` JSONB column, so any one edit pushes
+    // the whole current `state.ui` shape (mirrors look/* below) rather than
+    // just the field that changed — writing only one field here would
+    // silently clobber the others on the next save. hydrateExperienceFormat/
+    // hydrateSectionOrder/hydrateContactColumns (used when loading a resume)
+    // are deliberately different action types from these, precisely so this
+    // branch only fires on real edits.
+    if (
+      action.type === "ui/setExperienceFormat" ||
+      action.type === "ui/setSectionOrder" ||
+      action.type === "ui/setContactColumns"
+    ) {
       runSync(() =>
         supabase
           .from("resumes")
           .update({
-            ui: { experienceFormat: state.ui.experienceFormat },
+            ui: {
+              experienceFormat: state.ui.experienceFormat,
+              sectionOrder: state.ui.sectionOrder,
+              contactColumns: state.ui.contactColumns,
+            },
             updated_at: new Date().toISOString(),
           })
           .eq("id", activeResumeId)

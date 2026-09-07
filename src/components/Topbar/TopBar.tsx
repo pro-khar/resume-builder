@@ -4,6 +4,7 @@ import Print from "./modules/print";
 import { Link } from "react-router-dom";
 import Fullscreen from "./modules/fullScreen";
 import AccountMenu from "./AccountMenu";
+import SaveAndExit from "./modules/SaveAndExit";
 
 import { useTheme } from "../ui/theme-provider";
 
@@ -18,10 +19,11 @@ function TopBar() {
           className="w-16"
         />
       </Link>
-      <div className="flex items-center justify-center gap-1">
+      <div className="flex items-center justify-center gap-2">
         <Print />
         <Fullscreen />
         <ModeToggle />
+        <SaveAndExit />
         <AccountMenu />
       </div>
     </div>

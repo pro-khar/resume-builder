@@ -1,10 +1,10 @@
-import { IoLocationSharp } from "react-icons/io5";
-import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
-
 import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
+import ContactInfo from "./ContactInfo";
 
-function Intro_out() {
+// `interactive` enables drag-to-reorder on the contact-info block — the print
+// portal renders the same layout statically, no dnd-kit involved there.
+function Intro_out({ interactive = false }: { interactive?: boolean }) {
   const intro = useAppSelector((state) => state.data.intro);
   const looks = useAppSelector((state) => state.looks);
   const showIntroSeparator = useAppSelector((state) => state.looks.showIntroSeparator);
@@ -18,7 +18,7 @@ function Intro_out() {
       >
         {intro.picture && looks.imageEnable ? (
           <img
-            className="border-black border aspect-auto w-[100px] rounded"
+            className="border-black border object-cover w-[100px] rounded"
             src={intro.picture}
           />
         ) : null}
@@ -27,57 +27,7 @@ function Intro_out() {
           <h1 className="font-bold text-4xl tracking-tight">{intro.name}</h1>
           <p className="mt-[-5px]">{intro.profile}</p>
           <hr className="border-black border-t " />
-          <div className="flex justify-between">
-            <div id="span_container" className="flex flex-col leading-[1.2]">
-              {intro.email && (
-                <a
-                  className="flex items-center gap-1"
-                  href={`mailto:${intro.email}`}
-                >
-                  <FaEnvelope className="" />{" "}
-                  <p className="text-zinc-700 ">{intro.email}</p>
-                </a>
-              )}
-              {intro.github && (
-                <a
-                  className="flex items-center gap-1"
-                  href={`${intro.github}`}
-                >
-                  <FaGithub className="" />{" "}
-                  <p className="text-zinc-700 ">{intro.github}</p>
-                </a>
-              )}
-              {intro.linkedin && (
-                <a
-                  className="flex items-center gap-1"
-                  href={`${intro.linkedin}`}
-                >
-                  <FaLinkedin className="" />{" "}
-                  <p className="text-zinc-700 ">{intro.linkedin}</p>
-                </a>
-              )}
-            </div>
-            <div id="span_container" className="flex flex-col">
-              {intro.address && (
-                <a
-                  className="flex items-center gap-1"
-                  href={`https://www.google.com/maps/search/?api=1&query=${intro.address}`}
-                >
-                  <IoLocationSharp className="" />{" "}
-                  <p className="text-zinc-700 ">{intro.address}</p>
-                </a>
-              )}
-              {intro.phone && (
-                <a
-                  className="flex items-center gap-1"
-                  href={`tel:${intro.phone}`}
-                >
-                  <FaPhone className="" />{" "}
-                  <p className="text-zinc-700 ">{intro.phone}</p>
-                </a>
-              )}
-            </div>
-          </div>
+          <ContactInfo intro={intro} interactive={interactive} />
         </div>
       </div>
       {intro.summary ? (

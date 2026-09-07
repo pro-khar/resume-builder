@@ -1,15 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
+import ColorPicker from "@/components/ui/color-picker";
 import { setHeaderColor } from "@/redux-beta/lookSlice";
-("#e5e7eb");
+import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
+
 const colors = [
   "#FFFFFF",
   "#e5e7eb",
@@ -34,34 +28,16 @@ const colors = [
 ];
 
 export default function HeaderColorPicker() {
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
   const dispatch = useAppDispatch();
-  const color_from_state = useAppSelector((state) => state.looks.headerColor);
+  const color = useAppSelector((state) => state.looks.headerColor);
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button className="" style={{ backgroundColor: color_from_state }}>
-          <span className="sr-only">Pick a color</span>
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-64">
-        <div className="grid grid-cols-5 gap-2">
-          {colors.map((color) => (
-            <button
-              key={color}
-              className="w-10 h-10 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 focus:ring-blue-500"
-              style={{ backgroundColor: color }}
-              onClick={() => {
-                setSelectedColor(color);
-                dispatch(setHeaderColor(color));
-                console.log("header color:" + color_from_state);
-              }}
-              aria-label={`Select color ${color}`}
-            />
-          ))}
-        </div>
-      </PopoverContent>
-    </Popover>
+    <ColorPicker
+      colors={colors}
+      color={color}
+      onChange={(next) => dispatch(setHeaderColor(next))}
+      triggerLabel="Pick a header color"
+      hexInputLabel="Custom header hex color"
+    />
   );
 }

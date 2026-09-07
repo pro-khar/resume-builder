@@ -90,9 +90,7 @@ function InputGroup() {
           <TabsContent
             key={value}
             value={value}
-            className={`${
-              value === "intro" ? "" : "flex-1 min-h-0 border-b overflow-auto"
-            } `}
+            className="flex-1 min-h-0 border-b overflow-auto"
           >
             <Component />
           </TabsContent>

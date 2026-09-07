@@ -20,7 +20,7 @@ function OutputGroup() {
             className={`text-black min-w-[636px] rounded-md shadow-md pb-10 transition-all duration-300`}
             style={{ fontSize: f_size, backgroundColor: looks.bodyColor }}
           >
-            <ResumeBody />
+            <ResumeBody interactive />
           </div>
         ) : (
           <div className="bg-white dark:bg-gray-600 h-[850px] min-w-[636px] rounded-md shadow-md space-y-2 pb-10 flex items-center justify-center">

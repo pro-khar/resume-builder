@@ -1,10 +1,18 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dataReducer from "./dataSlice";
 import lookReducer from "./lookSlice";
-import uiReducer from "./uiSlice";
+import uiReducer, {
+  DEFAULT_SECTION_ORDER,
+  DEFAULT_CONTACT_COLUMNS,
+} from "./uiSlice";
 import authReducer from "./authSlice";
 import cloudReducer from "./cloudSlice";
 import { cloudSyncMiddleware } from "./cloudSyncMiddleware";
+import {
+  mapRowToExperienceFormat,
+  mapRowToSectionOrder,
+  mapRowToContactColumns,
+} from "./cloudMappers";
 
 // Define the root reducer
 const rootReducer = combineReducers({
@@ -54,6 +62,24 @@ function parsePersistedState(): PersistedShape | undefined {
       parsed.ui = {
         experienceFormat: parsed.data2.longExp ? "short" : "long",
         lastOpenTab: parsed.data2.lastOpenTab ?? "intro",
+        sectionOrder: DEFAULT_SECTION_ORDER,
+        contactColumns: DEFAULT_CONTACT_COLUMNS,
+      };
+    } else if (parsed.ui !== undefined) {
+      // Backfill any fields missing from a blob saved by an older build —
+      // configureStore's preloadedState REPLACES uiSlice's own initialState
+      // wholesale rather than merging with it, so an incomplete persisted
+      // `ui` object would otherwise leave a newer field (e.g. contactColumns,
+      // added after sectionOrder) undefined on the very first render, before
+      // App.tsx's hydrate effect gets a chance to run — crashing any
+      // component that reads it unconditionally. Reuses the same mappers
+      // cloud-loaded resumes go through, so a stale/corrupt array is
+      // normalized too, not just a totally-missing field.
+      parsed.ui = {
+        experienceFormat: mapRowToExperienceFormat(parsed.ui),
+        lastOpenTab: parsed.ui.lastOpenTab ?? "intro",
+        sectionOrder: mapRowToSectionOrder(parsed.ui),
+        contactColumns: mapRowToContactColumns(parsed.ui),
       };
     }
     return parsed;

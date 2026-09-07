@@ -6,6 +6,8 @@ export interface Intro {
   address: string;
   github: string;
   linkedin: string;
+  leetcode: string;
+  website: string;
   summary: string;
   picture: string | null;
   pictureEnable: boolean;

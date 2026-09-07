@@ -15,7 +15,11 @@ import { supabase } from "./lib/supabaseClient";
 import { loadPersistedState } from "./redux-beta/store";
 import { hydrateData } from "./redux-beta/dataSlice";
 import { hydrateLook, type LooksState } from "./redux-beta/lookSlice";
-import { hydrateExperienceFormat } from "./redux-beta/uiSlice";
+import {
+  hydrateExperienceFormat,
+  hydrateSectionOrder,
+  hydrateContactColumns,
+} from "./redux-beta/uiSlice";
 import {
   clearCloud,
   setActiveResume,
@@ -25,6 +29,10 @@ import {
   mapResumeRowToDataState,
   mapRowToLook,
   mapRowToExperienceFormat,
+  mapRowToSectionOrder,
+  mapRowToContactColumns,
+  normalizeSectionOrder,
+  normalizeContactColumns,
 } from "./redux-beta/cloudMappers";
 import type { DataState } from "./redux-beta/types";
 import { captureAndUploadThumbnail } from "./lib/resumeThumbnail";
@@ -53,6 +61,8 @@ const emptyDataState: DataState = {
     address: "",
     github: "",
     linkedin: "",
+    leetcode: "",
+    website: "",
     summary: "",
     picture: null,
     pictureEnable: false,
@@ -110,6 +120,10 @@ function App() {
       dispatch(
         hydrateExperienceFormat(persisted?.ui?.experienceFormat ?? "long")
       );
+      dispatch(hydrateSectionOrder(normalizeSectionOrder(persisted?.ui?.sectionOrder)));
+      dispatch(
+        hydrateContactColumns(normalizeContactColumns(persisted?.ui?.contactColumns))
+      );
       return;
     }
 
@@ -136,6 +150,8 @@ function App() {
       dispatch(hydrateData(mapResumeRowToDataState(row)));
       dispatch(hydrateLook(mapRowToLook(row.look)));
       dispatch(hydrateExperienceFormat(mapRowToExperienceFormat(row.ui)));
+      dispatch(hydrateSectionOrder(mapRowToSectionOrder(row.ui)));
+      dispatch(hydrateContactColumns(mapRowToContactColumns(row.ui)));
       dispatch(setCloudStatus("ready"));
     })();
 
@@ -175,7 +191,7 @@ function App() {
           <TopBar />
           <div className=" h-[calc(100%-48px)] rounded-md">
             <ResizablePanelGroup direction="horizontal" className="h-full">
-              <ResizablePanel className="" minSize={30}>
+              <ResizablePanel className="" minSize={30} defaultSize={30}>
                 <InputGroup />
               </ResizablePanel>
               <ResizableHandle className="bg-secondary" withHandle />
