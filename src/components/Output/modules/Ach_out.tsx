@@ -1,6 +1,7 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
+import { RichText } from "@/components/RichText/RichText";
 
 function Experience_out() {
   const achievements = useAppSelector((state) => state.data.ach);
@@ -20,25 +21,38 @@ function Experience_out() {
                     <td className="py-[0.001em] flex gap-2">
                       {ach.link ? (
                         <a href={ach.link}>
-                          {ach.position} <ExternalLinkIcon className="inline" />
+                          <RichText html={ach.position} />{" "}
+                          <ExternalLinkIcon className="inline" />
                         </a>
                       ) : (
-                        ach.position
+                        <RichText html={ach.position} />
                       )}
 
                       <p className="font-normal"> - </p>
-                      <p className="font-normal italic">{ach.orgName}</p>
+                      <p className="font-normal italic">
+                        <RichText html={ach.orgName} />
+                      </p>
                     </td>
-                    <td className="text-right py-[0.001em]">{ach.duration}</td>
+                    <td className="text-right py-[0.001em]">
+                      <RichText html={ach.duration} />
+                    </td>
                   </tr>
 
                   {ach.d1 ? (
                     <tr>
                       <td colSpan={2} className="py-[0.001em]">
                         <div className="px-2">
-                          <li>{ach.d1}</li>
-                          <li>{ach.d2}</li>
-                          {ach.d3 ? <li>{ach.d3}</li> : null}
+                          <li>
+                            <RichText html={ach.d1} />
+                          </li>
+                          <li>
+                            <RichText html={ach.d2} />
+                          </li>
+                          {ach.d3 ? (
+                            <li>
+                              <RichText html={ach.d3} />
+                            </li>
+                          ) : null}
                         </div>
                       </td>
                     </tr>

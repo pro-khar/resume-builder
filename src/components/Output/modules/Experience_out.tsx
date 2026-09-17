@@ -2,6 +2,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
+import { RichText } from "@/components/RichText/RichText";
 
 function Experience_out() {
   const experience = useAppSelector((state) => state.data.experience);
@@ -22,50 +23,76 @@ function Experience_out() {
                           <td className="py-[0.001em] flex gap-2">
                             {exp.link ? (
                               <a href={exp.link}>
-                                {exp.orgName}{" "}
+                                <RichText html={exp.orgName} />{" "}
                                 <ExternalLinkIcon className="inline" />
                               </a>
                             ) : (
-                              exp.orgName
+                              <RichText html={exp.orgName} />
                             )}
 
                             <p className="font-normal"> - </p>
-                            <p className="font-normal italic">{exp.desig}</p>
+                            <p className="font-normal italic">
+                              <RichText html={exp.desig} />
+                            </p>
                           </td>
                           <td className="text-right py-[0.001em]">
-                            {exp.duration}
+                            <RichText html={exp.duration} />
                           </td>
                         </tr>
 
                         <tr>
                           <td colSpan={2} className="pl-2">
-                            <p className="font-medium">{exp.d1}</p>
+                            <RichText as="p" className="font-medium" html={exp.d1} />
                             <div className="flex flex-col pl-2">
-                              <li>{exp.t1_1}</li>
-                              <li>{exp.t1_2}</li>
-                              {exp.t1_3 ? <li>{exp.t1_3}</li> : null}
+                              <li>
+                                <RichText html={exp.t1_1} />
+                              </li>
+                              <li>
+                                <RichText html={exp.t1_2} />
+                              </li>
+                              {exp.t1_3 ? (
+                                <li>
+                                  <RichText html={exp.t1_3} />
+                                </li>
+                              ) : null}
                             </div>
                           </td>
                         </tr>
 
                         <tr>
                           <td colSpan={2} className="pl-2">
-                            <p className="font-medium">{exp.d2}</p>
+                            <RichText as="p" className="font-medium" html={exp.d2} />
                             <div className="flex flex-col pl-2">
-                              <li>{exp.t2_1}</li>
-                              <li>{exp.t2_2}</li>
-                              {exp.t2_3 ? <li>{exp.t2_3}</li> : null}
+                              <li>
+                                <RichText html={exp.t2_1} />
+                              </li>
+                              <li>
+                                <RichText html={exp.t2_2} />
+                              </li>
+                              {exp.t2_3 ? (
+                                <li>
+                                  <RichText html={exp.t2_3} />
+                                </li>
+                              ) : null}
                             </div>
                           </td>
                         </tr>
 
                         <tr>
                           <td colSpan={2} className="pl-2">
-                            <p className="font-medium">{exp.d3}</p>
+                            <RichText as="p" className="font-medium" html={exp.d3} />
                             <div className="flex flex-col pl-2">
-                              <li>{exp.t3_1}</li>
-                              <li>{exp.t3_2}</li>
-                              {exp.t3_3 ? <li>{exp.t3_3}</li> : null}
+                              <li>
+                                <RichText html={exp.t3_1} />
+                              </li>
+                              <li>
+                                <RichText html={exp.t3_2} />
+                              </li>
+                              {exp.t3_3 ? (
+                                <li>
+                                  <RichText html={exp.t3_3} />
+                                </li>
+                              ) : null}
                             </div>
                           </td>
                         </tr>
@@ -81,28 +108,42 @@ function Experience_out() {
                           <td className="py-[0.001em] flex gap-2">
                             {exp.link ? (
                               <a href={exp.link}>
-                                {exp.orgName}{" "}
+                                <RichText html={exp.orgName} />{" "}
                                 <ExternalLinkIcon className="inline" />
                               </a>
                             ) : (
-                              exp.orgName
+                              <RichText html={exp.orgName} />
                             )}
 
                             <p className="font-normal"> - </p>
-                            <p className="font-normal italic">{exp.desig}</p>
+                            <p className="font-normal italic">
+                              <RichText html={exp.desig} />
+                            </p>
                           </td>
                           <td className="text-right py-[0.001em]">
-                            {exp.duration}
+                            <RichText html={exp.duration} />
                           </td>
                         </tr>
 
                         <tr>
                           <td colSpan={2} className="py-[0.001em]">
                             <div className="ml-2 list-disc">
-                              <li>{exp.t1}</li>
-                              <li>{exp.t2}</li>
-                              {exp.t3 ? <li>{exp.t3}</li> : null}
-                              {exp.t4 ? <li>{exp.t4}</li> : null}
+                              <li>
+                                <RichText html={exp.t1} />
+                              </li>
+                              <li>
+                                <RichText html={exp.t2} />
+                              </li>
+                              {exp.t3 ? (
+                                <li>
+                                  <RichText html={exp.t3} />
+                                </li>
+                              ) : null}
+                              {exp.t4 ? (
+                                <li>
+                                  <RichText html={exp.t4} />
+                                </li>
+                              ) : null}
                             </div>
                           </td>
                         </tr>
@@ -110,7 +151,9 @@ function Experience_out() {
                         <tr>
                           <td colSpan={2} className="py-[0.001em] pl-2">
                             <span className="font-medium ">Tech Stack :</span>
-                            <span className="ml-2 text-zinc-600">{exp.techStack}</span>
+                            <span className="ml-2 text-zinc-600">
+                              <RichText html={exp.techStack} />
+                            </span>
                           </td>
                         </tr>
                       </tbody>

@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { ChangeEvent } from "react";
+import { RichTextEditor } from "@/components/RichText/RichTextEditor";
 import type { SectionField, SectionFieldGroup } from "./types";
 
 interface FieldBlock<TDraft> {
@@ -25,19 +25,29 @@ function buildBlocks<TDraft>(fields: SectionField<TDraft>[]): FieldBlock<TDraft>
 function renderInput<TDraft extends Record<string, string>>(
   field: SectionField<TDraft>,
   draft: TDraft,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onFieldChange: (key: string, value: string) => void
 ) {
-  const input = (
-    <Input
-      type={field.type}
-      id={field.key}
-      name={field.key}
-      value={draft[field.key]}
-      placeholder={field.placeholder}
-      onChange={onChange}
-      required={field.required}
-    />
-  );
+  // Free-text fields get the rich (bold/italic/underline) editor; links stay
+  // a plain <input> since formatting a URL doesn't make sense.
+  const input =
+    field.type === "url" ? (
+      <Input
+        type={field.type}
+        id={field.key}
+        name={field.key}
+        value={draft[field.key]}
+        placeholder={field.placeholder}
+        onChange={(e) => onFieldChange(field.key, e.target.value)}
+        required={field.required}
+      />
+    ) : (
+      <RichTextEditor
+        id={field.key}
+        value={draft[field.key]}
+        placeholder={field.placeholder}
+        onChange={(html) => onFieldChange(field.key, html)}
+      />
+    );
   if (field.bullet !== undefined) {
     return (
       <div className="flex items-center gap-2" key={field.key}>
@@ -54,7 +64,7 @@ interface SectionFieldInputsProps<TDraft extends Record<string, string>> {
   groups?: SectionFieldGroup<TDraft>[];
   groupsHeading?: string;
   draft: TDraft;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (key: string, value: string) => void;
 }
 
 export function SectionFieldInputs<TDraft extends Record<string, string>>({
@@ -109,11 +119,10 @@ export function SectionFieldInputs<TDraft extends Record<string, string>>({
                       </span>
                     ) : null}
                   </Label>
-                  <Input
+                  <RichTextEditor
                     id={group.descriptionKey}
-                    name={group.descriptionKey}
                     value={draft[group.descriptionKey]}
-                    onChange={onChange}
+                    onChange={(html) => onChange(group.descriptionKey, html)}
                   />
                   <Label>
                     Detailed-breakdown/Steps{" "}

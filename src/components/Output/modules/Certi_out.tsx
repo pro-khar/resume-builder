@@ -2,6 +2,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
+import { RichText } from "@/components/RichText/RichText";
 
 function Certi_out() {
   const certificate = useAppSelector((state) => state.data.certifications);
@@ -19,16 +20,21 @@ function Certi_out() {
                     <td className="py-[0.001em] flex gap-2">
                       {cer.link ? (
                         <a href={cer.link}>
-                          {cer.name} <ExternalLinkIcon className="inline" />
+                          <RichText html={cer.name} />{" "}
+                          <ExternalLinkIcon className="inline" />
                         </a>
                       ) : (
-                        cer.name
+                        <RichText html={cer.name} />
                       )}
 
                       <p className="font-normal"> - </p>
-                      <p className="font-normal italic">{cer.provider}</p>
+                      <p className="font-normal italic">
+                        <RichText html={cer.provider} />
+                      </p>
                     </td>
-                    <td className="text-right py-[0.001em]">{cer.duration}</td>
+                    <td className="text-right py-[0.001em]">
+                      <RichText html={cer.duration} />
+                    </td>
                   </tr>
                 </table>
               </div>

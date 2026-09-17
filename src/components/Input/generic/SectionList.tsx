@@ -2,7 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { ArrowUp, Pencil } from "lucide-react";
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SectionFieldInputs } from "./SectionFieldInputs";
+import { getMissingRequiredLabels } from "./validate";
 import type { SectionSchema } from "./types";
 
 interface SectionListProps<
@@ -29,17 +30,28 @@ export function SectionList<
   TItem extends { id: string }
 >({ schema, items, onUpdate, onRemove }: SectionListProps<TDraft, TItem>) {
   const [selected, setSelected] = useState<TItem | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (key: string, value: string) => {
     if (!selected) return;
-    setSelected({ ...selected, [e.target.name]: e.target.value } as TItem);
+    setSelected({ ...selected, [key]: value } as TItem);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!selected) return;
+    const missing = getMissingRequiredLabels(
+      schema.fields,
+      schema.groups,
+      selected as unknown as TDraft
+    );
+    if (missing.length) {
+      setError(`Please fill in: ${missing.join(", ")}`);
+      return;
+    }
     onUpdate(selected);
     setSelected(null);
+    setError(null);
   };
 
   return (
@@ -55,7 +67,10 @@ export function SectionList<
               <div className="flex gap-1">
                 <Dialog
                   open={selected?.id === item.id}
-                  onOpenChange={(open) => setSelected(open ? item : null)}
+                  onOpenChange={(open) => {
+                    setSelected(open ? item : null);
+                    setError(null);
+                  }}
                 >
                   <DialogTrigger asChild>
                     <Button className="px-3" onClick={() => setSelected(item)}>
@@ -76,6 +91,9 @@ export function SectionList<
                             draft={selected as unknown as TDraft}
                             onChange={handleChange}
                           />
+                        ) : null}
+                        {error ? (
+                          <p className="text-xs text-destructive">{error}</p>
                         ) : null}
                         <Button className="w-full" type="submit">
                           Save

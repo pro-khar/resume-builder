@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 import { Label } from "@/components/ui/label";
@@ -9,6 +8,7 @@ import { updateIntro } from "@/redux-beta/dataSlice";
 import SaveButton from "@/components/SaveButton";
 import { Trash } from "lucide-react";
 import { ensureHttpsUrl } from "@/lib/url";
+import { RichTextEditor } from "@/components/RichText/RichTextEditor";
 
 // Intro fields that hold a URL — normalized to always carry a protocol so
 // the output section's links work even if the user typed "github.com/foo"
@@ -29,6 +29,10 @@ function Intro() {
       ...prev,
       [e.target.name]: ensureHttpsUrl(e.target.value),
     }));
+  }
+
+  function handleRichChange(name: string, html: string) {
+    setLocalIntro({ ...localIntro, [name]: html });
   }
 
   function handleImage(e) {
@@ -78,11 +82,10 @@ function Intro() {
       </div>
       <div>
         <Label htmlFor="profile">Profile</Label>
-        <Input
+        <RichTextEditor
           id="profile"
-          name="profile"
           value={localIntro.profile}
-          onChange={handleChange}
+          onChange={(html) => handleRichChange("profile", html)}
           placeholder="e.g.:Backend Developer"
         />
       </div>
@@ -205,12 +208,11 @@ function Intro() {
 
       <div>
         <Label htmlFor="summary">Short Summary</Label>
-        <Textarea
+        <RichTextEditor
           id="summary"
-          name="summary"
           value={localIntro.summary}
-          onChange={handleChange}
-          rows={4}
+          onChange={(html) => handleRichChange("summary", html)}
+          multiline
         />
       </div>
 

@@ -1,6 +1,7 @@
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
+import { RichText } from "@/components/RichText/RichText";
 
 function Projects_out() {
   const projects = useAppSelector((state) => state.data.projects);
@@ -19,39 +20,53 @@ function Projects_out() {
                       <td className="py-[0.001em] flex gap-2">
                         {project.link ? (
                           <a href={project.link}>
-                            {project.title}{" "}
+                            <RichText html={project.title} />{" "}
                             <ExternalLinkIcon className="inline" />
                           </a>
                         ) : (
-                          project.title
+                          <RichText html={project.title} />
                         )}
                         {project.techStack ? (
                           <p className="font-normal">|</p>
                         ) : null}
                         {project.techStack ? (
-                          <p className="font-normal italic">
-                            {project.techStack}
-                          </p>
+                          <RichText
+                            as="p"
+                            className="font-normal italic"
+                            html={project.techStack}
+                          />
                         ) : null}
                       </td>
                       <td className="text-right py-[0.001em]">
-                        {project.duration}
+                        <RichText html={project.duration} />
                       </td>
                     </tr>
 
                     <tr>
                       <td colSpan={2} className="py-[0.001em]">
-                        {project.desc}
+                        <RichText html={project.desc} />
                       </td>
                     </tr>
 
                     <tr>
                       <td colSpan={2} className="py-[0.001em]">
                         <div className="ml-2 list-disc">
-                          <li>{project.f1}</li>
-                          <li>{project.f2}</li>
-                          {project.f3 ? <li>{project.f3}</li> : null}
-                          {project.f4 ? <li>{project.f4}</li> : null}
+                          <li>
+                            <RichText html={project.f1} />
+                          </li>
+                          <li>
+                            <RichText html={project.f2} />
+                          </li>
+                          {project.f3 ? (
+                            <li>
+                              <RichText html={project.f3} />
+                            </li>
+                          ) : null}
+                          {project.f4 ? (
+                            <li>
+                              <RichText html={project.f4} />
+                            </li>
+                          ) : null}
                         </div>
                       </td>
                     </tr>

@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/redux-beta/hooks";
 import Hr from "@/components/Hr";
 import ContactInfo from "./ContactInfo";
+import { RichText } from "@/components/RichText/RichText";
 
 // `interactive` enables drag-to-reorder on the contact-info block — the print
 // portal renders the same layout statically, no dnd-kit involved there.
@@ -25,7 +26,9 @@ function Intro_out({ interactive = false }: { interactive?: boolean }) {
 
         <div className="w-full flex flex-col gap-1">
           <h1 className="font-bold text-4xl tracking-tight">{intro.name}</h1>
-          <p className="mt-[-5px]">{intro.profile}</p>
+          <p className="mt-[-5px]">
+            <RichText html={intro.profile} />
+          </p>
           <hr className="border-black border-t " />
           <ContactInfo intro={intro} interactive={interactive} />
         </div>
@@ -34,7 +37,7 @@ function Intro_out({ interactive = false }: { interactive?: boolean }) {
         <div id="plain-container" className=" px-8 mb-1 ">
           <h1 className="font-semibold tracking-tight">SUMMARY</h1>
           <Hr/>
-          <p className="leading-[1.2] mt-1">{intro.summary}</p>
+          <RichText as="div" className="leading-[1.2] mt-1" html={intro.summary} />
         </div>
       ) : null}
     </>

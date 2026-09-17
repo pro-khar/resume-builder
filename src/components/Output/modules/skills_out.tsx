@@ -1,5 +1,6 @@
 import Hr from "@/components/Hr";
 import { useAppSelector } from "@/redux-beta/hooks";
+import { RichText } from "@/components/RichText/RichText";
 
 function Skills_out() {
   const skills = useAppSelector((state) => state.data.skills);
@@ -17,9 +18,9 @@ function Skills_out() {
             <div className="mx-4">
               {skills.map((skill) => (
                 <li key={skill.id}>
-                  <span className="font-bold">{skill.cat}</span>
+                  <RichText as="span" className="font-bold" html={skill.cat} />
                   <span> - </span>
-                  <span>{skill.sk}</span>
+                  <RichText as="span" html={skill.sk} />
                 </li>
               ))}
             </div>
