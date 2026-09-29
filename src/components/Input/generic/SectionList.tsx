@@ -77,7 +77,7 @@ export function SectionList<
                       <Pencil className="w-5 h-5" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-md">
+                  <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle>{schema.editDialogTitle}</DialogTitle>
                     </DialogHeader>

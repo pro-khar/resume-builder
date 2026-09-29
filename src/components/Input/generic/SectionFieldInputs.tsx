@@ -50,8 +50,8 @@ function renderInput<TDraft extends Record<string, string>>(
     );
   if (field.bullet !== undefined) {
     return (
-      <div className="flex items-center gap-2" key={field.key}>
-        <p>{field.bullet}. </p>
+      <div className="flex items-start gap-2" key={field.key}>
+        <p className="shrink-0 pt-2">{field.bullet}. </p>
         {input}
       </div>
     );

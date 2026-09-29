@@ -127,7 +127,9 @@ export function RichTextEditor({
     <div
       className={cn(
         "relative flex w-full rounded-md border border-input px-3 py-1 text-sm shadow-sm transition-colors focus-within:ring-1 focus-within:ring-ring dark:bg-primary/10",
-        multiline ? "min-h-[80px] items-start py-2" : "h-9 items-center",
+        // Single-line fields still wrap long text, so grow with it rather than
+        // clip at h-9; py-[7px] keeps a one-line field at exactly h-9.
+        multiline ? "min-h-[80px] items-start py-2" : "min-h-9 items-start py-[7px]",
         className
       )}
     >
