@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "@reduxjs/toolkit";
 import { supabase } from "@/lib/supabaseClient";
 import { useAppSelector } from "@/redux-beta/hooks";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+} from "@/components/ui/popover";
+import { RichText } from "@/components/RichText/RichText";
 import { ModeToggle } from "@/components/ui/ThemeToggle";
 import { useTheme } from "@/components/ui/theme-provider";
 import AccountMenu from "@/components/Topbar/AccountMenu";
@@ -18,7 +23,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { TrashIcon } from "@radix-ui/react-icons";
-import { PlusIcon, Pencil, Copy, ChevronRight } from "lucide-react";
+import { PlusIcon, Pencil, Copy, ChevronRight, Check, X } from "lucide-react";
 
 import {
   deleteThumbnail,
@@ -138,6 +143,84 @@ function ResumePaper({
   );
 }
 
+const PREVIEW_OPEN_DELAY_MS = 350;
+
+// Enlarged thumbnail shown beside the card while the pointer rests on its
+// small one. Uses an anchor rather than a PopoverTrigger so a click on the
+// thumbnail opens the editor instead of toggling the preview.
+function ThumbnailHoverPreview({
+  label,
+  src,
+  loading,
+  onClick,
+  children,
+}: {
+  label: string;
+  src: string;
+  loading: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  const timer = useRef<number>();
+
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  const show = () => {
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => setOpen(true), PREVIEW_OPEN_DELAY_MS);
+  };
+  const hide = () => {
+    window.clearTimeout(timer.current);
+    setOpen(false);
+  };
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverAnchor asChild>
+        <div
+          role="button"
+          tabIndex={0}
+          aria-label={label}
+          onMouseEnter={show}
+          onMouseLeave={hide}
+          onClick={() => {
+            hide();
+            onClick();
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") onClick();
+          }}
+          className="absolute inset-0 flex justify-center items-start pt-3 cursor-pointer"
+        >
+          {children}
+        </div>
+      </PopoverAnchor>
+      {/* pointer-events-none: if the popover ever overlaps the thumbnail (it
+          flips sides near the viewport edge), hovering it mustn't count as
+          leaving the thumbnail and make it flicker. */}
+      <PopoverContent
+        side="right"
+        align="start"
+        sideOffset={12}
+        onOpenAutoFocus={(e) => e.preventDefault()}
+        onCloseAutoFocus={(e) => e.preventDefault()}
+        className="w-auto p-2 pointer-events-none"
+      >
+        {loading ? (
+          <Skeleton className="w-[340px] aspect-[3/4] rounded-md" />
+        ) : (
+          <img
+            src={src}
+            alt=""
+            className="block w-auto h-auto max-w-[340px] max-h-[70vh] rounded-md border border-border bg-white"
+          />
+        )}
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 function SquareIconButton({
   title,
   tone,
@@ -200,7 +283,6 @@ export default function MyResumes() {
   const [renameDraft, setRenameDraft] = useState("");
   const [savingRename, setSavingRename] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
-  const [previewing, setPreviewing] = useState<ResumeSummary | null>(null);
 
   const fetchResumes = async () => {
     if (devMode) {
@@ -505,29 +587,27 @@ export default function MyResumes() {
                     key={resume.id}
                     className="group flex flex-col rounded-xl border border-border bg-secondary/30 overflow-hidden transition hover:-translate-y-0.5 hover:border-foreground/30"
                   >
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      title="Preview"
-                      onClick={() => setPreviewing(resume)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") setPreviewing(resume);
-                      }}
-                      className="relative h-[190px] overflow-hidden flex justify-center items-start pt-3 cursor-pointer"
-                    >
-                      <ResumePaper
-                        resumeId={resume.id}
-                        thumbnailUrl={thumbnailUrl}
-                        thumbnailsLoading={thumbnailsLoading}
-                      />
+                    <div className="relative h-[190px] overflow-hidden">
+                      <ThumbnailHoverPreview
+                        label={`Open ${resume.title || "Untitled Resume"}`}
+                        src={thumbnailUrl ?? placeholderThumbnail(resume.id)}
+                        loading={thumbnailsLoading && !thumbnailUrl}
+                        onClick={() => openResume(resume.id)}
+                      >
+                        <ResumePaper
+                          resumeId={resume.id}
+                          thumbnailUrl={thumbnailUrl}
+                          thumbnailsLoading={thumbnailsLoading}
+                        />
+                      </ThumbnailHoverPreview>
+                      {/* A sibling of the thumbnail, not a child, so hovering
+                          these buttons leaves the thumbnail and dismisses the
+                          preview rather than covering the card with it. */}
                       <div className="absolute top-2.5 right-2.5 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                         <SquareIconButton
-                          title="Rename"
+                          title="Open in editor"
                           tone="neutral"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            openRename(resume);
-                          }}
+                          onClick={() => openResume(resume.id)}
                         >
                           <Pencil className="w-3.5 h-3.5" />
                         </SquareIconButton>
@@ -535,20 +615,14 @@ export default function MyResumes() {
                           title="Duplicate"
                           tone="green"
                           disabled={duplicatingId === resume.id}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDuplicate(resume.id);
-                          }}
+                          onClick={() => handleDuplicate(resume.id)}
                         >
                           <Copy className="w-3.5 h-3.5" />
                         </SquareIconButton>
                         <SquareIconButton
                           title="Delete"
                           tone="red"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDelete(resume.id);
-                          }}
+                          onClick={() => handleDelete(resume.id)}
                         >
                           <TrashIcon className="w-3.5 h-3.5" />
                         </SquareIconButton>
@@ -564,13 +638,72 @@ export default function MyResumes() {
                       }}
                       className="bg-background text-foreground px-4 py-3 flex flex-col gap-1.5 cursor-pointer"
                     >
-                      <div className="font-semibold text-sm leading-tight truncate">
-                        {resume.title || "Untitled Resume"}
-                      </div>
-                      {role && (
-                        <div className="text-xs text-zinc-400 truncate -mt-1">
-                          {role}
+                      {renaming?.id === resume.id ? (
+                        // Kept from reaching the card's own click/Enter
+                        // handlers, which would open the editor. Enter still
+                        // submits (that's the input's default action, which
+                        // stopPropagation doesn't cancel).
+                        <form
+                          className="flex items-center gap-1"
+                          onClick={(e) => e.stopPropagation()}
+                          onKeyDown={(e) => {
+                            e.stopPropagation();
+                            if (e.key === "Escape") setRenaming(null);
+                          }}
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            handleRenameSubmit();
+                          }}
+                        >
+                          <Input
+                            aria-label="Resume title"
+                            value={renameDraft}
+                            onChange={(e) => setRenameDraft(e.target.value)}
+                            autoFocus
+                            className="h-7 min-w-0 px-2 text-sm font-semibold"
+                          />
+                          <button
+                            type="submit"
+                            title="Save"
+                            disabled={savingRename}
+                            className="flex-none w-7 h-7 rounded-md flex items-center justify-center text-emerald-600 hover:bg-emerald-500/15 transition disabled:opacity-50"
+                          >
+                            <Check className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            title="Cancel"
+                            onClick={() => setRenaming(null)}
+                            className="flex-none w-7 h-7 rounded-md flex items-center justify-center text-muted-foreground hover:bg-secondary transition"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        </form>
+                      ) : (
+                        <div className="flex items-center gap-1 min-w-0">
+                          <div className="font-semibold text-sm leading-tight truncate">
+                            {resume.title || "Untitled Resume"}
+                          </div>
+                          <button
+                            type="button"
+                            title="Rename"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openRename(resume);
+                            }}
+                            onKeyDown={(e) => e.stopPropagation()}
+                            className="flex-none p-0.5 rounded text-muted-foreground hover:text-foreground opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
+                          >
+                            <Pencil className="w-3 h-3" />
+                          </button>
                         </div>
+                      )}
+                      {role && (
+                        <RichText
+                          as="div"
+                          html={role}
+                          className="text-xs text-zinc-400 truncate -mt-1"
+                        />
                       )}
                       <div className="flex items-center justify-between gap-2 text-[11px] text-zinc-400">
                         <span>{formatRelative(resume.updated_at)}</span>
@@ -660,9 +793,11 @@ export default function MyResumes() {
                           {r.title || "Untitled Resume"}
                         </div>
                         {r.intro?.profile && (
-                          <div className="text-xs text-muted-foreground mt-0.5 truncate">
-                            {r.intro.profile}
-                          </div>
+                          <RichText
+                            as="div"
+                            html={r.intro.profile}
+                            className="text-xs text-muted-foreground mt-0.5 truncate"
+                          />
                         )}
                       </div>
                     </div>
@@ -671,68 +806,6 @@ export default function MyResumes() {
                 ))}
               </>
             )}
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog
-        open={!!renaming}
-        onOpenChange={(open) => !open && setRenaming(null)}
-      >
-        <DialogContent className="max-w-sm">
-          <DialogHeader>
-            <DialogTitle>Rename resume</DialogTitle>
-          </DialogHeader>
-          <form
-            className="space-y-2"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleRenameSubmit();
-            }}
-          >
-            <Label htmlFor="resume-title">Title</Label>
-            <Input
-              id="resume-title"
-              value={renameDraft}
-              onChange={(e) => setRenameDraft(e.target.value)}
-              autoFocus
-            />
-            <Button className="w-full" type="submit" disabled={savingRename}>
-              {savingRename ? "Saving..." : "Save"}
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog
-        open={!!previewing}
-        onOpenChange={(open) => !open && setPreviewing(null)}
-      >
-        <DialogContent className="max-w-lg p-0 overflow-hidden gap-0">
-          <DialogHeader className="p-5 pb-3">
-            <DialogTitle>
-              {previewing?.title || "Untitled Resume"}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="px-5 pb-5 bg-secondary/30 flex justify-center">
-            {previewing && thumbnailsLoading && !thumbnails[previewing.id] ? (
-              <Skeleton className="w-full h-[420px] rounded-md" />
-            ) : (
-              previewing && (
-                <img
-                  src={thumbnails[previewing.id] ?? placeholderThumbnail(previewing.id)}
-                  alt=""
-                  className="rounded-md shadow-xl border border-border max-h-[65vh] w-auto bg-white"
-                />
-              )
-            )}
-          </div>
-          <div className="p-5 pt-4 border-t border-border flex justify-end">
-            <Button
-              onClick={() => previewing && openResume(previewing.id)}
-            >
-              Open in editor
-            </Button>
           </div>
         </DialogContent>
       </Dialog>
