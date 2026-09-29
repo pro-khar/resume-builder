@@ -1,7 +1,7 @@
-import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { SectionFieldInputs } from "./SectionFieldInputs";
-import type { SectionSchema } from "./types";
+import type { FieldChangeEvent, SectionSchema } from "./types";
 
 interface SectionFormProps<TDraft extends Record<string, string>> {
   schema: SectionSchema<TDraft>;
@@ -22,7 +22,7 @@ export function SectionForm<TDraft extends Record<string, string>>({
     setDraft(schema.emptyDraft);
   }, [schema]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: FieldChangeEvent) => {
     setDraft({ ...draft, [e.target.name]: e.target.value });
   };
 

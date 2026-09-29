@@ -2,7 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { ArrowUp, Pencil } from "lucide-react";
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SectionFieldInputs } from "./SectionFieldInputs";
-import type { SectionSchema } from "./types";
+import type { FieldChangeEvent, SectionSchema } from "./types";
 
 interface SectionListProps<
   TDraft extends Record<string, string>,
@@ -30,7 +30,7 @@ export function SectionList<
 >({ schema, items, onUpdate, onRemove }: SectionListProps<TDraft, TItem>) {
   const [selected, setSelected] = useState<TItem | null>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: FieldChangeEvent) => {
     if (!selected) return;
     setSelected({ ...selected, [e.target.name]: e.target.value } as TItem);
   };
@@ -62,7 +62,7 @@ export function SectionList<
                       <Pencil className="w-5 h-5" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-md">
+                  <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle>{schema.editDialogTitle}</DialogTitle>
                     </DialogHeader>

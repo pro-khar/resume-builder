@@ -1,4 +1,9 @@
-import type { ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
+
+// Text fields render as textareas, url fields as inputs.
+export type FieldChangeEvent = ChangeEvent<
+  HTMLInputElement | HTMLTextAreaElement
+>;
 
 export interface SectionField<TDraft> {
   key: keyof TDraft & string;

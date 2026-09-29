@@ -1,7 +1,77 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { ChangeEvent } from "react";
-import type { SectionField, SectionFieldGroup } from "./types";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  type ComponentProps,
+  type KeyboardEvent,
+} from "react";
+import type {
+  FieldChangeEvent,
+  SectionField,
+  SectionFieldGroup,
+} from "./types";
+
+function fitHeight(el: HTMLTextAreaElement) {
+  el.style.height = "auto";
+  el.style.height = `${el.scrollHeight + el.offsetHeight - el.clientHeight}px`;
+}
+
+interface GrowingTextareaProps
+  extends Omit<ComponentProps<typeof Textarea>, "onChange"> {
+  onChange: (e: FieldChangeEvent) => void;
+}
+
+// Single-line field that wraps long text and grows to fit it, instead of an
+// <input> whose fixed height lets long text overflow. Newlines are blocked:
+// Enter submits the form like an <input> would, pasted line breaks become spaces.
+function GrowingTextarea({ value, onChange, ...props }: GrowingTextareaProps) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useLayoutEffect(() => {
+    if (ref.current) fitHeight(ref.current);
+  }, [value]);
+
+  // Width changes (resizable panels, a hidden tab becoming visible) re-wrap
+  // the text, so refit then too.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let width = el.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (el.clientWidth === width) return;
+      width = el.clientWidth;
+      fitHeight(el);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
+    e.preventDefault();
+    e.currentTarget.form?.requestSubmit();
+  };
+
+  return (
+    <Textarea
+      {...props}
+      ref={ref}
+      rows={1}
+      value={value}
+      onKeyDown={handleKeyDown}
+      onChange={(e) => {
+        if (/[\r\n]/.test(e.target.value)) {
+          e.target.value = e.target.value.replace(/[\r\n]+/g, " ");
+        }
+        onChange(e);
+      }}
+      className="min-h-9 py-[7px] resize-none overflow-hidden"
+    />
+  );
+}
 
 interface FieldBlock<TDraft> {
   label: SectionField<TDraft>;
@@ -25,23 +95,26 @@ function buildBlocks<TDraft>(fields: SectionField<TDraft>[]): FieldBlock<TDraft>
 function renderInput<TDraft extends Record<string, string>>(
   field: SectionField<TDraft>,
   draft: TDraft,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: FieldChangeEvent) => void
 ) {
-  const input = (
-    <Input
-      type={field.type}
-      id={field.key}
-      name={field.key}
-      value={draft[field.key]}
-      placeholder={field.placeholder}
-      onChange={onChange}
-      required={field.required}
-    />
-  );
+  const common = {
+    id: field.key,
+    name: field.key,
+    value: draft[field.key],
+    placeholder: field.placeholder,
+    onChange,
+    required: field.required,
+  };
+  const input =
+    field.type === "url" ? (
+      <Input type="url" {...common} />
+    ) : (
+      <GrowingTextarea {...common} />
+    );
   if (field.bullet !== undefined) {
     return (
-      <div className="flex items-center gap-2" key={field.key}>
-        <p>{field.bullet}. </p>
+      <div className="flex items-start gap-2" key={field.key}>
+        <p className="shrink-0 pt-2">{field.bullet}. </p>
         {input}
       </div>
     );
@@ -54,7 +127,7 @@ interface SectionFieldInputsProps<TDraft extends Record<string, string>> {
   groups?: SectionFieldGroup<TDraft>[];
   groupsHeading?: string;
   draft: TDraft;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: FieldChangeEvent) => void;
 }
 
 export function SectionFieldInputs<TDraft extends Record<string, string>>({
@@ -109,7 +182,7 @@ export function SectionFieldInputs<TDraft extends Record<string, string>>({
                       </span>
                     ) : null}
                   </Label>
-                  <Input
+                  <GrowingTextarea
                     id={group.descriptionKey}
                     name={group.descriptionKey}
                     value={draft[group.descriptionKey]}
