@@ -38,7 +38,7 @@ export const certificationSchema: SectionSchema<
   ],
   emptyDraft: { name: "", provider: "", link: "", duration: "" },
   addButtonLabel: "Add Certificate",
-  editDialogTitle: "Edit Certification",
+  editTitle: "Edit Certification",
   emptyStateLabel: "Add a Certification to continue",
   listHeightClassName: "h-[400px]",
   summary: (item) => createElement("p", { className: "font-extralight" }, item.name),

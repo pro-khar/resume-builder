@@ -52,7 +52,7 @@ export const experienceShortSchema: SectionSchema<
     link: "",
   },
   addButtonLabel: "Add Experience",
-  editDialogTitle: "Edit Experience",
+  editTitle: "Edit Experience",
   emptyStateLabel: "Add an Experience to continue",
   listHeightClassName: "h-[250px]",
   summary: (item) =>

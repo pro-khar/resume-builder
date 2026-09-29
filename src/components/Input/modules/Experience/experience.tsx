@@ -4,8 +4,7 @@ import { HelpCircle } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
 import { setExperienceFormat } from "@/redux-beta/uiSlice";
 import { addExperience, removeExperience, updateExperience } from "@/redux-beta/dataSlice";
-import { SectionForm } from "@/components/Input/generic/SectionForm";
-import { SectionList } from "@/components/Input/generic/SectionList";
+import { SectionEditor } from "@/components/Input/generic/SectionEditor";
 import { experienceShortSchema } from "./experienceShort.schema";
 import { experienceLongSchema } from "./experienceLong.schema";
 import type { SectionSchema } from "@/components/Input/generic/types";
@@ -27,8 +26,9 @@ export default function Experience() {
   >;
 
   return (
-    <>
-      <div className="max-w-md mt-4 mx-auto border rounded-md p-6">
+    <SectionEditor
+      schema={schema}
+      header={
         <div className="flex justify-between items-center mb-4">
           <h1 className="font-extralight text-2xl">Experience</h1>
           <div className="flex gap-2 items-center">
@@ -42,17 +42,11 @@ export default function Experience() {
             <HelpCircle className="w-4 h-4 text-muted-foreground" />
           </div>
         </div>
-        <SectionForm
-          schema={schema}
-          onSubmit={(draft) => dispatch(addExperience(draft))}
-        />
-      </div>
-      <SectionList
-        schema={schema}
-        items={experience}
-        onUpdate={(item) => dispatch(updateExperience(item))}
-        onRemove={(id) => dispatch(removeExperience(id))}
-      />
-    </>
+      }
+      items={experience}
+      onAdd={(draft) => dispatch(addExperience(draft))}
+      onUpdate={(item) => dispatch(updateExperience(item))}
+      onRemove={(id) => dispatch(removeExperience(id))}
+    />
   );
 }

@@ -57,7 +57,7 @@ export const projectSchema: SectionSchema<ProjectDraft, Project> = {
     techStack: "",
   },
   addButtonLabel: "Add Project",
-  editDialogTitle: "Edit Project",
+  editTitle: "Edit Project",
   emptyStateLabel: "Add a Project to continue",
   listHeightClassName: "h-[250px]",
   summary: (item) =>

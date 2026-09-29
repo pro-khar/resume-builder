@@ -28,7 +28,7 @@ export const skillSchema: SectionSchema<SkillDraft, Skill> = {
   ],
   emptyDraft: { cat: "", sk: "" },
   addButtonLabel: "Save",
-  editDialogTitle: "Edit Skill",
+  editTitle: "Edit Skill",
   emptyStateLabel: "Add a Skill to continue",
   listHeightClassName: "h-[600px]",
   summary: (item) =>

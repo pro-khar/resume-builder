@@ -61,7 +61,7 @@ export const achievementSchema: SectionSchema<AchievementDraft, Achievement> = {
     link: "",
   },
   addButtonLabel: "Add",
-  editDialogTitle: "Edit Achievement/PoR",
+  editTitle: "Edit Achievement/PoR",
   emptyStateLabel: "Add an Achievement/PoR to continue",
   listHeightClassName: "h-[250px]",
   summary: (item) =>

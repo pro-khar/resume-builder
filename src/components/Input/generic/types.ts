@@ -30,7 +30,7 @@ export interface SectionSchema<
   groupsHeading?: string;
   emptyDraft: TDraft;
   addButtonLabel: string;
-  editDialogTitle: string;
+  editTitle: string;
   emptyStateLabel: string;
   listHeightClassName: string; // preserve each section's current exact height class
   summary: (item: TItem) => ReactNode; // the collapsed list-row's content
