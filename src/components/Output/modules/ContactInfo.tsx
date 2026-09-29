@@ -20,8 +20,8 @@ import {
   useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { useAppDispatch, useAppSelector } from "@/redux-beta/hooks";
+import { useDragTransform } from "@/components/Output/previewScale";
 import {
   setContactColumns,
   type ContactColumnId,
@@ -98,11 +98,12 @@ function StaticContactRow({ id, intro }: { id: ContactKey; intro: Intro }) {
 function SortableContactRow({ id, intro }: { id: ContactKey; intro: Intro }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id });
+  const dragTransform = useDragTransform(transform);
 
   return (
     <div
       ref={setNodeRef}
-      style={{ transform: CSS.Transform.toString(transform), transition }}
+      style={{ transform: dragTransform, transition }}
       className={`group relative flex items-center ${isDragging ? "z-10 opacity-70" : ""}`}
     >
       <button

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "lucide-react";
+import { useDragTransform } from "./previewScale";
 
 // Wraps one resume-preview section so it can be dragged to reorder. There's
 // deliberately no delete affordance here — only a grip handle that appears on
@@ -10,11 +10,12 @@ import { GripVertical } from "lucide-react";
 function SortableSection({ id, children }: { id: string; children: ReactNode }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id });
+  const dragTransform = useDragTransform(transform);
 
   return (
     <div
       ref={setNodeRef}
-      style={{ transform: CSS.Transform.toString(transform), transition }}
+      style={{ transform: dragTransform, transition }}
       className={`group relative ${isDragging ? "z-10 opacity-70" : ""}`}
     >
       <button
