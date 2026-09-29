@@ -4,7 +4,7 @@ import { SectionList } from "./SectionList";
 import type { SectionSchema } from "./types";
 
 interface SectionEditorProps<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string }
 > {
   schema: SectionSchema<TDraft, TItem>;
@@ -18,7 +18,7 @@ interface SectionEditorProps<
 // A section's add form plus its list of entries. Editing an entry loads it
 // into that same form (rather than a modal) and saves it back from there.
 export function SectionEditor<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string }
 >({
   schema,

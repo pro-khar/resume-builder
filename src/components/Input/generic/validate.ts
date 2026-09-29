@@ -1,34 +1,37 @@
-import type { SectionField, SectionFieldGroup } from "./types";
+import { isBlankRichText } from "@/lib/utils";
+import type { PointGroup } from "@/redux-beta/types";
+import { nonBlankPoints, padGroups } from "./points";
+import type { SectionField, SectionGroupsConfig } from "./types";
 
 // Rich-text fields store HTML instead of plain text, so an empty <input required>
 // no longer catches a blank submission natively — this replaces that native check.
-function isBlank(value: string | undefined): boolean {
-  return !value || value.replace(/<[^>]*>/g, "").trim().length === 0;
-}
-
-export function getMissingRequiredLabels<TDraft extends Record<string, string>>(
+export function getMissingRequiredLabels<TDraft extends object>(
   fields: SectionField<TDraft>[],
-  groups: SectionFieldGroup<TDraft>[] | undefined,
+  groups: SectionGroupsConfig<TDraft> | undefined,
   draft: TDraft
 ): string[] {
+  const values = draft as Record<string, unknown>;
   const missing: string[] = [];
 
   for (const field of fields) {
-    if (field.required && isBlank(draft[field.key])) {
-      missing.push(field.label ?? field.key);
+    if (field.type === "points") {
+      const min = field.minItems ?? 0;
+      const points = values[field.key] as string[] | undefined;
+      if (nonBlankPoints(points).length < min) {
+        missing.push(`${field.label} (at least ${min})`);
+      }
+    } else if (field.required && isBlankRichText(values[field.key] as string)) {
+      missing.push(field.label);
     }
   }
 
-  for (const group of groups ?? []) {
-    for (const field of group.subFields) {
-      if (field.required && isBlank(draft[field.key])) {
-        missing.push(
-          field.bullet
-            ? `${group.descriptionLabel} ${group.badge} #${field.bullet}`
-            : `${group.descriptionLabel} ${group.badge}`
-        );
+  if (groups) {
+    const list = padGroups(values[groups.key] as PointGroup[] | undefined, groups.count);
+    list.forEach((group, i) => {
+      if (nonBlankPoints(group.points).length < groups.minPoints) {
+        missing.push(`${groups.pointsLabel} ${i + 1} (at least ${groups.minPoints})`);
       }
-    }
+    });
   }
 
   return missing;

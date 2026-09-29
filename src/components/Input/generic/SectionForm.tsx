@@ -2,10 +2,11 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { SectionFieldInputs } from "./SectionFieldInputs";
 import { getMissingRequiredLabels } from "./validate";
-import type { SectionSchema } from "./types";
+import { compactPoints } from "./points";
+import type { DraftValue, SectionSchema } from "./types";
 
 interface SectionFormProps<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string }
 > {
   schema: SectionSchema<TDraft, TItem>;
@@ -16,7 +17,7 @@ interface SectionFormProps<
 }
 
 export function SectionForm<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string }
 >({
   schema,
@@ -42,7 +43,7 @@ export function SectionForm<
     }
   }, [editing, schema]);
 
-  const handleChange = (key: string, value: string) => {
+  const handleChange = (key: string, value: DraftValue) => {
     setDraft({ ...draft, [key]: value });
   };
 
@@ -53,10 +54,11 @@ export function SectionForm<
       setError(`Please fill in: ${missing.join(", ")}`);
       return;
     }
+    const compacted = compactPoints(schema.fields, schema.groups, draft);
     if (editing) {
-      onSave({ ...editing, ...draft });
+      onSave({ ...editing, ...compacted });
     } else {
-      onAdd(draft);
+      onAdd(compacted);
       setDraft(schema.emptyDraft);
     }
     setError(null);
@@ -75,7 +77,6 @@ export function SectionForm<
       <SectionFieldInputs
         fields={schema.fields}
         groups={schema.groups}
-        groupsHeading={schema.groupsHeading}
         draft={draft}
         onChange={handleChange}
       />

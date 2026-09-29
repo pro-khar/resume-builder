@@ -1,33 +1,40 @@
 import type { ReactNode } from "react";
+import type { PointGroup } from "@/redux-beta/types";
+
+export type DraftValue = string | string[] | PointGroup[];
 
 export interface SectionField<TDraft> {
   key: keyof TDraft & string;
-  label?: string; // omit → bare input with no <Label> (e.g. f2/f3/f4)
+  label: string;
   placeholder?: string;
   required: boolean;
-  type: "text" | "url";
+  // "points" → the draft value is a string[] edited as a growable numbered list
+  type: "text" | "url" | "points";
   hint?: string; // small purple italic text, e.g. "(minimum two)"
-  bullet?: number; // renders the "N." numbered-list prefix
+  minItems?: number; // "points" only: how many non-blank points are required
 }
 
-// Only experienceLong.schema.ts uses this — 3 outer description-groups, each with
-// nested numbered sub-fields (the numbered-circle-badge UI).
-export interface SectionFieldGroup<TDraft> {
-  badge: number;
-  descriptionKey: keyof TDraft & string;
+// Only experienceLong.schema.ts uses this — a fixed number of numbered
+// description-groups (the numbered-circle-badge UI), each with its own
+// growable list of points. draft[key] is a PointGroup[].
+export interface SectionGroupsConfig<TDraft> {
+  key: keyof TDraft & string;
+  heading: string;
+  count: number;
   descriptionLabel: string;
   descriptionHint?: string;
-  subFields: SectionField<TDraft>[];
+  pointsLabel: string;
+  pointsHint?: string;
+  minPoints: number;
 }
 
 export interface SectionSchema<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string } = TDraft & { id: string }
 > {
   title: string;
   fields: SectionField<TDraft>[];
-  groups?: SectionFieldGroup<TDraft>[];
-  groupsHeading?: string;
+  groups?: SectionGroupsConfig<TDraft>;
   emptyDraft: TDraft;
   addButtonLabel: string;
   editTitle: string;

@@ -38,19 +38,22 @@ export interface Project {
   title: string;
   duration: string;
   desc: string;
-  f1: string;
-  f2: string;
-  f3: string;
-  f4: string;
+  points: string[];
   link: string;
   techStack: string;
 }
 
+// A long-format experience block: a one-line description with its own points.
+export interface PointGroup {
+  desc: string;
+  points: string[];
+}
+
 // One wide interface with optional variant fields — NOT a union. The redux array has
 // zero discriminant between short/long entries (by design, out of scope to add one), so a
-// true union would make e.g. `item.d1` a compile error inside the generic SectionList when
-// TItem is the union. Optional fields are the honest model: a short-created entry really
-// doesn't have a `d1` key at all.
+// true union would make e.g. `item.groups` a compile error inside the generic SectionList
+// when TItem is the union. Optional fields are the honest model: a short-created entry
+// really doesn't have a `groups` key at all.
 export interface Experience {
   id: string;
   orgName: string;
@@ -58,54 +61,24 @@ export interface Experience {
   duration: string;
   techStack: string;
   link: string;
-  t1?: string; // short-form fields
-  t2?: string;
-  t3?: string;
-  t4?: string;
-  d1?: string; // long-form fields
-  t1_1?: string;
-  t1_2?: string;
-  t1_3?: string;
-  d2?: string;
-  t2_1?: string;
-  t2_2?: string;
-  t2_3?: string;
-  d3?: string;
-  t3_1?: string;
-  t3_2?: string;
-  t3_3?: string;
+  points?: string[]; // short-form
+  groups?: PointGroup[]; // long-form
 }
 
 export interface ExperienceShortDraft {
-  [key: string]: string;
   orgName: string;
   desig: string;
   duration: string;
-  t1: string;
-  t2: string;
-  t3: string;
-  t4: string;
+  points: string[];
   techStack: string;
   link: string;
 }
 
 export interface ExperienceLongDraft {
-  [key: string]: string;
   orgName: string;
   desig: string;
   duration: string;
-  d1: string;
-  t1_1: string;
-  t1_2: string;
-  t1_3: string;
-  d2: string;
-  t2_1: string;
-  t2_2: string;
-  t2_3: string;
-  d3: string;
-  t3_1: string;
-  t3_2: string;
-  t3_3: string;
+  groups: PointGroup[];
   techStack: string;
   link: string;
 }
@@ -123,9 +96,7 @@ export interface Achievement {
   position: string;
   orgName: string;
   duration: string;
-  d1: string;
-  d2: string;
-  d3: string;
+  points: string[];
   link: string;
 }
 

@@ -1,143 +1,208 @@
+import { useEffect, useRef, useState } from "react";
+import { Plus, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RichTextEditor } from "@/components/RichText/RichTextEditor";
-import type { SectionField, SectionFieldGroup } from "./types";
+import type { PointGroup } from "@/redux-beta/types";
+import { minPointRows, padGroups, padPoints } from "./points";
+import type { DraftValue, SectionField, SectionGroupsConfig } from "./types";
 
-interface FieldBlock<TDraft> {
-  label: SectionField<TDraft>;
-  rest: SectionField<TDraft>[];
+function FieldLabel({
+  htmlFor,
+  label,
+  required,
+  hint,
+}: {
+  htmlFor?: string;
+  label: string;
+  required?: boolean;
+  hint?: string;
+}) {
+  return (
+    <Label htmlFor={htmlFor}>
+      {label}{" "}
+      {required ? <span className="text-purple-500">*</span> : null}
+      {hint ? (
+        <span className="text-purple-500 text-xs italic"> {hint}</span>
+      ) : null}
+    </Label>
+  );
 }
 
-function buildBlocks<TDraft>(fields: SectionField<TDraft>[]): FieldBlock<TDraft>[] {
-  const blocks: FieldBlock<TDraft>[] = [];
-  let current: FieldBlock<TDraft> | null = null;
-  for (const field of fields) {
-    if (field.label !== undefined || current === null) {
-      current = { label: field, rest: [] };
-      blocks.push(current);
-    } else {
-      current.rest.push(field);
-    }
-  }
-  return blocks;
-}
-
-function renderInput<TDraft extends Record<string, string>>(
-  field: SectionField<TDraft>,
-  draft: TDraft,
-  onFieldChange: (key: string, value: string) => void
-) {
-  // Free-text fields get the rich (bold/italic/underline) editor; links stay
-  // a plain <input> since formatting a URL doesn't make sense.
-  const input =
-    field.type === "url" ? (
-      <Input
-        type={field.type}
-        id={field.key}
-        name={field.key}
-        value={draft[field.key]}
-        placeholder={field.placeholder}
-        onChange={(e) => onFieldChange(field.key, e.target.value)}
-        required={field.required}
-      />
-    ) : (
-      <RichTextEditor
-        id={field.key}
-        value={draft[field.key]}
-        placeholder={field.placeholder}
-        onChange={(html) => onFieldChange(field.key, html)}
-      />
-    );
-  if (field.bullet !== undefined) {
-    return (
-      <div className="flex items-start gap-2" key={field.key}>
-        <p className="shrink-0 pt-2">{field.bullet}. </p>
-        {input}
-      </div>
-    );
-  }
-  return <div key={field.key}>{input}</div>;
-}
-
-interface SectionFieldInputsProps<TDraft extends Record<string, string>> {
-  fields: SectionField<TDraft>[];
-  groups?: SectionFieldGroup<TDraft>[];
-  groupsHeading?: string;
-  draft: TDraft;
-  onChange: (key: string, value: string) => void;
-}
-
-export function SectionFieldInputs<TDraft extends Record<string, string>>({
-  fields,
-  groups,
-  groupsHeading,
-  draft,
+// A numbered list of single-line rich-text points that can grow past its
+// starting rows. Rows beyond the required minimum can be removed.
+function PointsInput({
+  id,
+  points,
+  minItems,
   onChange,
-}: SectionFieldInputsProps<TDraft>) {
-  const blocks = buildBlocks(fields);
+}: {
+  id: string;
+  points: string[] | undefined;
+  minItems?: number;
+  onChange: (points: string[]) => void;
+}) {
+  const rows = padPoints(points, minItems);
+  const canRemove = rows.length > minPointRows(minItems);
+  const listRef = useRef<HTMLDivElement>(null);
+  const [focusRow, setFocusRow] = useState<number | null>(null);
+
+  // Put the caret in a just-added row once its editor has mounted.
+  useEffect(() => {
+    if (focusRow === null) return;
+    const editors = listRef.current?.querySelectorAll<HTMLElement>(".ProseMirror");
+    editors?.[focusRow]?.focus();
+    setFocusRow(null);
+  }, [focusRow]);
+
+  return (
+    <div ref={listRef} className="space-y-1.5">
+      {rows.map((point, i) => (
+        <div className="flex items-start gap-2" key={i}>
+          <p className="shrink-0 pt-2">{i + 1}. </p>
+          <RichTextEditor
+            id={`${id}-${i}`}
+            value={point}
+            onChange={(html) =>
+              onChange(rows.map((row, j) => (j === i ? html : row)))
+            }
+          />
+          {canRemove ? (
+            <button
+              type="button"
+              title="Remove point"
+              aria-label={`Remove point ${i + 1}`}
+              onClick={() => onChange(rows.filter((_, j) => j !== i))}
+              className="shrink-0 mt-2 rounded p-0.5 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={() => {
+          onChange([...rows, ""]);
+          setFocusRow(rows.length);
+        }}
+        className="ml-5 flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <Plus className="h-3.5 w-3.5" />
+        Add point
+      </button>
+    </div>
+  );
+}
+
+function GroupsInput<TDraft>({
+  config,
+  groups,
+  onChange,
+}: {
+  config: SectionGroupsConfig<TDraft>;
+  groups: PointGroup[] | undefined;
+  onChange: (groups: PointGroup[]) => void;
+}) {
+  const list = padGroups(groups, config.count);
+  const update = (index: number, group: PointGroup) =>
+    onChange(list.map((g, i) => (i === index ? group : g)));
 
   return (
     <>
-      {blocks.map((block) => (
-        <div key={block.label.key}>
-          {block.label.label ? (
-            <Label htmlFor={block.label.key}>
-              {block.label.label}{" "}
-              {block.label.required ? (
-                <span className="text-purple-500">*</span>
-              ) : null}
-              {block.label.hint ? (
-                <span className="text-purple-500 text-xs italic">
-                  {" "}
-                  {block.label.hint}
-                </span>
-              ) : null}
-            </Label>
-          ) : null}
-          {renderInput(block.label, draft, onChange)}
-          {block.rest.map((field) => renderInput(field, draft, onChange))}
+      <p className="text-sm font-medium">{config.heading}</p>
+      <div className="h-[200px] overflow-y-auto border rounded-md p-2 space-y-4">
+        {list.map((group, i) => (
+          <div key={i} className="flex">
+            <div className="bg-secondary rounded-full w-10 flex justify-center items-center p-1 h-full m-2 border-2">
+              {i + 1}
+            </div>
+            <div className="w-full">
+              <FieldLabel
+                htmlFor={`${config.key}-${i}-desc`}
+                label={config.descriptionLabel}
+                hint={config.descriptionHint}
+              />
+              <RichTextEditor
+                id={`${config.key}-${i}-desc`}
+                value={group.desc}
+                onChange={(html) => update(i, { ...group, desc: html })}
+              />
+              <FieldLabel label={config.pointsLabel} hint={config.pointsHint} />
+              <PointsInput
+                id={`${config.key}-${i}`}
+                points={group.points}
+                minItems={config.minPoints}
+                onChange={(points) => update(i, { ...group, points })}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+interface SectionFieldInputsProps<TDraft extends object> {
+  fields: SectionField<TDraft>[];
+  groups?: SectionGroupsConfig<TDraft>;
+  draft: TDraft;
+  onChange: (key: string, value: DraftValue) => void;
+}
+
+export function SectionFieldInputs<TDraft extends object>({
+  fields,
+  groups,
+  draft,
+  onChange,
+}: SectionFieldInputsProps<TDraft>) {
+  const values = draft as Record<string, unknown>;
+
+  return (
+    <>
+      {fields.map((field) => (
+        <div key={field.key}>
+          <FieldLabel
+            htmlFor={field.type === "points" ? `${field.key}-0` : field.key}
+            label={field.label}
+            required={field.required}
+            hint={field.hint}
+          />
+          {field.type === "points" ? (
+            <PointsInput
+              id={field.key}
+              points={values[field.key] as string[] | undefined}
+              minItems={field.minItems}
+              onChange={(points) => onChange(field.key, points)}
+            />
+          ) : field.type === "url" ? (
+            // Links stay a plain <input> since formatting a URL doesn't make sense.
+            <Input
+              type="url"
+              id={field.key}
+              name={field.key}
+              value={(values[field.key] as string | undefined) ?? ""}
+              placeholder={field.placeholder}
+              onChange={(e) => onChange(field.key, e.target.value)}
+              required={field.required}
+            />
+          ) : (
+            <RichTextEditor
+              id={field.key}
+              value={(values[field.key] as string | undefined) ?? ""}
+              placeholder={field.placeholder}
+              onChange={(html) => onChange(field.key, html)}
+            />
+          )}
         </div>
       ))}
 
-      {groups && groups.length ? (
-        <>
-          {groupsHeading ? (
-            <p className="text-sm font-medium">{groupsHeading}</p>
-          ) : null}
-          <div className="h-[200px] overflow-y-auto border rounded-md p-2 space-y-4">
-            {groups.map((group) => (
-              <div key={group.badge} id="repeat" className="flex">
-                <div className="bg-secondary rounded-full w-10 flex justify-center items-center p-1 h-full m-2 border-2">
-                  {group.badge}
-                </div>
-                <div className="w-full">
-                  <Label htmlFor={group.descriptionKey}>
-                    {group.descriptionLabel}{" "}
-                    {group.descriptionHint ? (
-                      <span className="text-purple-500 text-xs italic">
-                        {group.descriptionHint}
-                      </span>
-                    ) : null}
-                  </Label>
-                  <RichTextEditor
-                    id={group.descriptionKey}
-                    value={draft[group.descriptionKey]}
-                    onChange={(html) => onChange(group.descriptionKey, html)}
-                  />
-                  <Label>
-                    Detailed-breakdown/Steps{" "}
-                    <span className="text-purple-500 text-xs italic">
-                      (Minimum-two)
-                    </span>
-                  </Label>
-                  {group.subFields.map((field) =>
-                    renderInput(field, draft, onChange)
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
+      {groups ? (
+        <GroupsInput
+          config={groups}
+          groups={values[groups.key] as PointGroup[] | undefined}
+          onChange={(list) => onChange(groups.key, list)}
+        />
       ) : null}
     </>
   );

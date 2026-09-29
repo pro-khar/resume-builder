@@ -38,21 +38,15 @@ function Experience_out() {
                     </td>
                   </tr>
 
-                  {ach.d1 ? (
+                  {ach.points?.length ? (
                     <tr>
                       <td colSpan={2} className="py-[0.001em]">
                         <div className="px-2">
-                          <li>
-                            <RichText html={ach.d1} />
-                          </li>
-                          <li>
-                            <RichText html={ach.d2} />
-                          </li>
-                          {ach.d3 ? (
-                            <li>
-                              <RichText html={ach.d3} />
+                          {ach.points.map((point, i) => (
+                            <li key={i}>
+                              <RichText html={point} />
                             </li>
-                          ) : null}
+                          ))}
                         </div>
                       </td>
                     </tr>

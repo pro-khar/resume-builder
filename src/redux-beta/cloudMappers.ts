@@ -5,10 +5,12 @@ import type {
   Education,
   Experience,
   Intro,
+  PointGroup,
   Project,
   Skill,
 } from "./types";
 import type { LooksState } from "./lookSlice";
+import { isBlankRichText } from "@/lib/utils";
 import {
   DEFAULT_CONTACT_COLUMNS,
   DEFAULT_SECTION_ORDER,
@@ -104,8 +106,89 @@ export interface ResumeRowWithChildren {
   achievements: (Achievement & OrderedRow)[] | null;
 }
 
-export function mapResumeRowToDataState(row: ResumeRowWithChildren): DataState {
+// Points used to live in fixed fields/columns before moving to lists
+// (`points`, plus `groups` for long-format experience). A row written by an
+// older client, or a local snapshot saved by one, may only have the old
+// fields — the list columns are NULL for those — so fall back to them, and
+// drop the old keys so they're never written back.
+const LEGACY_PROJECT_POINTS = ["f1", "f2", "f3", "f4"];
+const LEGACY_ACHIEVEMENT_POINTS = ["d1", "d2", "d3"];
+const LEGACY_EXPERIENCE_POINTS = ["t1", "t2", "t3", "t4"];
+const LEGACY_EXPERIENCE_GROUPS = [
+  { desc: "d1", points: ["t1_1", "t1_2", "t1_3"] },
+  { desc: "d2", points: ["t2_1", "t2_2", "t2_3"] },
+  { desc: "d3", points: ["t3_1", "t3_2", "t3_3"] },
+];
+
+type LooseItem = Record<string, unknown>;
+
+function legacyPoints(item: LooseItem, keys: string[]): string[] {
+  return keys
+    .map((key) => item[key])
+    .filter((v): v is string => typeof v === "string" && !isBlankRichText(v));
+}
+
+function withoutKeys(item: LooseItem, keys: string[]): LooseItem {
+  const clean = { ...item };
+  for (const key of keys) delete clean[key];
+  return clean;
+}
+
+function normalizeProject(item: LooseItem): Project {
   return {
+    ...withoutKeys(item, LEGACY_PROJECT_POINTS),
+    points:
+      (item.points as string[] | null | undefined) ??
+      legacyPoints(item, LEGACY_PROJECT_POINTS),
+  } as Project;
+}
+
+function normalizeAchievement(item: LooseItem): Achievement {
+  return {
+    ...withoutKeys(item, LEGACY_ACHIEVEMENT_POINTS),
+    points:
+      (item.points as string[] | null | undefined) ??
+      legacyPoints(item, LEGACY_ACHIEVEMENT_POINTS),
+  } as Achievement;
+}
+
+function normalizeExperience(item: LooseItem): Experience {
+  const legacyGroups = LEGACY_EXPERIENCE_GROUPS.map((group) => ({
+    desc: typeof item[group.desc] === "string" ? (item[group.desc] as string) : "",
+    points: legacyPoints(item, group.points),
+  }));
+  const hasLegacyGroups = legacyGroups.some(
+    (group) => !isBlankRichText(group.desc) || group.points.length > 0
+  );
+  return {
+    ...withoutKeys(item, [
+      ...LEGACY_EXPERIENCE_POINTS,
+      ...LEGACY_EXPERIENCE_GROUPS.flatMap((group) => [group.desc, ...group.points]),
+    ]),
+    points:
+      (item.points as string[] | null | undefined) ??
+      legacyPoints(item, LEGACY_EXPERIENCE_POINTS),
+    groups:
+      (item.groups as PointGroup[] | null | undefined) ??
+      (hasLegacyGroups ? legacyGroups : []),
+  } as Experience;
+}
+
+// Brings every points-bearing item in a DataState onto the list shape — see
+// the LEGACY_* comment above. Used for both cloud rows and localStorage.
+export function normalizeDataStatePoints(data: DataState): DataState {
+  return {
+    ...data,
+    projects: (data.projects ?? []).map((p) => normalizeProject(p as unknown as LooseItem)),
+    experience: (data.experience ?? []).map((e) =>
+      normalizeExperience(e as unknown as LooseItem)
+    ),
+    ach: (data.ach ?? []).map((a) => normalizeAchievement(a as unknown as LooseItem)),
+  };
+}
+
+export function mapResumeRowToDataState(row: ResumeRowWithChildren): DataState {
+  return normalizeDataStatePoints({
     intro:
       row.intro && Object.keys(row.intro).length > 0
         ? ({ ...emptyIntro, ...row.intro } as Intro)
@@ -121,7 +204,7 @@ export function mapResumeRowToDataState(row: ResumeRowWithChildren): DataState {
       stripInfraColumns
     ) as Certification[],
     ach: sortByOrderIndex(row.achievements).map(stripInfraColumns) as Achievement[],
-  };
+  });
 }
 
 export function mapRowToLook(

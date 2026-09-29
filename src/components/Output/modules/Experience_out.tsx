@@ -40,62 +40,20 @@ function Experience_out() {
                           </td>
                         </tr>
 
-                        <tr>
-                          <td colSpan={2} className="pl-2">
-                            <RichText as="p" className="font-medium" html={exp.d1} />
-                            <div className="flex flex-col pl-2">
-                              <li>
-                                <RichText html={exp.t1_1} />
-                              </li>
-                              <li>
-                                <RichText html={exp.t1_2} />
-                              </li>
-                              {exp.t1_3 ? (
-                                <li>
-                                  <RichText html={exp.t1_3} />
-                                </li>
-                              ) : null}
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td colSpan={2} className="pl-2">
-                            <RichText as="p" className="font-medium" html={exp.d2} />
-                            <div className="flex flex-col pl-2">
-                              <li>
-                                <RichText html={exp.t2_1} />
-                              </li>
-                              <li>
-                                <RichText html={exp.t2_2} />
-                              </li>
-                              {exp.t2_3 ? (
-                                <li>
-                                  <RichText html={exp.t2_3} />
-                                </li>
-                              ) : null}
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td colSpan={2} className="pl-2">
-                            <RichText as="p" className="font-medium" html={exp.d3} />
-                            <div className="flex flex-col pl-2">
-                              <li>
-                                <RichText html={exp.t3_1} />
-                              </li>
-                              <li>
-                                <RichText html={exp.t3_2} />
-                              </li>
-                              {exp.t3_3 ? (
-                                <li>
-                                  <RichText html={exp.t3_3} />
-                                </li>
-                              ) : null}
-                            </div>
-                          </td>
-                        </tr>
+                        {(exp.groups ?? []).map((group, g) => (
+                          <tr key={g}>
+                            <td colSpan={2} className="pl-2">
+                              <RichText as="p" className="font-medium" html={group.desc} />
+                              <div className="flex flex-col pl-2">
+                                {group.points.map((point, i) => (
+                                  <li key={i}>
+                                    <RichText html={point} />
+                                  </li>
+                                ))}
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
@@ -128,22 +86,11 @@ function Experience_out() {
                         <tr>
                           <td colSpan={2} className="py-[0.001em]">
                             <div className="ml-2 list-disc">
-                              <li>
-                                <RichText html={exp.t1} />
-                              </li>
-                              <li>
-                                <RichText html={exp.t2} />
-                              </li>
-                              {exp.t3 ? (
-                                <li>
-                                  <RichText html={exp.t3} />
+                              {(exp.points ?? []).map((point, i) => (
+                                <li key={i}>
+                                  <RichText html={point} />
                                 </li>
-                              ) : null}
-                              {exp.t4 ? (
-                                <li>
-                                  <RichText html={exp.t4} />
-                                </li>
-                              ) : null}
+                              ))}
                             </div>
                           </td>
                         </tr>

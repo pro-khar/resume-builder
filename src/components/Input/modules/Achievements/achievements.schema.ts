@@ -2,16 +2,7 @@ import { createElement } from "react";
 import type { SectionSchema } from "@/components/Input/generic/types";
 import type { Achievement } from "@/redux-beta/types";
 
-export interface AchievementDraft {
-  [key: string]: string;
-  position: string;
-  orgName: string;
-  duration: string;
-  d1: string;
-  d2: string;
-  d3: string;
-  link: string;
-}
+export type AchievementDraft = Omit<Achievement, "id">;
 
 export const achievementSchema: SectionSchema<AchievementDraft, Achievement> = {
   title: "Achievements/PoRs",
@@ -35,15 +26,12 @@ export const achievementSchema: SectionSchema<AchievementDraft, Achievement> = {
       type: "text",
     },
     {
-      key: "d1",
+      key: "points",
       label: "Bulleted details",
       hint: "(optional)",
       required: false,
-      type: "text",
-      bullet: 1,
+      type: "points",
     },
-    { key: "d2", required: false, type: "text", bullet: 2 },
-    { key: "d3", required: false, type: "text", bullet: 3 },
     {
       key: "link",
       label: "Certificates/Relevant document links",
@@ -55,9 +43,7 @@ export const achievementSchema: SectionSchema<AchievementDraft, Achievement> = {
     position: "",
     orgName: "",
     duration: "",
-    d1: "",
-    d2: "",
-    d3: "",
+    points: [],
     link: "",
   },
   addButtonLabel: "Add",

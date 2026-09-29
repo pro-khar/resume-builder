@@ -12,6 +12,7 @@ import {
   mapRowToExperienceFormat,
   mapRowToSectionOrder,
   mapRowToContactColumns,
+  normalizeDataStatePoints,
 } from "./cloudMappers";
 
 // Define the root reducer
@@ -81,6 +82,9 @@ function parsePersistedState(): PersistedShape | undefined {
         sectionOrder: mapRowToSectionOrder(parsed.ui),
         contactColumns: mapRowToContactColumns(parsed.ui),
       };
+    }
+    if (parsed.data !== undefined) {
+      parsed.data = normalizeDataStatePoints(parsed.data);
     }
     return parsed;
   } catch (err) {

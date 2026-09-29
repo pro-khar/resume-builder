@@ -2,18 +2,7 @@ import { createElement } from "react";
 import type { SectionSchema } from "@/components/Input/generic/types";
 import type { Project } from "@/redux-beta/types";
 
-export interface ProjectDraft {
-  [key: string]: string;
-  title: string;
-  duration: string;
-  desc: string;
-  f1: string;
-  f2: string;
-  f3: string;
-  f4: string;
-  link: string;
-  techStack: string;
-}
+export type ProjectDraft = Omit<Project, "id">;
 
 export const projectSchema: SectionSchema<ProjectDraft, Project> = {
   title: "Projects",
@@ -27,16 +16,13 @@ export const projectSchema: SectionSchema<ProjectDraft, Project> = {
       type: "text",
     },
     {
-      key: "f1",
+      key: "points",
       label: "Features",
       hint: "(minimum two)",
       required: true,
-      type: "text",
-      bullet: 1,
+      type: "points",
+      minItems: 2,
     },
-    { key: "f2", required: true, type: "text", bullet: 2 },
-    { key: "f3", required: false, type: "text", bullet: 3 },
-    { key: "f4", required: false, type: "text", bullet: 4 },
     { key: "techStack", label: "Tech Stack", required: false, type: "text" },
     {
       key: "link",
@@ -49,10 +35,7 @@ export const projectSchema: SectionSchema<ProjectDraft, Project> = {
     title: "",
     duration: "",
     desc: "",
-    f1: "",
-    f2: "",
-    f3: "",
-    f4: "",
+    points: [],
     link: "",
     techStack: "",
   },

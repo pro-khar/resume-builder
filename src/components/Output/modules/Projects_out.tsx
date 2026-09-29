@@ -51,22 +51,11 @@ function Projects_out() {
                     <tr>
                       <td colSpan={2} className="py-[0.001em]">
                         <div className="ml-2 list-disc">
-                          <li>
-                            <RichText html={project.f1} />
-                          </li>
-                          <li>
-                            <RichText html={project.f2} />
-                          </li>
-                          {project.f3 ? (
-                            <li>
-                              <RichText html={project.f3} />
+                          {(project.points ?? []).map((point, i) => (
+                            <li key={i}>
+                              <RichText html={point} />
                             </li>
-                          ) : null}
-                          {project.f4 ? (
-                            <li>
-                              <RichText html={project.f4} />
-                            </li>
-                          ) : null}
+                          ))}
                         </div>
                       </td>
                     </tr>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { SectionSchema } from "./types";
 
 interface SectionListProps<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string }
 > {
   schema: SectionSchema<TDraft, TItem>;
@@ -17,7 +17,7 @@ interface SectionListProps<
 }
 
 export function SectionList<
-  TDraft extends Record<string, string>,
+  TDraft extends object,
   TItem extends { id: string }
 >({ schema, items, editingId, onEdit, onRemove }: SectionListProps<TDraft, TItem>) {
   return (
